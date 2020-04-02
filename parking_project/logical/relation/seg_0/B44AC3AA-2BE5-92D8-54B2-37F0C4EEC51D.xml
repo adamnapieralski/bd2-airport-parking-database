@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_5" directorySegmentName="seg_0" id="B44AC3AA-2BE5-92D8-54B2-37F0C4EEC51D">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-02 18:33:49 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>AD368B49-DEE6-43EB-F551-53720BF4950F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>93FCC26F-75A7-1E79-7234-44492F6EDA2C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
