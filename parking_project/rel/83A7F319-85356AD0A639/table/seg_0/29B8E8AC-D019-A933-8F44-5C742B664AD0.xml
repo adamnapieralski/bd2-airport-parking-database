@@ -1,0 +1,189 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="29B8E8AC-D019-A933-8F44-5C742B664AD0" name="Opłata">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>F923C228-C77D-F510-4930-BCF0E2EB5FBC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_oplaty" id="D066F39C-84C7-D23B-E316-9E667480BABF">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>C9648C2F-251E-DD56-C652-E314F6A53825</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Bilet_id_biletu" id="741B6324-0490-00D2-58BC-5FA58CD38345">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>61DB6905-668F-DC6B-844D-08B9107BEFC7</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="94B58D07-CD66-D929-73E1-C64A22A87BC4" referredColumn="3D379E88-1460-5EC9-C69D-BE88BD7752AF"/>
+</associations>
+</Column>
+<Column name="czas" id="80C5584B-8A13-E352-3D8D-5D811ACE884C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>1117D75E-34D5-D4E6-2C57-3943DE635186</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="kwota_wstepna" id="3E7390E8-70BB-2E68-F33C-7C920E04A4AC">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>AB49F049-F4AD-32E6-7F16-AB87FE693561</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="kwota" id="9CA2DF2E-A8F5-ACBD-B26B-5D3DE287C08C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>1A5BC4CB-7E7B-D644-65E0-00726CF75A99</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status" id="F4A2700D-F7F0-BF47-C7C2-0B7CEF8A52DE">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>62807720-80EB-5E61-E809-9B344F9A1669</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Metoda_płatności_Metoda_płatności_ID" id="DCBBDA60-4F7D-1187-5450-B264E44B87E1">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="51E3B04C-ED3B-C21D-3C22-A3A41FAF6832" referredColumn="64F72306-7AF4-AE1B-FDEB-12AD3BBF52C5"/>
+</associations>
+</Column>
+<Column name="Zniżka_Zniżka_ID" id="108C9158-EEE4-B001-B627-00D2D99667F2">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ED6A8C35-FE5D-E29F-3F07-37AB9824B27F" referredColumn="4E52EE24-50D1-7358-090C-C0F212A9CA45"/>
+</associations>
+</Column>
+<Column name="Kara_Kara_ID" id="CAE3CE43-D065-4FDE-4BB3-6CABB79FCE2C">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D582C4FA-7F2E-B958-3774-4E9C8DB7EAD7" referredColumn="A269FC02-F789-0FD4-C722-AAB3767DE649"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="60261B05-E517-EEB1-B8F5-EF2ECE78D8AB" name="Opłata_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>A1A0B2AB-F41A-1AED-95D4-737CBE17320B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D066F39C-84C7-D23B-E316-9E667480BABF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5FF7B20-8027-85C7-0F4E-562A99278380" name="Opłata_Bilet_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>D96728A7-EAAC-2644-D0FB-F4D3615CFB03</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="741B6324-0490-00D2-58BC-5FA58CD38345"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="807C0522-E3E3-847B-EF46-3215968B68D9" name="Opłata_Metoda_płatności_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>A661814E-3E79-0710-C8DE-E98F5616AA40</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DCBBDA60-4F7D-1187-5450-B264E44B87E1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="33C912D8-0859-03D4-6238-C2040B117605" name="Opłata_Zniżka_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>7820708D-A568-C6C6-1BFE-504AF4FDA8C3</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="108C9158-EEE4-B001-B627-00D2D99667F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4E8E0837-A2AC-09F3-6A84-6B4B2155E08F" name="Opłata_Kara_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>4E33E248-AFE1-F16B-B713-1C4FFDFF1BDC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CAE3CE43-D065-4FDE-4BB3-6CABB79FCE2C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

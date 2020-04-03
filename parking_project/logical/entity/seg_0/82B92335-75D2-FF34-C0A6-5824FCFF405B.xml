@@ -15,7 +15,19 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Numer rezerwacji" id="C5AD7B19-A9DD-892C-EB06-A26BCD007C47">
+<Attribute name="id_rezerwacji" id="F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:00:10 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nr_rezerwacji" id="C5AD7B19-A9DD-892C-EB06-A26BCD007C47">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 21:58:25 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
@@ -28,7 +40,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Data rozpoczecia" id="F82DF0F1-C87A-E723-057D-6867875A4C38">
+<Attribute name="data_rozpoczecia" id="F82DF0F1-C87A-E723-057D-6867875A4C38">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 21:58:39 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
@@ -41,7 +53,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Data zakonczenia" id="362A6A43-03C9-0B5C-DEA6-62BD0F0C3ABC">
+<Attribute name="data_zakonczenia" id="362A6A43-03C9-0B5C-DEA6-62BD0F0C3ABC">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 21:59:02 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
@@ -54,5 +66,33 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_klienta" id="C20C3F8A-0CB1-1641-AD99-674A3614B314">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:01:44 UTC</createdTime>
+<generatorID>5EE92AE5-3F62-5490-DA2D-36551C159E78</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>B765E9B2-AD1B-9A9A-5259-87C654569FAE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="23913C7D-E5B2-91E6-1C67-F8084FAAD760" name="Rezerwacja PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:00:22 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

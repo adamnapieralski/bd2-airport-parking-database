@@ -15,4 +15,20 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_rezerwacji" id="DEAD9388-6F29-7491-8647-76C5084D21B1">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:00:23 UTC</createdTime>
+<generatorID>3D711A0B-8D8F-A475-34D0-DAF3D1B5E58F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
 </Entity>

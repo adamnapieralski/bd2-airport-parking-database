@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="11A64DF5-523D-F583-A935-60AB363E6AE6" name="Rezerwacja">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>82B92335-75D2-FF34-C0A6-5824FCFF405B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_rezerwacji" id="73A01784-7D9A-A48C-4AD8-92F52F816A76">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nr_rezerwacji" id="AB65F41A-009E-9CB0-DDB4-857786BD1105">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>C5AD7B19-A9DD-892C-EB06-A26BCD007C47</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_rozpoczecia" id="5D719A2B-D13B-4973-779A-6482AF87DE24">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>F82DF0F1-C87A-E723-057D-6867875A4C38</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_zakonczenia" id="F15E6AAF-B1B3-EEE0-4A37-4AA75A875575">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>362A6A43-03C9-0B5C-DEA6-62BD0F0C3ABC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Klient_id_klienta" id="2E338948-7AF6-22F1-930D-C8DA3D671A01">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>C20C3F8A-0CB1-1641-AD99-674A3614B314</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BBC5C2D6-9B0B-F8F1-149A-1A136D7B0680" referredColumn="34D1C122-DA55-987D-3B39-7AFF11D3A5A5"/>
+</associations>
+</Column>
+<Column name="Miejsce_parkingowe_Miejsce_parkingowe_ID" id="2970BD21-378A-136E-3EF7-EA97E23147A6">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="80A37628-98AF-9D03-F19E-2F9D91F0F8BF" referredColumn="DE37CF68-DF0E-5DEA-E0FB-48F6FD02E694"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5266AFE3-9482-C5C0-AD23-ADE112A1DF86" name="Rezerwacja_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>23913C7D-E5B2-91E6-1C67-F8084FAAD760</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="73A01784-7D9A-A48C-4AD8-92F52F816A76"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B9E0E3A3-40BB-402A-F021-3D6C18ECC54E" name="Rezerwacja_Miejsce_parkingowe_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>28D13D5B-1693-658B-821E-E20217143A68</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2970BD21-378A-136E-3EF7-EA97E23147A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="460ADCE1-E4BE-6D31-C1BA-35AB82BB4929" name="Rezerwacja_Klient_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>5EE92AE5-3F62-5490-DA2D-36551C159E78</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2E338948-7AF6-22F1-930D-C8DA3D671A01"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

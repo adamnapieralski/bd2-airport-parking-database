@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D582C4FA-7F2E-B958-3774-4E9C8DB7EAD7" containerWithKeyObject="29B8E8AC-D019-A933-8F44-5C742B664AD0" localFKIndex="4E8E0837-A2AC-09F3-6A84-6B4B2155E08F" name="Opłata_Kara_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>4E33E248-AFE1-F16B-B713-1C4FFDFF1BDC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Kara</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>34014EBD-FF62-075B-78BF-866163E84A56</referredTableID>
+<keyObject>909B89BD-FBB5-7856-7C50-2A79184620F9</keyObject>
+<referredKeyID>909B89BD-FBB5-7856-7C50-2A79184620F9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Kara_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

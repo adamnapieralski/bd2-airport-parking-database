@@ -15,46 +15,69 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Imie" id="685B5402-21F5-5F2E-9DE4-D8954836C252">
+<Attribute name="id_klienta" id="B765E9B2-AD1B-9A9A-5259-87C654569FAE">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:01:30 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="imie" id="685B5402-21F5-5F2E-9DE4-D8954836C252">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:00:04 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>200</dataTypeSize>
 <ownDataTypeParameters>200,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Nazwisko" id="D24F768C-6FED-35AC-882F-40310B3E774D">
+<Attribute name="nazwisko" id="D24F768C-6FED-35AC-882F-40310B3E774D">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:00:21 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>300</dataTypeSize>
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Nr Tel" id="CEF20E2B-D21F-5469-98C3-2DAF329B091C">
+<Attribute name="nr_tel" id="CEF20E2B-D21F-5469-98C3-2DAF329B091C">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:00:36 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9786D777-2FF7-F185-01CC-50FF598893CB" name="Klient PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:01:40 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B765E9B2-AD1B-9A9A-5259-87C654569FAE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

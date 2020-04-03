@@ -15,14 +15,27 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Numer miejsca" id="AD02A783-14E7-EFC4-FC3A-81BBEDF6720B">
+<Attribute name="nr_miejsca" id="AD02A783-14E7-EFC4-FC3A-81BBEDF6720B">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 21:57:54 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_strefy" id="14466CAD-953E-42BB-AB44-0C6618136D2F">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 05:56:51 UTC</createdTime>
+<generatorID>6D97560F-0AF0-DA50-AC5A-915AE1790E82</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>8C97FF2D-1D12-6C56-18AF-A844D13BA22B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

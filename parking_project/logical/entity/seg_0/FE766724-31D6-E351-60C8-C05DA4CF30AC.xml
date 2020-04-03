@@ -16,7 +16,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Numer karty" id="BA135AC9-30EF-1E41-E840-A49FCEBBCC67">
+<Attribute name="nr_karty" id="BA135AC9-30EF-1E41-E840-A49FCEBBCC67">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:06:37 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
@@ -30,7 +30,7 @@
 <dataTypeSize>16</dataTypeSize>
 <ownDataTypeParameters>16,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Wlasciciel" id="C0338531-209D-AD20-7B63-AFF4BFF988CD">
+<Attribute name="wlasciciel" id="C0338531-209D-AD20-7B63-AFF4BFF988CD">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:07:00 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
@@ -44,7 +44,7 @@
 <dataTypeSize>300</dataTypeSize>
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Data waznosci" id="96DEA2DD-54F5-CC72-0669-CB147FEB21EA">
+<Attribute name="data_waznosci" id="96DEA2DD-54F5-CC72-0669-CB147FEB21EA">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:07:24 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>
@@ -54,7 +54,7 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

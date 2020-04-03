@@ -16,7 +16,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Czas" id="A1E9AC37-F743-89AB-D103-BB31CFF5EFF6">
+<Attribute name="czas" id="A1E9AC37-F743-89AB-D103-BB31CFF5EFF6">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:07:47 UTC</createdTime>
 <ownerDesignName>parking_project</ownerDesignName>

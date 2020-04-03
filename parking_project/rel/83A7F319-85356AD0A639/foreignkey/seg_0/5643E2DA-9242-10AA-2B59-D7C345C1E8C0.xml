@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5643E2DA-9242-10AA-2B59-D7C345C1E8C0" containerWithKeyObject="E7F0BDF0-BB5A-93CC-4B1A-A8D130DED0D2" localFKIndex="FB92B96F-9F7A-A693-AD01-F7DC8603929E" name="Miejsce_parkingowe_Strefa_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>6D97560F-0AF0-DA50-AC5A-915AE1790E82</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Strefa</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>42DFE09F-2240-A5B2-4994-02F957CDCA83</referredTableID>
+<keyObject>0D5321F1-7036-135A-2A06-2062961CB38B</keyObject>
+<referredKeyID>0D5321F1-7036-135A-2A06-2062961CB38B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_strefy</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

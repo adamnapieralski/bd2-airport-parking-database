@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="11D9789F-9DF4-21F6-089E-36399007AB5D" containerWithKeyObject="E1237283-E57E-4C40-DCC5-480E1CCDC5F1" localFKIndex="910AD43D-01FE-A198-62F0-4CAEF6A16D6E" name="Karta_Metoda_płatności_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>C3B19F19-2A1B-40B7-1355-2CD5B70B4672</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Metoda_płatności</referredTableLongName>
+<arc>DAD3E704-BEEA-8EF5-AA1B-7B56B6B1BC01</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>30504766-5FAC-421D-6729-80B1B7DA8469</referredTableID>
+<keyObject>6E2BDC88-6F3F-B725-F094-C103D518744F</keyObject>
+<referredKeyID>6E2BDC88-6F3F-B725-F094-C103D518744F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Metoda_płatności_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
