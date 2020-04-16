@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="341C7848-9D9E-8166-BA74-040B115D70B4" containerWithKeyObject="38928355-97C7-8A3B-AE4A-DE244DF65B0B" localFKIndex="D94E56A2-47E0-EAAB-2C5E-3ED5A0D01182" name="Cennik_Rodzaj_parkingu_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>5F43216B-E1B5-6A36-FEED-3EE52DE83988</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Rodzaj_parkingu</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D26CE6A0-4958-F4C4-AC9C-A8F78DEF1981</referredTableID>
+<keyObject>E8373F97-3AC5-AC82-028D-357BE015245C</keyObject>
+<referredKeyID>E8373F97-3AC5-AC82-028D-357BE015245C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>rodzaj</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

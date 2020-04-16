@@ -1,0 +1,167 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AD759898-D2AD-2924-E3B4-A74B2B4B34B4" name="Rezerwacja">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>82B92335-75D2-FF34-C0A6-5824FCFF405B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_rezerwacji" id="E4B0A7C5-A847-AEF4-DFC8-EFADB18DA938">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nr_rezerwacji" id="0CD826F6-9923-A4A0-117B-F0509049D9A0">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>C5AD7B19-A9DD-892C-EB06-A26BCD007C47</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_rozpoczecia" id="63B30658-0893-307A-04D1-683FFCCB6D05">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>F82DF0F1-C87A-E723-057D-6867875A4C38</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_zakonczenia" id="3602C7EA-A7DB-031C-1F6A-E113DD044DE7">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>362A6A43-03C9-0B5C-DEA6-62BD0F0C3ABC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Klient_id_klienta" id="A4669B08-BF9F-F875-167D-EC93E6862BD1">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>C20C3F8A-0CB1-1641-AD99-674A3614B314</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="610ABD6F-6D6C-D9A0-9A40-964D0EB65297" referredColumn="CD4D2704-B268-2479-955B-1E1FB793443B"/>
+</associations>
+</Column>
+<Column name="Miejsce_parkingowe_id_mp" id="F5ED35E5-7EF9-7898-28DF-2E3EBC0D24A1">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>A85126C4-5A11-34BE-8916-14F3E22B101C</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1366A8C7-0CC2-BE1F-EAB8-F094E713AC27" referredColumn="5289A98B-0F7B-2924-9481-B986F1054907"/>
+</associations>
+</Column>
+<Column name="Bilet_dlugoterminowy_id_biletu" id="D4E3C4D1-83F9-AE33-851D-80FB601A8F18">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>6D889948-5200-D440-0D93-4AE4D033EE47</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9359F657-E738-DC7B-F0B1-C53DE3212319" referredColumn="5E79A489-9B87-52F5-741F-C65670451450"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9714F8A7-33FA-CF45-EE7D-53EE04352F11" name="Rezerwacja_PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>23913C7D-E5B2-91E6-1C67-F8084FAAD760</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E4B0A7C5-A847-AEF4-DFC8-EFADB18DA938"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="79F9AA9E-549B-05EF-CCB0-F635D6FC26B2" name="Rezerwacja__IDX">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>3D711A0B-8D8F-A475-34D0-DAF3D1B5E58F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="D4E3C4D1-83F9-AE33-851D-80FB601A8F18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D511C09C-FE16-EEF1-0CD6-FB381BA7AF10" name="Rezerwacja_Bilet_dlugoterminowy_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>3D711A0B-8D8F-A475-34D0-DAF3D1B5E58F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D4E3C4D1-83F9-AE33-851D-80FB601A8F18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="444403A1-8318-5CC6-7DF5-34B30A39A66D" name="Rezerwacja_Pojazd_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>77F98740-CAD9-377C-A6AC-0DF56A5F69D4</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="F2E9AD23-8D2D-289E-0F2C-6C0ED7326E9F" name="Rezerwacja_Miejsce_parkingowe_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>28D13D5B-1693-658B-821E-E20217143A68</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5ED35E5-7EF9-7898-28DF-2E3EBC0D24A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B80DE92-831B-8D81-BB7D-2D96D3EF1776" name="Rezerwacja_Klient_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>5EE92AE5-3F62-5490-DA2D-36551C159E78</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A4669B08-BF9F-F875-167D-EC93E6862BD1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

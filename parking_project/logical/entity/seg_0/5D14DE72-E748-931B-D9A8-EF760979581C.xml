@@ -14,4 +14,30 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="rodzaj" id="D8926DC1-BDAB-088A-9D85-7BB6A49DF18D">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:55:13 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="147D2819-9924-1E13-66DD-664950C5BE58" name="Metoda płatności PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:55:18 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D8926DC1-BDAB-088A-9D85-7BB6A49DF18D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

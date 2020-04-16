@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="181DBDFB-ADD1-C080-3812-85AC0772D7A7" containerWithKeyObject="E558E00B-36B6-FCEC-40B8-E2FDF9F1EC20" localFKIndex="3FEFEEB7-1006-4062-9E2E-C76A3D811CC5" name="Oplata_Znizka_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>7820708D-A568-C6C6-1BFE-504AF4FDA8C3</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Znizka</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D7AB297D-CD81-5008-8AF5-49045C937241</referredTableID>
+<keyObject>0B7E4736-352B-AEFD-DADC-04495D347B4E</keyObject>
+<referredKeyID>0B7E4736-352B-AEFD-DADC-04495D347B4E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_znizki</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

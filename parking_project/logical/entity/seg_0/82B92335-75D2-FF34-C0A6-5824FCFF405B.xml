@@ -34,7 +34,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -47,7 +46,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
@@ -60,7 +58,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
@@ -75,6 +72,48 @@
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
 <referedAttribute>B765E9B2-AD1B-9A9A-5259-87C654569FAE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_miejsca_parkingowego" id="A85126C4-5A11-34BE-8916-14F3E22B101C">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:53:48 UTC</createdTime>
+<generatorID>28D13D5B-1693-658B-821E-E20217143A68</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>F43105CD-483E-4B5B-2073-D19DAD7CBE27</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_biletu" id="6D889948-5200-D440-0D93-4AE4D033EE47">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:58:34 UTC</createdTime>
+<generatorID>3D711A0B-8D8F-A475-34D0-DAF3D1B5E58F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>96D9CC7C-65EC-68D4-3889-A9D94B3827C5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_rezerwacji1" id="E990966E-96A5-B8FE-070F-676494EBB44A">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:00:46 UTC</createdTime>
+<generatorID>77F98740-CAD9-377C-A6AC-0DF56A5F69D4</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

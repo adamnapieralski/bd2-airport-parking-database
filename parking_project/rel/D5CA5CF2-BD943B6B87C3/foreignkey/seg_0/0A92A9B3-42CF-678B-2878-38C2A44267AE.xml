@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0A92A9B3-42CF-678B-2878-38C2A44267AE" containerWithKeyObject="E558E00B-36B6-FCEC-40B8-E2FDF9F1EC20" localFKIndex="3DD0FCCB-3780-00FC-EC8F-11DCA58F703B" name="Oplata_Kara_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>4E33E248-AFE1-F16B-B713-1C4FFDFF1BDC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Kara</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>EFE06A49-CE3A-E80C-80EC-D0EBF5BDB291</referredTableID>
+<keyObject>30164531-CD2F-B708-493D-CF345781A7C9</keyObject>
+<referredKeyID>30164531-CD2F-B708-493D-CF345781A7C9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_kary</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

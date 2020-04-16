@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="1ECCD354-AC91-EC79-0F78-2200D7643CCA" containerWithKeyObject="22CBF976-0451-AE11-4B21-F4D7FFA2A36E" localFKIndex="B68EA8EB-E330-BCB3-C779-D43AB2ADE7A9" name="Bilet_Strefa_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>33AA4B00-48D8-903F-6D42-974E3B8E028B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Strefa</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2ED38ABE-9AFA-A50E-D295-C7890BFB585D</referredTableID>
+<keyObject>C73520FD-5451-8E70-C6B1-0451E8F8BAF0</keyObject>
+<referredKeyID>C73520FD-5451-8E70-C6B1-0451E8F8BAF0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_strefy</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

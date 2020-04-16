@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6E185989-8966-48C6-8995-41207DC57280" containerWithKeyObject="E558E00B-36B6-FCEC-40B8-E2FDF9F1EC20" localFKIndex="BA6F5EA3-9A05-50A4-9610-02A5862E36DF" name="Oplata_Metoda_platnosci_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>A661814E-3E79-0710-C8DE-E98F5616AA40</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Metoda_platnosci</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CE037E0F-49C2-891B-E67E-EA475B6DFE20</referredTableID>
+<keyObject>33AE0F2D-6EC3-A4E1-99CE-CF69A50D9AB1</keyObject>
+<referredKeyID>33AE0F2D-6EC3-A4E1-99CE-CF69A50D9AB1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>rodzaj</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
