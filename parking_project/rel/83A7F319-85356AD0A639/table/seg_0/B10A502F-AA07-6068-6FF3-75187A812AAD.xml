@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B10A502F-AA07-6068-6FF3-75187A812AAD" name="Zniżka">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>627D771F-3F4B-05AA-D873-E5E9DC63C883</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="nazwa" id="1A5B9A74-B728-E2A7-46A6-AD510B6D3FC3">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>F908F48D-81BC-88A0-4CD6-59457413156F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="wartosc" id="B98D9FA8-D69E-CCA8-7DBC-BF75D668745A">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>DB8BF67B-0BD6-1C61-B6B5-D32F28F13C39</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="opis" id="A52C91D4-B7FE-4DD2-193A-5B8EBBC0CE11">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>28A3F17A-CE63-B899-8D80-670A80DD919B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Zniżka_ID" id="4E52EE24-50D1-7358-090C-C0F212A9CA45">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EA214008-D3C1-6996-485E-4D6B8AF28D50" name="Zniżka_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="4E52EE24-50D1-7358-090C-C0F212A9CA45"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

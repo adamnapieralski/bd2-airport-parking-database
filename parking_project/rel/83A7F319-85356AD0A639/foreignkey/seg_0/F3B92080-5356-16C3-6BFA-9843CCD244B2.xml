@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F3B92080-5356-16C3-6BFA-9843CCD244B2" containerWithKeyObject="22E9E20E-FB5A-F219-25CA-95B4D3A40E1C" localFKIndex="9F36758C-E2A0-C72F-0CB3-62C995B52E06" name="Bilet_długoterminowy_Bilet_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>72E6DA18-5761-824C-BFF4-FFF44A1DBB6C</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Bilet</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>88573A40-9728-02E0-DAB9-F9F1D29E26AD</referredTableID>
+<keyObject>42837BF6-9E0C-B67D-863E-801A1D22F912</keyObject>
+<referredKeyID>42837BF6-9E0C-B67D-863E-801A1D22F912</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_biletu</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

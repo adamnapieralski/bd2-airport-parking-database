@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="88573A40-9728-02E0-DAB9-F9F1D29E26AD" name="Bilet">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>A09C61BA-AE58-6249-6FCB-E4B0651CA57D</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_biletu" id="3D379E88-1460-5EC9-C69D-BE88BD7752AF">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>96D9CC7C-65EC-68D4-3889-A9D94B3827C5</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nr_biletu" id="D67B78DE-39F4-C819-2CBF-D621DFF64B4B">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>0A240A44-6D2A-EDEF-1336-473E0A6746C1</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="czas_wjazdu" id="01FF2A8C-D309-4D2D-051C-39B7DD87BA85">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>E99F6B8D-10FF-16B0-B06C-6C353F2BBBD5</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="czas_wyjazdu" id="BA4E7789-2AF0-020D-0ED2-AD318C2A2781">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>427E53AE-ABDE-4EF5-9165-6A9AB6036A3B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="wykupiony_czas" id="5F10E380-4B28-C531-2FFE-727AE7EB73BB">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>D682284E-05F0-5060-B699-7A91DD160CE2</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="oplata" id="E0B2F6DE-E870-7C47-87F9-F6A34C789F04">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>7117E75A-6CE1-630D-6246-1112E5719A38</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Strefa_id_strefy" id="77267D88-A7CD-5338-41D8-51AB2DE3FABA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>AFE84606-A92F-B1E6-8844-A99B16F9D1FC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="67C3E1D2-2300-9462-28D2-AF4A66799615" referredColumn="2E9A6815-ADEF-3F10-1B79-BB5012DBF43A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="42837BF6-9E0C-B67D-863E-801A1D22F912" name="Bilet_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>D7BCC7F9-72AB-25DA-1279-745ED39278C0</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3D379E88-1460-5EC9-C69D-BE88BD7752AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E37F93FC-0D4A-F8D9-319C-934A7B2DC5E6" name="Bilet_Strefa_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>33AA4B00-48D8-903F-6D42-974E3B8E028B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="77267D88-A7CD-5338-41D8-51AB2DE3FABA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

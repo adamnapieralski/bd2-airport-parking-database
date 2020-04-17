@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D1E84FF5-AA45-41F9-B3A5-9297E26E2DC6" name="Przelew">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>44038251-5912-D88F-15E8-F4A1C0C6C8DD</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Metoda_płatności_Metoda_płatności_ID" id="96FF60B2-FAF1-475A-76A7-6609DCF95917">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="71C4A4EB-3E62-9BED-12B5-9EAAEF313080" referredColumn="64F72306-7AF4-AE1B-FDEB-12AD3BBF52C5"/>
+</associations>
+</Column>
+<Column name="nadawca" id="59104092-F53C-7BF1-8DF4-E4A71648925B">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>2344E8AB-0E4F-58B2-25E1-8CEA1E94DEA7</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nr_rachunku" id="3CE3AD59-3744-F6ED-D1D5-176FCF1B29C4">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>41894178-1D36-B6E4-8B1D-2D832645DD29</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>26</dataTypeSize>
+<ownDataTypeParameters>26,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="czas" id="955D94FF-3BCD-EDB4-7958-F74D51B2234A">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>439E1F05-F246-C03C-73C3-AB5B1A1834BF</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="19D632BE-B7ED-1D31-2CCD-ECBDE92B9312" name="Przelew_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="96FF60B2-FAF1-475A-76A7-6609DCF95917"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="42EB1B7A-233D-11AB-FE42-A4D8756B9888" name="Przelew_Metoda_płatności_FK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:12 UTC</createdTime>
+<generatorID>F9E29F70-09D9-E4C0-8A38-B787BFABE9DF</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="96FF60B2-FAF1-475A-76A7-6609DCF95917"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

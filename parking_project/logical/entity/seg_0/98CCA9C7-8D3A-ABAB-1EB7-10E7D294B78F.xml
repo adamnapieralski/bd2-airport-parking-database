@@ -14,4 +14,49 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="nr_rejestracyjny" id="4309037B-5BA1-E84B-2C37-F9DE201844B3">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-02 22:09:53 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="typ" id="3BB1B7E1-A396-CE7F-B86E-AC8F963285F2">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:01:14 UTC</createdTime>
+<generatorID>E6AF7839-32BF-240C-6465-4B929B1D19F9</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>0243872A-2026-BA7A-BFFA-DF3B83039514</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_klienta" id="EFEA3342-1256-73BA-7C13-A647EA330EBA">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:01:44 UTC</createdTime>
+<generatorID>3D59ADE9-51E3-C588-7A58-5981B16E6578</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>B765E9B2-AD1B-9A9A-5259-87C654569FAE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
 </Entity>

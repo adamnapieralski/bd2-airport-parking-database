@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F9A7C940-333A-2F3F-FA95-572698B2268C" name="Typ_pojazdu">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>894AB4C0-0F5C-6270-327F-552E14D9B482</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="typ" id="5B60B25D-DBF7-0C36-8E50-CDD7659CCBD1">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>0243872A-2026-BA7A-BFFA-DF3B83039514</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="788EDF55-C181-F4A1-A62B-3816C37D8560" name="Typ_pojazdu_PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:12:11 UTC</createdTime>
+<generatorID>5E63EA1A-5D50-D21C-76BE-D8F4D614614F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5B60B25D-DBF7-0C36-8E50-CDD7659CCBD1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
