@@ -34,7 +34,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -47,7 +46,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT015</logicalDatatype>
@@ -60,7 +58,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT015</logicalDatatype>
@@ -73,20 +70,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="oplata" id="7117E75A-6CE1-630D-6246-1112E5719A38">
-<createdBy>lkost</createdBy>
-<createdTime>2020-04-02 21:57:04 UTC</createdTime>
-<ownerDesignName>parking_project</ownerDesignName>
-<engineerTo>
-<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -101,6 +84,20 @@
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
 <referedAttribute>8C97FF2D-1D12-6C56-18AF-A844D13BA22B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_rezerwacji" id="4936D8A0-DFED-B80B-C89B-A4A681B82023">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:00:24 UTC</createdTime>
+<generatorID>77F98740-CAD9-377C-A6AC-0DF56A5F69D4</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

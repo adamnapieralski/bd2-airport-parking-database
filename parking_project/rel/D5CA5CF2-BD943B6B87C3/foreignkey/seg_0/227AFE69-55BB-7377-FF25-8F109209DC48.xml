@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="227AFE69-55BB-7377-FF25-8F109209DC48" containerWithKeyObject="AD759898-D2AD-2924-E3B4-A74B2B4B34B4" localFKIndex="444403A1-8318-5CC6-7DF5-34B30A39A66D" name="Rezerwacja_Pojazd_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>77F98740-CAD9-377C-A6AC-0DF56A5F69D4</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<referredTableLongName>Pojazd</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>FB154BA2-C37B-C0CA-E2E8-4DB952E2412E</referredTableID>
+<keyObject>C139E40A-F17A-C232-E4DE-D06C67CA28EB</keyObject>
+<referredKeyID>C139E40A-F17A-C232-E4DE-D06C67CA28EB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>nr_rejestracyjny</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

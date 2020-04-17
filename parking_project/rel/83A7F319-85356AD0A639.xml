@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="83A7F319-EE89-AFA5-9C38-85356AD0A639" mainViewID="31DAA3D4-9801-9CAA-AEB5-1036DBA44E55">
-<createdBy>napiad</createdBy>
-<createdTime>2020-04-02 18:13:50 UTC</createdTime>
-<ownerDesignName>parking_project</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
-</relationalModel>

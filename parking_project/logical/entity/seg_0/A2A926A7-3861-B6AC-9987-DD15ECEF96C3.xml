@@ -15,6 +15,16 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_kary" id="AAB148E4-C4B8-615C-E92C-FD352CF3AB40">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:57:31 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="nazwa" id="725F7955-AAE6-CD98-775E-D3023F1AD62C">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-02 22:08:40 UTC</createdTime>
@@ -22,7 +32,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -36,7 +45,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT021</logicalDatatype>
@@ -56,4 +64,18 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="88792970-827D-9110-8DDD-BADAB07A80FE" name="Kara PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:57:36 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>AAB148E4-C4B8-615C-E92C-FD352CF3AB40</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

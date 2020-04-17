@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EEC08777-EC55-5A10-A9D7-246C8F0763EC" name="Parking">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>8B60040B-F8AA-DC31-96E0-7D619279319D</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_parkingu" id="81F339C6-AB29-EE83-1B71-D0CBAAE6AE6C">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>A1477241-BAC4-BD70-3C78-55A52BF7F77D</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nazwa" id="426D6902-D3BC-0967-D372-826E51197FD1">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>BB53DE04-B2A1-73B1-90B7-4E4419A6E89F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="liczba_stref" id="DBFE57B0-4AC7-19FD-5F0A-70A756CA4170">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>F8DC2580-4DEE-F977-5503-5BBF248A2801</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Rodzaj_parkingu_rodzaj" id="45C06C30-4B9D-0802-1168-7FC76612F99A">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>0AE0C1F0-BC24-3B2A-DBD7-9C1C80866C66</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="34ED3B1E-A410-FBE3-1B70-74CB9E44427F" referredColumn="CDA36152-97B5-8C5A-B778-1770437A6EF6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="46D4D41C-EE83-070A-E87B-D3C9D9E5B2DA" name="Parking_PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>45541AAC-9720-0240-9381-ABC54DBE3144</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="81F339C6-AB29-EE83-1B71-D0CBAAE6AE6C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B0BA1D1F-52F3-22FA-AA8A-F3A7CF9D3C0D" name="Parking_Rodzaj_parkingu_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>AA881060-5ECA-DFF7-D6A3-939E4E9FC75F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="45C06C30-4B9D-0802-1168-7FC76612F99A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

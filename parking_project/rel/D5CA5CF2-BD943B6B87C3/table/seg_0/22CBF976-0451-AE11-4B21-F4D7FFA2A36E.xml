@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="22CBF976-0451-AE11-4B21-F4D7FFA2A36E" name="Bilet">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>A09C61BA-AE58-6249-6FCB-E4B0651CA57D</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_biletu" id="195B79C6-FA5D-870F-F540-5D50DE9449B4">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>96D9CC7C-65EC-68D4-3889-A9D94B3827C5</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nr_biletu" id="91EAB8E5-CEB6-FBCD-D39B-DC19DAD81E1F">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>0A240A44-6D2A-EDEF-1336-473E0A6746C1</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="czas_wjazdu" id="A0DBF265-9679-7CEC-E92C-C023FA967921">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>E99F6B8D-10FF-16B0-B06C-6C353F2BBBD5</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="czas_wyjazdu" id="F1D8ABA8-4489-66EF-A0ED-554AE342FB8C">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>427E53AE-ABDE-4EF5-9165-6A9AB6036A3B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="wykupiony_czas" id="774830E2-FC6C-4391-2045-885DB56BDD53">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>D682284E-05F0-5060-B699-7A91DD160CE2</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Strefa_id_strefy" id="35D8B314-E42E-9661-1A88-B58F4B7BB3A9">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>AFE84606-A92F-B1E6-8844-A99B16F9D1FC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1ECCD354-AC91-EC79-0F78-2200D7643CCA" referredColumn="4AD99AB3-934F-A18F-D7C4-754659A30B86"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4C2732FE-1592-DB6D-7D5F-0661745B2A92" name="Bilet_PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>D7BCC7F9-72AB-25DA-1279-745ED39278C0</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="195B79C6-FA5D-870F-F540-5D50DE9449B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B68EA8EB-E330-BCB3-C779-D43AB2ADE7A9" name="Bilet_Strefa_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>33AA4B00-48D8-903F-6D42-974E3B8E028B</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35D8B314-E42E-9661-1A88-B58F4B7BB3A9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -15,6 +15,16 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_znizki" id="3412EC0E-6233-E596-5B4F-C6F51D0AA3C1">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:56:55 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="nazwa" id="F908F48D-81BC-88A0-4CD6-59457413156F">
 <createdBy>napiad</createdBy>
 <createdTime>2020-04-03 06:08:49 UTC</createdTime>
@@ -22,7 +32,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -36,7 +45,6 @@
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT026</logicalDatatype>
@@ -57,4 +65,18 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6F1C7E1D-F4C5-321A-8173-74E3A3DCC0EB" name="Zniżka PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:57:01 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3412EC0E-6233-E596-5B4F-C6F51D0AA3C1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

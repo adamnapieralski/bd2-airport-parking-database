@@ -15,6 +15,18 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_cennika" id="C9CA4683-6CAE-7702-FC26-4B82A862B067">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:52:30 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="oplata" id="A8BA53FF-DA86-FCAA-0BA0-6D9F91B6084C">
 <createdBy>napiad</createdBy>
 <createdTime>2020-04-03 05:56:57 UTC</createdTime>
@@ -40,20 +52,34 @@
 <logicalDatatype>LOGDT014</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="rodzaj" id="CE4E8946-DB57-AF36-1DD9-90E74F722767">
-<createdBy>napiad</createdBy>
-<createdTime>2020-04-03 05:59:39 UTC</createdTime>
-<generatorID>B44AC3AA-2BE5-92D8-54B2-37F0C4EEC51D</generatorID>
+<Attribute name="rodzaj" id="4399CDD7-0D6A-7041-964C-5A54D1C9DCD5">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:03:11 UTC</createdTime>
+<generatorID>5F43216B-E1B5-6A36-FEED-3EE52DE83988</generatorID>
 <ownerDesignName>parking_project</ownerDesignName>
 <engineerTo>
 <item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
 </engineerTo>
-<referedAttribute>E9863816-F12E-7542-1375-17360A71DE40</referedAttribute>
+<referedAttribute>AEF5AF30-67C9-16F6-0230-081928B085CF</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="64C1900C-C9BC-5D2E-AFF8-0E22B0372DFE" name="Cennik PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:52:40 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C9CA4683-6CAE-7702-FC26-4B82A862B067</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>
