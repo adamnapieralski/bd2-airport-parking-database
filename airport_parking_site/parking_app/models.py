@@ -88,7 +88,7 @@ class Pojazd(models.Model):
     )
 
     def __str__(self):
-        return str(self.nr_rejestracyjny)
+        return self.nr_rejestracyjny
 
 
 class Rezerwacja(models.Model):
