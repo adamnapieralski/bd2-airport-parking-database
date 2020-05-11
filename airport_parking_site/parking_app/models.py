@@ -49,7 +49,7 @@ class Parking(models.Model):
 
 
 class RodzajParkingu(models.Model):
-    rodzaj = models.CharField(max_length=20)
+    rodzaj = models.CharField(primary_key=True, max_length=20)
 
     def __str__(self):
         return self.rodzaj
@@ -68,7 +68,7 @@ class MiejsceParkingowe(models.Model):
 
 
 class TypPojazdu(models.Model):
-    typ = models.CharField(primary_key=True, max_length=50, default="Brak")
+    typ = models.CharField(primary_key=True, max_length=50)
 
     def __str__(self):
         return self.typ
