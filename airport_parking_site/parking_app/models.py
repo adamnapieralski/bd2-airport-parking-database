@@ -109,26 +109,57 @@ class Rezerwacja(models.Model):
     bilet_dlugoterminowy = models.ForeignKey(
         'BiletDlugoterminowy',
         on_delete=models.CASCADE,
-        related_name='+',
+    )
+
+    parking = models.ForeignKey(
+        'Parking',
+        on_delete=models.CASCADE,
+    )
+
+    typ_pojazdu = models.ForeignKey(
+        'TypPojazdu',
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
-        return str(self.nr_rezerwacji)
-
+        return self.nazwa
+    
+    
 
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
     czas_wjazdu = models.TimeField('%H:%M')  # '14:30'
     czas_wyjazdu = models.TimeField('%H:%M')
-    wykupiony_czas = models.IntegerField()  #możę DurationField?
+    wykupiony_czas = models.IntegerField()
 
     strefa = models.ForeignKey(
         'Strefa',
         on_delete=models.CASCADE,
     )
+    
+    kara = models.ForeignKey(
+        'Kara',
+        on_delete=models.CASCADE,
+    )
+    
+    
 
     def __str__(self):
-        return str(self.nr_biletu)
+        return str(self.kwota_ostateczna) #?
+
+
+class Parking(models.Model):
+    nazwa = models.CharField(max_length=100)
+    liczba_stref = models.IntegerField()
+
+    rodzaj_parkingu = models.ForeignKey(
+        'RodzajParkingu',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.nazwa
+
 
 
 class Klient(models.Model):
@@ -175,19 +206,9 @@ class Oplata(models.Model):
 
     znizka = models.ForeignKey(
         'Znizka',
-        on_delete=models.CASCADE,
-    )
-    
-    kara = models.ForeignKey(
-        'Kara',
-        on_delete=models.CASCADE,
-    )
-    
-    
+        return self.nr_rejestracyjny
 
-    def __str__(self):
-        return str(self.kwota_ostateczna) #?
-    
+   
 
 class MetodaPlatnosci(models.Model):
     rodzaj = models.CharField(primary_key=True, max_length=40)
@@ -218,6 +239,6 @@ class Kara(models.Model):
         return self.nazwa
     
 
-
+        return str(self.nr_biletu)
 
 
