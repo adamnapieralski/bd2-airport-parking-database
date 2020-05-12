@@ -109,12 +109,22 @@ class Rezerwacja(models.Model):
     bilet_dlugoterminowy = models.ForeignKey(
         'BiletDlugoterminowy',
         on_delete=models.CASCADE,
-        related_name='+',
+    )
+
+    parking = models.ForeignKey(
+        'Parking',
+        on_delete=models.CASCADE,
+    )
+
+    typ_pojazdu = models.ForeignKey(
+        'TypPojazdu',
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
-        return str(self.nr_rezerwacji)
-
+        return self.nazwa
+    
+    
 
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
@@ -126,9 +136,30 @@ class Bilet(models.Model):
         'Strefa',
         on_delete=models.CASCADE,
     )
+    
+    kara = models.ForeignKey(
+        'Kara',
+        on_delete=models.CASCADE,
+    )
+    
+    
 
     def __str__(self):
-        return str(self.nr_biletu)
+        return str(self.kwota_ostateczna) #?
+
+
+class Parking(models.Model):
+    nazwa = models.CharField(max_length=100)
+    liczba_stref = models.IntegerField()
+
+    rodzaj_parkingu = models.ForeignKey(
+        'RodzajParkingu',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.nazwa
+
 
 
 class Klient(models.Model):
@@ -151,3 +182,63 @@ class BiletDlugoterminowy(models.Model):
         'Rezerwacja',
         on_delete=models.CASCADE,
     )
+
+
+class Oplata(models.Model):
+    
+    
+
+    Bilet = models.ForeignKey(
+        'Bilet',
+        on_delete=models.CASCADE,
+    )
+    
+    czas = models.DateTimeField('%Y-%m-%d')  # '2006-10-25' #zrobiłem tak jak na diagramie, choć chyba warto dodać czas
+    kwota_podstawowa = models.FloatField()   #dałem float jako Number(2)
+    kwota_ostateczna = models.FloatField() 
+    status=models.CharField(max_length=1)    #może BooleanField?
+    
+    
+    metoda_platnosci = models.ForeignKey(
+        'MetodaPlatnosci',
+        on_delete=models.CASCADE,
+    )
+
+    znizka = models.ForeignKey(
+        'Znizka',
+        return self.nr_rejestracyjny
+
+   
+
+class MetodaPlatnosci(models.Model):
+    rodzaj = models.CharField(primary_key=True, max_length=40)
+
+    def __str__(self):
+        return self.rodzaj
+    
+    
+
+class Znizka(models.Model):
+    nazwa = models.CharField(max_length=50)
+    wartosc = models.FloatField()
+    opis = models.TextField(max_length=500)
+    
+    
+    
+    def __str__(self):
+        return self.nazwa    
+    
+
+
+class Kara(models.Model):
+    nazwa = models.CharField(max_length=50)
+    wartosc = models.FloatField()
+    opis = models.TextField(max_length=500)
+    
+    def __str__(self):
+        return self.nazwa
+    
+
+        return str(self.nr_biletu)
+
+
