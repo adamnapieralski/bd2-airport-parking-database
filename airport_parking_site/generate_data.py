@@ -77,6 +77,9 @@ class DataGenerator():
         # reservations_df = self._generate_rezerwacja_df(ticket_ids, clients_num, vehicles_num, parkig_slots_num)
         # print(reservations_df)
 
+        oplata_df = self._get_oplata_df(bilety_krotko_df)
+        print(oplata_df)
+
     def _generate_license_numbers(self, num):
         signs = list(string.ascii_uppercase + string.digits)
         license_numbers_array = np.random.choice(signs, (num,8))
@@ -163,6 +166,24 @@ class DataGenerator():
             id_strefy.append(index)
             strefa_df.loc[index, ('liczba_wolnych_miejsc')] -= 1
         df['id_strefy'] = id_strefy
+        return df
+
+
+    def _get_oplata_df(self, bilet_df):
+        df = pd.DataFrame(columns=['id_biletu', 'czas', 'kwota_podstawowa', 'kwota_ostateczna', 'status',
+                                    'metoda_platnosci', 'id_znizki', 'id_kary'])
+        num = bilet_df.shape[0]
+        df['id_biletu'] = np.arange(0, num)    
+        #czas losowy, nie powiazalem z biletem :(
+        df['czas'] = [datetime.datetime(np.random.randint(2018, 2021), np.random.randint(1,13),
+                        np.random.randint(1,29), np.random.randint(0,23), np.random.randint(0,59)).isoformat() for x in range(num)]
+        df['kwota_podstawowa'] = np.random.randint(10, 100)
+        df['kwota_ostateczna'] = df['kwota_podstawowa'] + np.random.choice([0, -5, 5], num, p=[0.96, 0.02, 0.02])
+        df['status'] = np.random.choice([1,0], num, p=[0.9, 0.1])
+        metoda_plat = get_metoda_platnosci_df()    
+        df['metoda_platnosci'] = np.random.choice(metoda_plat['rodzaj'], num)
+        df['id_znizki'] = np.random.choice([0, np.nan], num, p=[0.02, 0.98])
+        df['id_kary'] = np.random.choice([0, np.nan], num, p=[0.02, 0.98])
         return df
 
 if __name__ == "__main__":
