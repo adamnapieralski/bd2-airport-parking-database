@@ -1,0 +1,6 @@
+nazwa,liczba_stref,rodzaj_parkingu
+PK1,3,krotkoterminowy
+PK2,1,krotkoterminowy
+PK3,1,krotkoterminowy
+PD1,3,dlugoterminowy
+PD2,1,dlugoterminowy
