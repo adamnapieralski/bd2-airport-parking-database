@@ -187,7 +187,6 @@ class BiletDlugoterminowy(models.Model):
 class Oplata(models.Model):
     
     
-
     Bilet = models.ForeignKey(
         'Bilet',
         on_delete=models.CASCADE,
@@ -206,6 +205,9 @@ class Oplata(models.Model):
 
     znizka = models.ForeignKey(
         'Znizka',
+        on_delete=models.CASCADE,)
+    
+    def __str__(self):
         return self.nr_rejestracyjny
 
    
@@ -222,9 +224,7 @@ class Znizka(models.Model):
     nazwa = models.CharField(max_length=50)
     wartosc = models.FloatField()
     opis = models.TextField(max_length=500)
-    
-    
-    
+      
     def __str__(self):
         return self.nazwa    
     
@@ -239,6 +239,5 @@ class Kara(models.Model):
         return self.nazwa
     
 
-        return str(self.nr_biletu)
 
 
