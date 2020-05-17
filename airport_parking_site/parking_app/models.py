@@ -34,18 +34,9 @@ class Cennik(models.Model):
         on_delete=models.CASCADE,
     )
 
-
-class Parking(models.Model):
-    nazwa = models.CharField(max_length=100)
-    liczba_stref = models.IntegerField()
-
-    rodzaj_parkingu = models.ForeignKey(
-        'RodzajParkingu',
-        on_delete=models.CASCADE,
-    )
-
     def __str__(self):
-        return self.nazwa
+        return self.oplata
+
 
 
 class RodzajParkingu(models.Model):
@@ -178,7 +169,7 @@ class BiletDlugoterminowy(models.Model):
         primary_key=True,
     )
 
-    rezerwacja = models.ForeignKey(
+    rezerwacjad = models.ForeignKey(
         'Rezerwacja',
         on_delete=models.CASCADE,
     )
