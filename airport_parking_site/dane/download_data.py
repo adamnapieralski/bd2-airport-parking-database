@@ -3,7 +3,7 @@ import shutil
 import urllib.request
 
 # create data directory
-data_dir_path = 'dane/pobrane/'
+data_dir_path = 'pobrane/'
 print("Creating " + data_dir_path + " directory (if not exists)...")
 try: 
     os.makedirs(data_dir_path)

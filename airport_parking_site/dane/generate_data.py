@@ -4,31 +4,37 @@ import numpy as np
 import string
 import datetime
 
+path = os.path.dirname(os.path.abspath(__file__))
+if not path in sys.path:
+    sys.path.append(path)
+
+
 ## dane statyczne
 
 def get_cennik_df():
-    return pd.read_csv('dane/statyczne/bd2_cennik.csv')
+    return pd.read_csv(path +'/statyczne/bd2_cennik.csv')
 
 def get_rodzaj_parkingu_df():
-    return pd.read_csv('dane/statyczne/bd2_rodzaj_parkingu.csv')
+    print(sys.path)
+    return pd.read_csv(path +'/statyczne/bd2_rodzaj_parkingu.csv')
 
 def get_parking_df():
-    return pd.read_csv('dane/statyczne/bd2_parking.csv')
+    return pd.read_csv(path +'/statyczne/bd2_parking.csv')
 
 def get_kara_df():
-    return pd.read_csv('dane/statyczne/bd2_kara.csv')
+    return pd.read_csv(path +'/statyczne/bd2_kara.csv')
 
 def get_metoda_platnosci_df():
-    return pd.read_csv('dane/statyczne/bd2_metoda_platnosci.csv')
+    return pd.read_csv(path +'/statyczne/bd2_metoda_platnosci.csv')
 
 def get_strefa_df():
-    return pd.read_csv('dane/statyczne/bd2_strefa.csv')
+    return pd.read_csv(path +'/statyczne/bd2_strefa.csv')
 
 def get_typ_pojazdu_df():
-    return pd.read_csv('dane/statyczne/bd2_typ_pojazdu.csv')
+    return pd.read_csv(path +'/statyczne/bd2_typ_pojazdu.csv')
 
 def get_znizka_df():
-    return pd.read_csv('dane/statyczne/bd2_znizka.csv')
+    return pd.read_csv(path +'/statyczne/bd2_znizka.csv')
 
 def get_miejsce_parkingowe_df():
     strefa_df = get_strefa_df()
@@ -44,15 +50,15 @@ def get_miejsce_parkingowe_df():
 
 class DataGenerator():
     def __init__(self):
-        if not os.path.exists('dane/pobrane'):
+        if not os.path.exists(path +'/pobrane'):
             import download_data
 
         names_limit = 200
         
-        self.female_names = pd.read_csv('dane/pobrane/lista_pierwszych_imion_%C5%BCe%C5%84skich_uwzgl_os_zmar%C5%82e_2020-01-21.csv').head(names_limit)["IMIĘ_PIERWSZE"]
-        self.male_names = pd.read_csv('dane/pobrane/lista_pierwszych_imion_m%C4%99skich_uwzgl_os_zmar%C5%82e_2020-01-21.csv').head(names_limit)["IMIĘ_PIERWSZE"]
-        self.female_surnames = pd.read_csv('dane/pobrane/Wykaz_nazwisk_%C5%BCe%C5%84skich_uwzgl_os__zmar%C5%82e_2020-01-22.csv').head(names_limit)["Nazwisko aktualne"]
-        self.male_surnames = pd.read_csv('dane/pobrane/Wykaz_nazwisk_m%C4%99skich_uwzgl_os__zmar%C5%82e_2020-01-22.csv').head(names_limit)["Nazwisko aktualne"]
+        self.female_names = pd.read_csv(path +'/pobrane/lista_pierwszych_imion_%C5%BCe%C5%84skich_uwzgl_os_zmar%C5%82e_2020-01-21.csv').head(names_limit)["IMIĘ_PIERWSZE"]
+        self.male_names = pd.read_csv(path +'/pobrane/lista_pierwszych_imion_m%C4%99skich_uwzgl_os_zmar%C5%82e_2020-01-21.csv').head(names_limit)["IMIĘ_PIERWSZE"]
+        self.female_surnames = pd.read_csv(path +'/pobrane/Wykaz_nazwisk_%C5%BCe%C5%84skich_uwzgl_os__zmar%C5%82e_2020-01-22.csv').head(names_limit)["Nazwisko aktualne"]
+        self.male_surnames = pd.read_csv(path +'/pobrane/Wykaz_nazwisk_m%C4%99skich_uwzgl_os__zmar%C5%82e_2020-01-22.csv').head(names_limit)["Nazwisko aktualne"]
 
     def generate_data(self, tickets_num):
         print('Generating', tickets_num, 'tickets')

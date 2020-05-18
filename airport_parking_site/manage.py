@@ -2,8 +2,14 @@
 import os
 import sys
 
+def add_data_to_path():    
+    bin_path = os.path.dirname(os.path.abspath(__file__)) + '/dane'
+    if not bin_path in sys.path:
+        sys.path.append(bin_path)
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "airport_parking_site.settings")
+    add_data_to_path()
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

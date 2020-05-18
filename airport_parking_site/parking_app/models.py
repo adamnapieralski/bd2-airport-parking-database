@@ -139,7 +139,7 @@ class Bilet(models.Model):
         return str(self.kwota_ostateczna) #?
 
 
-class Parking(models.Model):
+class Parking(models.Model):    
     nazwa = models.CharField(max_length=100)
     liczba_stref = models.IntegerField()
 
