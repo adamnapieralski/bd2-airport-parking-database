@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Strefa(models.Model):
     nazwa = models.CharField(max_length=100)
     pojemnosc = models.IntegerField()
@@ -100,6 +99,7 @@ class Rezerwacja(models.Model):
     bilet_dlugoterminowy = models.ForeignKey(
         'BiletDlugoterminowy',
         on_delete=models.CASCADE,
+        related_name='+',
     )
 
     parking = models.ForeignKey(
