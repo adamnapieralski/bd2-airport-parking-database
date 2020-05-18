@@ -2,3 +2,5 @@
 **/*.local
 **/*.git
 **/*.DS_Store
+airport_parking_site/dane/pobrane/
+/.vscode
