@@ -6,14 +6,15 @@ from . import generate_data as gd
 app = 'parking_app'
 
 def initial_migration(apps, schema_editor):
-    migrate_cennik(apps)
-    migrate_kara(apps)
+    # migrate_cennik(apps)
+    # migrate_kara(apps)
     # migrate_rodzaj_parkingu(apps)
-    migrate_metoda_platnosci(apps)
-    migrate_typ_pojazdu(apps)
-    migrate_parking(apps)        
-    migrate_strefa(apps)    
-    migrate_znizka(apps)
+    # migrate_metoda_platnosci(apps)
+    # migrate_typ_pojazdu(apps)
+    # migrate_parking(apps)        
+    # migrate_strefa(apps)    
+    # migrate_znizka(apps)
+    migrate_miejsce_parkingowe(apps)
     
 
 def migrate_cennik(apps):
@@ -80,6 +81,7 @@ def migrate_strefa(apps):
     for _, row in df.iterrows():
         m = Strefa(nazwa=row['nazwa'], pojemnosc=row['pojemnosc'],
                    liczba_wolnych_miejsc=row['liczba_wolnych_miejsc'])
+        #indices in db start from 1
         m.parking=Parking.objects.get(id=int(row['id_parkingu']+1))
         m.cennik=Cennik.objects.get(id=int(row['id_cennika']))
         m.typ_pojazdu=TypPojazdu.objects.get(typ=row['typ_pojazdu'])
@@ -91,4 +93,14 @@ def migrate_znizka(apps):
 
     for _, row in df.iterrows():
         m = Znizka(nazwa=row['nazwa'], wartosc=row['wartosc'], opis=row['opis'])
+        m.save()
+
+def migrate_miejsce_parkingowe(apps):
+    MiejsceParkingowe = apps.get_model(app, 'MiejsceParkingowe')
+    Strefa = apps.get_model(app, 'Strefa')
+    df = gd.get_miejsce_parkingowe_df()
+
+    for _, row in df.iterrows():
+        m = MiejsceParkingowe(nr_miejsca=row['nr_miejsca'])
+        m.strefa = Strefa.objects.get(id=int(row['strefa'])+1)
         m.save()
