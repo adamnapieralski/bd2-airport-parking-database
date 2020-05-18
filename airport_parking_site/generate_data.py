@@ -61,28 +61,28 @@ class DataGenerator():
         # short_term_tickets_num = tickets_num - long_term_tickets_num
 
         clients_num = int(0.24*tickets_num)
-        clients_df = self._generate_klient_df(clients_num)
-        print("KLIENCI\n", clients_df)
+        self.klient_df = self._generate_klient_df(clients_num)
+        print("KLIENCI\n", self.klient_df)
         vehicles_num = int(0.84*tickets_num)
-        vehicles_df = self._generate_pojazd_df(clients_num, vehicles_num)
-        print("POJAZDY\n", vehicles_df)
+        self.pojazd_df = self._generate_pojazd_df(clients_num, vehicles_num)
+        print("POJAZDY\n", self.pojazd_df)
         strefa_df = get_strefa_df()
         miejsce_parkingowe_df = get_miejsce_parkingowe_df()
         print("MIEJSCA PARKINGOWE\n", miejsce_parkingowe_df)
         
 
-        bilet_df, bilety_dlugo_ids = self._get_bilety_df(tickets_num, strefa_df)
-        print("BILETY\n", bilet_df)
+        self.bilet_df, bilety_dlugo_ids = self._get_bilety_df(tickets_num, strefa_df)
+        print("BILETY\n", self.bilet_df)
 
-        rezerwacje_df = self._generate_rezerwacja_df(bilet_df, bilety_dlugo_ids, clients_num, vehicles_num, miejsce_parkingowe_df)
-        print("REZERWACJE\n", rezerwacje_df)
+        self.rezerwacja_df = self._generate_rezerwacja_df(self.bilet_df, bilety_dlugo_ids, clients_num, vehicles_num, miejsce_parkingowe_df)
+        print("REZERWACJE\n", self.rezerwacja_df)
 
-        bilety_dlugo_df = self._get_bilety_dlugoterminowe_df(bilet_df, bilety_dlugo_ids)
+        self.bilet_dlugoterminowy_df = self._get_bilety_dlugoterminowe_df(self.bilet_df, bilety_dlugo_ids)
 
-        print("BILETY DLUGOTERMINOWE\n", bilety_dlugo_df)
+        print("BILETY DLUGOTERMINOWE\n", self.bilet_dlugoterminowy_df)
 
-        oplata_df = self._get_oplata_df(bilet_df, bilety_dlugo_ids)
-        print("OPLATY\n", oplata_df)
+        self.oplata_df = self._get_oplata_df(self.bilet_df, bilety_dlugo_ids)
+        print("OPLATY\n", self.oplata_df)
 
 
 
@@ -134,50 +134,6 @@ class DataGenerator():
         df['miejsce_parkingowe'] = np.random.choice(miejsca_parkingowe_dlugo_ids, num, replace=False)
         df['bilet_dlugoterminowy'] = bilety_dlugo_ids
         return df
-
-    # def _get_bilet_krotkookresowy_df(self, num, strefa_df):
-    #     df = pd.DataFrame(columns=['nr_biletu', 'czas_wjazdu', 'czas_wyjazdu', 'wykupiony_czas', 'id_strefy'])    
-    #     df['nr_biletu'] = np.arange(1, num+1)
-    #     begin_datetimes = [datetime.datetime(np.random.randint(2018, 2021), np.random.randint(1,13),
-    #                     np.random.randint(1,29), np.random.randint(0,23), np.random.randint(0,59)) for x in range(num)] 
-    #     df['czas_wjazdu'] = [d for d in begin_datetimes]
-    #     time_deltas = [datetime.timedelta(minutes=np.random.randint(10,600)) for x in range(num)]    
-    #     end_datetimes = np.array(begin_datetimes) + np.array(time_deltas)
-    #     df['czas_wyjazdu'] = [d for d in end_datetimes]    
-    #     df['wykupiony_czas'] = [td.total_seconds() / 60 + int(np.random.normal(1) * 30) for td in time_deltas]
-
-    #     typ_pojazdu = np.random.choice(['osobowy', 'motocykl', 'autokar'], num, p=[0.97, 0.02, 0.01])
-    #     id_strefy = []
-    #     for pojazd in typ_pojazdu:
-    #         #id_parkingu < 3 znaczy ze strefa jest krotkoterminowa
-    #         strefa = strefa_df[strefa_df['typ_pojazdu'] == pojazd][strefa_df['id_parkingu'] < 3][strefa_df['liczba_wolnych_miejsc'] > 0].iloc[0]
-    #         index = int(strefa['nazwa'][-1])-1 #glupie, ale nie mialem pomyslu jak to zrobic 
-    #         id_strefy.append(index)
-    #         strefa_df.loc[index, ('liczba_wolnych_miejsc')] -= 1
-    #     df['id_strefy'] = id_strefy
-    #     return df
-
-    # def _get_bilet_dlugookresowy_df(self, num, strefa_df):
-    #     df = pd.DataFrame(columns=['nr_biletu', 'czas_wjazdu', 'czas_wyjazdu', 'wykupiony_czas', 'id_strefy'])    
-    #     df['nr_biletu'] = np.arange(1, num+1)
-    #     begin_datetimes = [datetime.datetime(np.random.randint(2018, 2021), np.random.randint(1,13),
-    #                     np.random.randint(1,29), np.random.randint(0,23), np.random.randint(0,59)) for x in range(num)] 
-    #     df['czas_wjazdu'] = [d for d in begin_datetimes]
-    #     time_deltas = [datetime.timedelta(days=np.random.randint(1,20), minutes=np.random.randint(10,600)) for x in range(num)]    
-    #     end_datetimes = np.array(begin_datetimes) + np.array(time_deltas)
-    #     df['czas_wyjazdu'] = [d for d in end_datetimes]    
-    #     df['wykupiony_czas'] = [(int(td.total_seconds() / 86400) + 1 + int(np.random.normal(1)))*1440 for td in time_deltas]
-
-    #     typ_pojazdu = np.random.choice(['osobowy', 'motocykl', 'autokar'], num, p=[0.97, 0.02, 0.01])
-    #     id_strefy = []
-    #     for pojazd in typ_pojazdu:
-    #         #id_parkingu >= 3 znaczy ze strefa jest dlugoterminowa
-    #         strefa = strefa_df[strefa_df['typ_pojazdu'] == pojazd][strefa_df['id_parkingu'] >= 3][strefa_df['liczba_wolnych_miejsc'] > 0].iloc[0]
-    #         index = int(strefa['nazwa'][-1])-1 #glupie, ale nie mialem pomyslu jak to zrobic 
-    #         id_strefy.append(index)
-    #         strefa_df.loc[index, ('liczba_wolnych_miejsc')] -= 1
-    #     df['id_strefy'] = id_strefy
-    #     return df
 
     def _get_bilety_df(self, num, strefa_df):
         bilety = pd.DataFrame(columns=['nr_biletu', 'czas_wjazdu', 'czas_wyjazdu', 'wykupiony_czas', 'id_strefy'])
@@ -264,20 +220,7 @@ class DataGenerator():
                 czasy.append(pay_time)
         df['kwota_podstawowa'] = kwoty_podstawowe
         df['czas'] = czasy
-        # if czy_dlugoterminowy:
-        #     df['kwota_podstawowa'] = np.random.randint(100, 1000, size=num)
-        #     before_diff = np.array([datetime.timedelta(days=np.random.randint(1, 30), hours=np.random.randint(0, 23), minutes=np.random.randint(0, 59), seconds=np.random.randint(0, 59)) for x in range(num)])
-        #     df['czas'] =  bilet_df['czas_wjazdu'] - before_diff
 
-        # else:
-        #     df['kwota_podstawowa'] = np.random.randint(10, 100, size=num)
-        #     for i in range(num):
-        #         diff = np.timedelta64(datetime.timedelta(minutes=np.random.randint(2, 500), seconds=np.random.randint(0, 59)))
-        #         pay_time = bilet_df['czas_wyjazdu'].values[i]- diff
-        #         while pay_time <= bilet_df['czas_wjazdu'].values[i]:
-        #             diff = np.timedelta64(datetime.timedelta(minutes=np.random.randint(2, 500), seconds=np.random.randint(0, 59)))
-        #             pay_time = bilet_df['czas_wyjazdu'].values[i] - diff
-        #         df.loc[df.index[i], 'czas'] = pay_time
         znizka_df = get_znizka_df()
         kara_df = get_kara_df()
 
