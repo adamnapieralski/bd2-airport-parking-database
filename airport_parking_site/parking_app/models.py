@@ -18,6 +18,7 @@ class Strefa(models.Model):
     typ_pojazdu = models.ForeignKey(
         'TypPojazdu',
         on_delete=models.CASCADE,
+        db_column='typ_pojazdu_typ'
     )
 
     def __str__(self):
@@ -31,12 +32,11 @@ class Cennik(models.Model):
     rodzaj_parkingu = models.ForeignKey(
         'RodzajParkingu',
         on_delete=models.CASCADE,
+        db_column='rodzaj_parkingu_rodzaj'
     )
 
     def __str__(self):
         return self.oplata
-
-
 
 class RodzajParkingu(models.Model):
     rodzaj = models.CharField(primary_key=True, max_length=20)
@@ -70,6 +70,7 @@ class Pojazd(models.Model):
     typ_pojazdu = models.ForeignKey(
         'TypPojazdu',
         on_delete=models.CASCADE,
+        db_column='typ_pojazdu_typ'
     )
 
     klient = models.ForeignKey(
@@ -104,30 +105,21 @@ class Rezerwacja(models.Model):
     )
 
     def __str__(self):
-        return self.nazwa
-    
-    
-
+        return self.nr_rezerwacji
+      
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
-    czas_wjazdu = models.TimeField('%H:%M')  # '14:30'
-    czas_wyjazdu = models.TimeField('%H:%M')
+    czas_wjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '14:30'
+    czas_wyjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')
     wykupiony_czas = models.IntegerField()
 
     strefa = models.ForeignKey(
         'Strefa',
         on_delete=models.CASCADE,
     )
-    
-    kara = models.ForeignKey(
-        'Kara',
-        on_delete=models.CASCADE,
-    )
-    
-    
 
     def __str__(self):
-        return str(self.kwota_ostateczna) #?
+        return str(self.nr_biletu) #?
 
 
 class Parking(models.Model):    
@@ -137,12 +129,11 @@ class Parking(models.Model):
     rodzaj_parkingu = models.ForeignKey(
         'RodzajParkingu',
         on_delete=models.CASCADE,
+        db_columns='rodzaj_parkingu_rodzaj'
     )
 
     def __str__(self):
         return self.nazwa
-
-
 
 class Klient(models.Model):
     imie = models.CharField(max_length=200)
@@ -154,54 +145,61 @@ class Klient(models.Model):
 
 
 class BiletDlugoterminowy(models.Model):
-    id_biletu = models.OneToOneField(
+    bilet = models.OneToOneField(
         'Bilet',
         on_delete=models.CASCADE,
         primary_key=True,
     )
 
-    rezerwacjad = models.ForeignKey(
+    rezerwacja_ = models.ForeignKey(
         'Rezerwacja',
         on_delete=models.CASCADE,
         null=True,
     )
 
+    def __str__(self):
+        return str(self.bilet)
 
 class Oplata(models.Model):
-    
-    
-    Bilet = models.ForeignKey(
+        
+    bilet = models.ForeignKey(
         'Bilet',
         on_delete=models.CASCADE,
     )
     
-    czas = models.DateTimeField('%Y-%m-%d')  # '2006-10-25' #zrobiłem tak jak na diagramie, choć chyba warto dodać czas
+    czas = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '2006-10-25' #zrobiłem tak jak na diagramie, choć chyba warto dodać czas
     kwota_podstawowa = models.FloatField()   #dałem float jako Number(2)
     kwota_ostateczna = models.FloatField() 
     status=models.CharField(max_length=1)    #może BooleanField?
-    
-    
+        
     metoda_platnosci = models.ForeignKey(
         'MetodaPlatnosci',
         on_delete=models.CASCADE,
+        db_column='metoda_platnosci_rodzaj'
     )
 
     znizka = models.ForeignKey(
         'Znizka',
-        on_delete=models.CASCADE,)
+        on_delete=models.CASCADE,
+        null=True
+        )
+
+    kara = models.ForeignKey(
+        'Kara',
+        on_delete=models.CASCADE,
+        null=True
+    )    
     
     def __str__(self):
-        return self.nr_rejestracyjny
+        return 'oplata biletu ' + str(self.bilet)
 
-   
 
 class MetodaPlatnosci(models.Model):
     rodzaj = models.CharField(primary_key=True, max_length=40)
 
     def __str__(self):
         return self.rodzaj
-    
-    
+  
 
 class Znizka(models.Model):
     nazwa = models.CharField(max_length=50)
@@ -212,7 +210,6 @@ class Znizka(models.Model):
         return self.nazwa    
     
 
-
 class Kara(models.Model):
     nazwa = models.CharField(max_length=50)
     wartosc = models.FloatField()
@@ -220,7 +217,3 @@ class Kara(models.Model):
     
     def __str__(self):
         return self.nazwa
-    
-
-
-
