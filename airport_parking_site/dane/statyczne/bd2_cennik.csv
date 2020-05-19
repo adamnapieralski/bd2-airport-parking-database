@@ -1,0 +1,13 @@
+oplata,czas,rodzaj_parkingu
+10,1,krotkoterminowy
+16,2,krotkoterminowy
+24,3,krotkoterminowy
+8,-3,krotkoterminowy
+40,24,dlugoterminowy
+50,48,dlugoterminowy
+55,96,dlugoterminowy
+60,168,dlugoterminowy
+75,216,dlugoterminowy
+95,288,dlugoterminowy
+105,360,dlugoterminowy
+10,-360,dlugoterminowy

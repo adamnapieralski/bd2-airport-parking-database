@@ -1,0 +1,4 @@
+https://api.dane.gov.pl/media/resources/20200130/lista_pierwszych_imion_%C5%BCe%C5%84skich_uwzgl_os_zmar%C5%82e_2020-01-21.csv
+https://api.dane.gov.pl/media/resources/20200130/lista_pierwszych_imion_m%C4%99skich_uwzgl_os_zmar%C5%82e_2020-01-21.csv
+https://api.dane.gov.pl/media/resources/20200330/Wykaz_nazwisk_%C5%BCe%C5%84skich_uwzgl_os__zmar%C5%82e_2020-01-22.csv
+https://api.dane.gov.pl/media/resources/20200330/Wykaz_nazwisk_m%C4%99skich_uwzgl_os__zmar%C5%82e_2020-01-22.csv
