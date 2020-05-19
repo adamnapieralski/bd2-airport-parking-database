@@ -102,6 +102,7 @@
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>11ED1D79-4C21-8B56-C212-88E31E5FF722</generatorID>
 <ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -117,6 +118,7 @@
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>C368BFA2-1ABE-414A-DDA7-B2761545987F</generatorID>
 <ownerDesignName>parking_project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

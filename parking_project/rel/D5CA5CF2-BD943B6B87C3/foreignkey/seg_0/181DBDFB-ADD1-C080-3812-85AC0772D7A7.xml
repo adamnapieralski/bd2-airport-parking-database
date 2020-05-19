@@ -9,8 +9,8 @@
 <referredTableID>D7AB297D-CD81-5008-8AF5-49045C937241</referredTableID>
 <keyObject>0B7E4736-352B-AEFD-DADC-04495D347B4E</keyObject>
 <referredKeyID>0B7E4736-352B-AEFD-DADC-04495D347B4E</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>id_znizki</refColNames>
+<mandatory>false</mandatory>
+<refColNames>id</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
