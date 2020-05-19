@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_oplaty" id="71F74BE2-D132-CBBB-9E20-AC4CECEC4C14">
+<Column name="id" id="71F74BE2-D132-CBBB-9E20-AC4CECEC4C14">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>C9648C2F-251E-DD56-C652-E314F6A53825</generatorID>
@@ -18,21 +18,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Bilet_id_biletu" id="32222F0C-4A69-B0A3-184A-76E982E190DC">
-<createdBy>lkost</createdBy>
-<createdTime>2020-04-16 20:05:29 UTC</createdTime>
-<generatorID>61DB6905-668F-DC6B-844D-08B9107BEFC7</generatorID>
-<ownerDesignName>parking_project</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="14A62D6E-F791-BB45-E3AB-B971F18C6DDE" referredColumn="195B79C6-FA5D-870F-F540-5D50DE9449B4"/>
-</associations>
 </Column>
 <Column name="czas" id="1EB0F1D1-88D4-500C-7A4A-6ABC83390031">
 <createdBy>lkost</createdBy>
@@ -81,7 +66,22 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Metoda_platnosci_rodzaj" id="7FA3F366-6876-F8E1-9F0C-3CB29C58C54B">
+<Column name="bilet_id" id="32222F0C-4A69-B0A3-184A-76E982E190DC">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>61DB6905-668F-DC6B-844D-08B9107BEFC7</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="14A62D6E-F791-BB45-E3AB-B971F18C6DDE" referredColumn="195B79C6-FA5D-870F-F540-5D50DE9449B4"/>
+</associations>
+</Column>
+<Column name="metoda_platnosci_rodzaj" id="7FA3F366-6876-F8E1-9F0C-3CB29C58C54B">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>38B8879B-46E7-DF4B-8972-0DE339E1C901</generatorID>
@@ -97,7 +97,7 @@
 <colAssociation fkAssociation="6E185989-8966-48C6-8995-41207DC57280" referredColumn="1F875E0E-D3D8-8CD3-43CE-7024885E3C26"/>
 </associations>
 </Column>
-<Column name="Zniżka_id_znizki" id="756C5376-7197-4538-88E5-5346CE8303DE">
+<Column name="znizka_id" id="756C5376-7197-4538-88E5-5346CE8303DE">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>11ED1D79-4C21-8B56-C212-88E31E5FF722</generatorID>
@@ -112,7 +112,7 @@
 <colAssociation fkAssociation="181DBDFB-ADD1-C080-3812-85AC0772D7A7" referredColumn="18A88847-E657-46F1-522E-8D5FCFA863D0"/>
 </associations>
 </Column>
-<Column name="Kara_id_kary" id="6A32B3EB-A7F1-1414-EA25-74DCB5D292D9">
+<Column name="kara_id" id="6A32B3EB-A7F1-1414-EA25-74DCB5D292D9">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>C368BFA2-1ABE-414A-DDA7-B2761545987F</generatorID>

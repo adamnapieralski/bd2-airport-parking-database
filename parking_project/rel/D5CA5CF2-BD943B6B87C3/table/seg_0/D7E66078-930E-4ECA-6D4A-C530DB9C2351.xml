@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_biletu" id="5E79A489-9B87-52F5-741F-C65670451450">
+<Column name="bilet_id" id="5E79A489-9B87-52F5-741F-C65670451450">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>96D9CC7C-65EC-68D4-3889-A9D94B3827C5</generatorID>
@@ -22,7 +22,7 @@
 <colAssociation fkAssociation="CD74BCD6-2D48-8894-765E-B2C3387F8242" referredColumn="195B79C6-FA5D-870F-F540-5D50DE9449B4"/>
 </associations>
 </Column>
-<Column name="Rezerwacja_id_rezerwacji" id="FC5C2061-57C6-040E-70BD-EB70C8476224">
+<Column name="rezerwacja_id" id="FC5C2061-57C6-040E-70BD-EB70C8476224">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>DEAD9388-6F29-7491-8647-76C5084D21B1</generatorID>

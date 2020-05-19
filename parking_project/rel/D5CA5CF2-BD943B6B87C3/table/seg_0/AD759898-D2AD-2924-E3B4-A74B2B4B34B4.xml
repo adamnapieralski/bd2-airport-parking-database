@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_rezerwacji" id="E4B0A7C5-A847-AEF4-DFC8-EFADB18DA938">
+<Column name="id" id="E4B0A7C5-A847-AEF4-DFC8-EFADB18DA938">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>F7DCBAD4-A097-CD0A-83C4-FB0A7B9788A4</generatorID>
@@ -52,7 +52,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Klient_id_klienta" id="A4669B08-BF9F-F875-167D-EC93E6862BD1">
+<Column name="klient_id" id="A4669B08-BF9F-F875-167D-EC93E6862BD1">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>C20C3F8A-0CB1-1641-AD99-674A3614B314</generatorID>
@@ -67,7 +67,7 @@
 <colAssociation fkAssociation="610ABD6F-6D6C-D9A0-9A40-964D0EB65297" referredColumn="CD4D2704-B268-2479-955B-1E1FB793443B"/>
 </associations>
 </Column>
-<Column name="Miejsce_parkingowe_id_mp" id="F5ED35E5-7EF9-7898-28DF-2E3EBC0D24A1">
+<Column name="miejsce_parkingowe_id" id="F5ED35E5-7EF9-7898-28DF-2E3EBC0D24A1">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>A85126C4-5A11-34BE-8916-14F3E22B101C</generatorID>
@@ -82,7 +82,7 @@
 <colAssociation fkAssociation="1366A8C7-0CC2-BE1F-EAB8-F094E713AC27" referredColumn="5289A98B-0F7B-2924-9481-B986F1054907"/>
 </associations>
 </Column>
-<Column name="Bilet_dlugoterminowy_id_biletu" id="D4E3C4D1-83F9-AE33-851D-80FB601A8F18">
+<Column name="bilet_dlugoterminowy_id" id="D4E3C4D1-83F9-AE33-851D-80FB601A8F18">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>6D889948-5200-D440-0D93-4AE4D033EE47</generatorID>

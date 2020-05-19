@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_biletu" id="195B79C6-FA5D-870F-F540-5D50DE9449B4">
+<Column name="id" id="195B79C6-FA5D-870F-F540-5D50DE9449B4">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>96D9CC7C-65EC-68D4-3889-A9D94B3827C5</generatorID>
@@ -37,7 +37,7 @@
 <ownerDesignName>parking_project</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT015</logicalDatatype>
+<logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -48,7 +48,7 @@
 <ownerDesignName>parking_project</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT015</logicalDatatype>
+<logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -63,7 +63,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Strefa_id_strefy" id="35D8B314-E42E-9661-1A88-B58F4B7BB3A9">
+<Column name="strefa_id" id="35D8B314-E42E-9661-1A88-B58F4B7BB3A9">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>AFE84606-A92F-B1E6-8844-A99B16F9D1FC</generatorID>
