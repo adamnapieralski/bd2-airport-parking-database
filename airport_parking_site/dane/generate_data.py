@@ -70,7 +70,7 @@ class DataGenerator():
         self.klient_df = self._generate_klient_df(clients_num)
         print("KLIENCI\n", self.klient_df)
         vehicles_num = int(0.84*tickets_num)
-        self.pojazd_df = self._generate_pojazd_df(clients_num, vehicles_num)
+        self.pojazd_df = self._generate_pojazd_df(vehicles_num, clients_num)
         print("POJAZDY\n", self.pojazd_df)
         strefa_df = get_strefa_df()
         miejsce_parkingowe_df = get_miejsce_parkingowe_df()
@@ -90,7 +90,13 @@ class DataGenerator():
         self.oplata_df = self._get_oplata_df(self.bilet_df, bilety_dlugo_ids)
         print("OPLATY\n", self.oplata_df)
 
-
+    def save_data(self):
+        self.klient_df.to_csv('wygenerowane/klient.csv')
+        self.pojazd_df.to_csv('wygenerowane/pojazd.csv')
+        self.bilet_df.to_csv('wygenerowane/bilet.csv')
+        self.rezerwacja_df.to_csv('wygenerowane/rezerwacja.csv')
+        self.bilet_dlugoterminowy_df.to_csv('wygenerowane/bilet_dlugoterminowy.csv')
+        self.oplata_df.to_csv('wygenerowane/oplata.csv')
 
     def _generate_license_numbers(self, num):
         signs = list(string.ascii_uppercase + string.digits)
@@ -101,9 +107,8 @@ class DataGenerator():
     def _generate_pojazd_df(self, num, clients_num):
         df = pd.DataFrame(columns=['nr_rejestracyjny', 'typ_pojazdu', 'id_klienta'])
         df['nr_rejestracyjny'] = self._generate_license_numbers(num)
-        df['id_klienta'] = np.random.randint(0, clients_num, num)
-        #zakladam ze typy pojazdow to 0 - samochod, 1 - autokar, 2 - motocykl
-        df['typ_pojazdu'] = np.random.choice([0,1,2], num, p=[0.9, 0.05, 0.05])    
+        df['id_klienta'] = np.random.randint(0, clients_num, num)        
+        df['typ_pojazdu'] = np.random.choice(['osobowy','autokar','motocykl'], num, p=[0.9, 0.05, 0.05])    
         return df
 
     def _generate_klient_df(self, num):
@@ -261,5 +266,6 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         dg = DataGenerator()
         dg.generate_data(int(sys.argv[1]))
+        dg.save_data()
     else:
         raise Exception('Wrong number of parameters. Number of tickets is required')

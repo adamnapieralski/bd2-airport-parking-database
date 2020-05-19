@@ -100,16 +100,7 @@ class Rezerwacja(models.Model):
         'BiletDlugoterminowy',
         on_delete=models.CASCADE,
         related_name='+',
-    )
-
-    parking = models.ForeignKey(
-        'Parking',
-        on_delete=models.CASCADE,
-    )
-
-    typ_pojazdu = models.ForeignKey(
-        'TypPojazdu',
-        on_delete=models.CASCADE,
+        null=True,
     )
 
     def __str__(self):
@@ -172,6 +163,7 @@ class BiletDlugoterminowy(models.Model):
     rezerwacjad = models.ForeignKey(
         'Rezerwacja',
         on_delete=models.CASCADE,
+        null=True,
     )
 
 
