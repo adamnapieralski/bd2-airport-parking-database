@@ -14,21 +14,23 @@ def tests_data_migration(apps, schema_editor):
     # generator = gd.DataGenerator()
     # generator.generate_data(500)
     # generator.save_data()
-    # migrate_klient(apps, generator.klient_df)
-    # print('migrate pojazd')
-    # migrate_pojazd(apps, generator.pojazd_df)
-    # print('migrate bilet')
-    # bilet_df = pd.read_csv(path + '/wygenerowane/bilet.csv')
-    # migrate_bilet(apps, bilet_df)
-    # print('migrate oplata')
-    # oplata_df = pd.read_csv(path + '/wygenerowane/oplata.csv')
-    # migrate_oplata(apps, oplata_df)
-    # print('migrate rezerwacja')
+    klient_df = pd.read_csv(path + '/wygenerowane/klient.csv')
+    migrate_klient(apps, klient_df)
+    print('migrate pojazd')
+    pojazd_df = pd.read_csv(path + '/wygenerowane/pojazd.csv')
+    migrate_pojazd(apps, pojazd_df)
+    print('migrate bilet')
+    bilet_df = pd.read_csv(path + '/wygenerowane/bilet.csv')
+    migrate_bilet(apps, bilet_df)
+    print('migrate oplata')
+    oplata_df = pd.read_csv(path + '/wygenerowane/oplata.csv')
+    migrate_oplata(apps, oplata_df)
+    print('migrate rezerwacja')
     rezerwacja_df = pd.read_csv(path + '/wygenerowane/rezerwacja.csv')
-    # migrate_rezerwacja(apps, rezerwacja_df)
-    # print('migrate bilet dlugoterminowy')
+    migrate_rezerwacja(apps, rezerwacja_df)
+    print('migrate bilet dlugoterminowy')
     bilet_dl_df = pd.read_csv(path + '/wygenerowane/bilet_dlugoterminowy.csv')
-    # migrate_bilet_dlugoterminowy(apps, bilet_dl_df)
+    migrate_bilet_dlugoterminowy(apps, bilet_dl_df)
     print('migrate combine rezerwacja and bilet')
     migrate_combine_rezerwacja_and_bilet(apps, rezerwacja_df, bilet_dl_df)
     
@@ -68,25 +70,22 @@ def migrate_oplata(apps, df):
     Oplata = apps.get_model(app, 'Oplata')       
     Bilet = apps.get_model(app, 'Bilet')   
     MetodaPlatnosci = apps.get_model(app, 'MetodaPlatnosci')
-    Znizka = apps.get_model(app, 'Znizka')
-    #brak w modelu
-    #Kara = apps.get_model(app, 'Kara')
+    Znizka = apps.get_model(app, 'Znizka')    
+    Kara = apps.get_model(app, 'Kara')
 
     for _, row in df.iterrows():        
         
-        m = Oplata(czas=row['czas'].split(' ')[0], kwota_podstawowa=row['kwota_podstawowa'],
+        m = Oplata(czas=row['czas'], kwota_podstawowa=row['kwota_podstawowa'],
                    kwota_ostateczna=row['kwota_ostateczna'], status=row['status'])
-        m.Bilet = Bilet.objects.get(id=int(row['id_biletu'])+1)
+        m.bilet = Bilet.objects.get(id=int(row['id_biletu'])+1)
         m.metoda_platnosci = MetodaPlatnosci.objects.get(rodzaj=row['metoda_platnosci'])
 
-        #brak w modelu
-        # m.kara = Kara.object.get
+        if not np.isnan(row['id_kary']):
+            m.kara = Kara.objects.get(id=int(row['id_kary'])+1)
 
-        #tymczasowo, trzeba znizke zrobic jako opcjonalna
         if not np.isnan(row['id_znizki']):
             m.znizka = Znizka.objects.get(id=int(row['id_znizki'])+1)
-        else:
-            m.znizka = Znizka.objects.get(id=1)
+        
         m.save()
 
 
@@ -95,20 +94,13 @@ def migrate_rezerwacja(apps, df):
     Klient = apps.get_model(app, 'Klient')   
     MiejsceParkingowe = apps.get_model(app, 'MiejsceParkingowe')   
 
-    #tymczasowo
-    Parking = apps.get_model(app, 'Parking')
-    TypPojazdu = apps.get_model(app, 'TypPojazdu')
-
     for _, row in df.iterrows():                
         m = Rezerwacja(nr_rezerwacji=row['nr_rezerwacji'],
                        data_rozpoczecia=row['data_rozpoczecia'],
                        data_zakonczenia=row['data_zakonczenia'])
-        m.klient = Klient.objects.get(id=int(row['klient'])+1)
+        m.klient = Klient.objects.get(id=int(row['klient'])+1)        
         m.miejsce_parkingowe = MiejsceParkingowe.objects.get(id=int(row['miejsce_parkingowe'])+1)
-        #tymczasowo
-        # m.parking = Parking.objects.get(id=1)
-        # m.typ_pojazdu = TypPojazdu.objects.get(typ='osobowy')
-        m.save()
+        m.save()        
 
 def migrate_bilet_dlugoterminowy(apps, df):
     BiletDlugoterminowy = apps.get_model(app, 'BiletDlugoterminowy')       
@@ -116,7 +108,7 @@ def migrate_bilet_dlugoterminowy(apps, df):
     
     for _, row in df.iterrows():                
         m = BiletDlugoterminowy()
-        m.id_biletu = Bilet.objects.get(id=int(row['id_biletu'])+1)        
+        m.bilet = Bilet.objects.get(id=int(row['id_biletu'])+1)        
         m.save()
 
 def migrate_combine_rezerwacja_and_bilet(apps, rezerwacja_df, bilet_df):
@@ -126,11 +118,11 @@ def migrate_combine_rezerwacja_and_bilet(apps, rezerwacja_df, bilet_df):
 
     for index, row in rezerwacja_df.iterrows():                
         m = Rezerwacja.objects.get(id=index+1)
-        m.bilet_dlugoterminowy = BiletDlugoterminowy.objects.get(id_biletu=int(row['bilet_dlugoterminowy'])+1)        
+        m.bilet_dlugoterminowy = BiletDlugoterminowy.objects.get(bilet=int(row['bilet_dlugoterminowy'])+1)        
         m.save()
 
     for index, row in bilet_df.iterrows():                
-        m = BiletDlugoterminowy.objects.get(id_biletu=int(row['id_biletu'])+1)
+        m = BiletDlugoterminowy.objects.get(bilet=int(row['id_biletu'])+1)
         m.rezerwacjad = Rezerwacja.objects.get(id=int(row['id_rezerwacji'])+1)        
         m.save()
 

@@ -72,12 +72,12 @@ class DataGenerator():
         vehicles_num = int(0.84*tickets_num)
         self.pojazd_df = self._generate_pojazd_df(vehicles_num, clients_num)
         print("POJAZDY\n", self.pojazd_df)
-        strefa_df = get_strefa_df()
+        self.strefa_df = get_strefa_df()
         miejsce_parkingowe_df = get_miejsce_parkingowe_df()
         print("MIEJSCA PARKINGOWE\n", miejsce_parkingowe_df)
         
 
-        self.bilet_df, bilety_dlugo_ids = self._get_bilety_df(tickets_num, strefa_df)
+        self.bilet_df, bilety_dlugo_ids = self._get_bilety_df(tickets_num, self.strefa_df)
         print("BILETY\n", self.bilet_df)
 
         self.rezerwacja_df = self._generate_rezerwacja_df(self.bilet_df, bilety_dlugo_ids, clients_num, vehicles_num, miejsce_parkingowe_df)
@@ -97,6 +97,7 @@ class DataGenerator():
         self.rezerwacja_df.to_csv('wygenerowane/rezerwacja.csv')
         self.bilet_dlugoterminowy_df.to_csv('wygenerowane/bilet_dlugoterminowy.csv')
         self.oplata_df.to_csv('wygenerowane/oplata.csv')
+        self.strefa_df.to_csv('wygenerowane/strefa_updated.csv')
 
     def _generate_license_numbers(self, num):
         signs = list(string.ascii_uppercase + string.digits)
