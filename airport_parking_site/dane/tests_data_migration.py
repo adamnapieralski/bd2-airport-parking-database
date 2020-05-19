@@ -8,6 +8,18 @@ from . import generate_data as gd
 
 app = 'parking_app'
 
+def update_strefa(apps, schema_editor):
+    path = os.path.dirname(os.path.abspath(__file__))
+    strefa_updated_df = pd.read_csv(path + '/wygenerowane/strefa_updated.csv')
+
+    Strefa = apps.get_model(app, 'Strefa')       
+
+    for _, row in strefa_updated_df.iterrows():        
+        s = Strefa.objects.get(nazwa=row['nazwa'])
+        s.liczba_wolnych_miejsc = int(row['liczba_wolnych_miejsc'])
+        s.save()
+
+
 def tests_data_migration(apps, schema_editor):
     path = os.path.dirname(os.path.abspath(__file__))
     # return
