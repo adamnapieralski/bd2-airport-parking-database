@@ -6,16 +6,15 @@ from . import generate_data as gd
 app = 'parking_app'
 
 def initial_migration(apps, schema_editor):
-    print('nothing to migrate')
-    # migrate_cennik(apps)
-    # migrate_kara(apps)
-    # migrate_rodzaj_parkingu(apps)
-    # migrate_metoda_platnosci(apps)
-    # migrate_typ_pojazdu(apps)
-    # migrate_parking(apps)        
-    # migrate_strefa(apps)    
-    # migrate_znizka(apps)
-    # migrate_miejsce_parkingowe(apps)
+    migrate_rodzaj_parkingu(apps)
+    migrate_cennik(apps)
+    migrate_kara(apps)    
+    migrate_metoda_platnosci(apps)
+    migrate_typ_pojazdu(apps)
+    migrate_parking(apps)        
+    migrate_strefa(apps)    
+    migrate_znizka(apps)
+    migrate_miejsce_parkingowe(apps)
     
 
 def migrate_cennik(apps):
