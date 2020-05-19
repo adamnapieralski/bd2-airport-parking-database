@@ -59,8 +59,8 @@ def migrate_bilet(apps, df):
     Kara = apps.get_model(app, 'Kara')
 
     for _, row in df.iterrows():        
-        m = Bilet(nr_biletu=row['nr_biletu'], czas_wjazdu=row['czas_wjazdu'].split(' ')[-1],
-                  czas_wyjazdu=row['czas_wyjazdu'].split(' ')[-1],
+        m = Bilet(nr_biletu=row['nr_biletu'], czas_wjazdu=row['czas_wjazdu'],
+                  czas_wyjazdu=row['czas_wyjazdu'],
                   wykupiony_czas=row['wykupiony_czas'])
         m.strefa = Strefa.objects.get(id=int(row['id_strefy'])+1)
         m.kara = Kara.objects.get(id=1)
@@ -123,7 +123,7 @@ def migrate_combine_rezerwacja_and_bilet(apps, rezerwacja_df, bilet_df):
 
     for index, row in bilet_df.iterrows():                
         m = BiletDlugoterminowy.objects.get(bilet=int(row['id_biletu'])+1)
-        m.rezerwacjad = Rezerwacja.objects.get(id=int(row['id_rezerwacji'])+1)        
+        m.rezerwacjaa = Rezerwacja.objects.get(id=int(row['id_rezerwacji'])+1)        
         m.save()
 
 def migrate_cennik(apps):
