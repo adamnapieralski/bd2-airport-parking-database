@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_cennika" id="60D42593-B85D-0641-304B-00C7F7E2883D">
+<Column name="id" id="60D42593-B85D-0641-304B-00C7F7E2883D">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>C9CA4683-6CAE-7702-FC26-4B82A862B067</generatorID>
@@ -38,11 +38,11 @@
 <ownerDesignName>parking_project</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT014</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Rodzaj_parkingu_rodzaj" id="0F92BFEF-6672-5EA0-F4D4-4BDE67A0AC50">
+<Column name="rodzaj_parkingu_rodzaj" id="0F92BFEF-6672-5EA0-F4D4-4BDE67A0AC50">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>4399CDD7-0D6A-7041-964C-5A54D1C9DCD5</generatorID>

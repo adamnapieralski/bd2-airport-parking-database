@@ -1,14 +1,15 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BF004E52-ED65-DC69-4E2A-49F647AF8882" name="Miejsce_parkingowe">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BF004E52-ED65-DC69-4E2A-49F647AF8882" name="MIejsceParkingowe">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>458CBFF6-E4C9-123D-781B-C5BD5C3BD669</generatorID>
 <ownerDesignName>parking_project</ownerDesignName>
+<ordsAlias>miejsce_parkingowe</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_mp" id="5289A98B-0F7B-2924-9481-B986F1054907">
+<Column name="id" id="5289A98B-0F7B-2924-9481-B986F1054907">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>F43105CD-483E-4B5B-2073-D19DAD7CBE27</generatorID>
@@ -30,7 +31,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Strefa_id_strefy" id="0F2D635D-3AA1-B077-2F65-0A0887589CC4">
+<Column name="strefa_id" id="0F2D635D-3AA1-B077-2F65-0A0887589CC4">
 <createdBy>lkost</createdBy>
 <createdTime>2020-04-16 20:05:29 UTC</createdTime>
 <generatorID>14466CAD-953E-42BB-AB44-0C6618136D2F</generatorID>
