@@ -29,5 +29,9 @@ table {
       </tr>
     {% endfor %}
     </table>
+    <form action="{% url 'reporting_download_stats' %}" method="post">
+      {% csrf_token %}    
+      <input type="submit" value="Pobierz statystyki">
+    </form>
   </body>
 </html>

@@ -12,4 +12,7 @@ def tickets(request):
     return HttpResponse("Tickets")
 
 def reporting(request):    
-     return render(request, 'parking_app/reporting.html', report.get_db_stats()) 
+    return render(request, 'parking_app/reporting.html', report.get_db_stats()) 
+
+def reporting_download_stats(request):
+    return report.export_stats_to_csv()
