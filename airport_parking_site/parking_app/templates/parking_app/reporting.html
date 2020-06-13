@@ -8,6 +8,12 @@ th, td {
 table {
   border-spacing: 0px;
 }
+
+column {
+  float: left;
+  width: 50%;
+}
+
 </style>
 <html>
   <head>
@@ -15,14 +21,15 @@ table {
     <title>Airport Parking Reporting</title>
   </head>
   <body> 
-    <div>
-    <h1>Statystyki parkingu</h1>
+    <column>
+    <h1>Statystyki</h1>
+    <h2>Statystyki ogólne</h2>
     <table>
       <tr>
         <th></th>
         <th>Liczba</th>
       </tr>
-    {% for row in general_stats %}
+    {% for row in stats.general_stats %}
       <tr>
       {% for col in row %}      
         <td>{{ col }}</td>
@@ -35,10 +42,9 @@ table {
       {% csrf_token %}    
       <button name="stats_download" value="general_stats">Pobierz statystyki parkingu</button>
     </form>
-  </div>
-  <div><h1>Statystyki płatności</h1></div>
+  <h2>Statystyki płatności</h2>
   <table>
-  {% for row in payment_stats %}
+  {% for row in stats.payment_stats %}
     <tr>
     {% for col in row %}      
       <td>{{ col }}</td>
@@ -51,5 +57,20 @@ table {
   {% csrf_token %}    
   <button name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>
 </form>
+</column>
+<column>
+  <h1>Pobierz dane</h1>
+  <form action="{% url 'reporting_download_data' %}" method="post">
+    {% csrf_token %}    
+    <label for="tables">Wybierz tabelę:</label>
+    <select name="tables" id="tables">
+      {% for table in tables %}
+      <option value="{{ table }}">{{ table }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Pobierz dane">
+  </form>
+
+</column>
   </body>
 </html>

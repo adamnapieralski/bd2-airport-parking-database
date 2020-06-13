@@ -21,4 +21,5 @@ urlpatterns = [
     path('tickets', views.tickets, name='tickets'),
     path('reporting', views.reporting, name='reporting'),
     path('reporting_download_stats', views.reporting_download_stats, name='reporting_download_stats'),
+    path('reporting_download_data', views.reporting_download_data, name='reporting_download_data'),
 ]
