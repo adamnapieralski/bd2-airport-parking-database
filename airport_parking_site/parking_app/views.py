@@ -12,7 +12,12 @@ def tickets(request):
     return HttpResponse("Tickets")
 
 def reporting(request):    
-    return render(request, 'parking_app/reporting.html', report.get_repoting_data()) 
+    table = None
+    try:
+        table = request.POST['view_table']
+    except(KeyError):
+        pass
+    return render(request, 'parking_app/reporting.html', report.get_repoting_data(table)) 
 
 def reporting_download_stats(request):
     try:

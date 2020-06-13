@@ -5,13 +5,20 @@ from django.http import HttpResponse
 from django.apps import apps
 import csv
 
-def get_repoting_data():
+def get_repoting_data(table):
     models_names = []
     models_list = apps.get_app_config('parking_app').get_models()
     for model in models_list:
         models_names.append(model._meta.db_table.replace('parking_app_', ''))
 
-    return {'stats': get_db_stats(), 'tables': models_names}
+    if table is None:
+        return {'stats': get_db_stats(), 'tables': models_names, 'data': None}
+
+    model = apps.get_model('parking_app', table)    
+    attributes = [f.name for f in model._meta.concrete_fields]           
+    data = model.objects.all().values_list(*attributes)
+    data_dict = {'attributes': attributes, 'data': data}
+    return {'stats': get_db_stats(), 'tables': models_names, 'data': data_dict}   
 
 def get_db_stats():
     general_stats = []
