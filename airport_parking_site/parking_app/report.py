@@ -37,24 +37,23 @@ def get_db_stats():
 
 
 def export_stats_to_csv(type):
-    file_path = os.path.join(settings.MEDIA_ROOT, 'parking_stats.csv')
-    create_stats_csv(file_path, type)
-    download_file(file_path)
-         
-def create_stats_csv(file_path, type):
+    file_name = 'parking_' + type + '.csv'
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="{}"'.format(file_name)
+    writer = csv.writer(response)
+
     stats = get_db_stats()
-    with open(file_path, 'w') as f:
-        f.write('Statystyki parkingu\n')
-        for row in stats[type]:
-            f.write(row[0] + ',' + str(row[1]) + '\n')
+    for row in stats[type]:
+        writer.writerow(row)
+
+    return response 
 
 def download_table(table):
     file_name = 'parking_' + table + '.csv'
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="{}"'.format(file_name)
 
-    model = apps.get_model('parking_app', table)
-    # attributes = [f.name for f in model._meta.get_fields(include_parents=False, include_hidden=False)]
+    model = apps.get_model('parking_app', table)    
     attributes = [f.name for f in model._meta.concrete_fields]
 
     writer = csv.writer(response)
@@ -65,17 +64,3 @@ def download_table(table):
     for item in items:
         writer.writerow(item)    
     return response
-
-def create_table_csv(table):
-    stats = get_db_stats()
-    with open(file_path, 'w') as f:
-        f.write('Statystyki parkingu\n')
-        for row in stats[type]:
-            f.write(row[0] + ',' + str(row[1]) + '\n')
-
-
-def download_file(file_path):
-    with open(file_path, 'rb') as fh:
-        response = HttpResponse(fh.read(), content_type="text/plain")
-        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
-        return response
