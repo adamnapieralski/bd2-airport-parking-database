@@ -15,4 +15,8 @@ def reporting(request):
     return render(request, 'parking_app/reporting.html', report.get_db_stats()) 
 
 def reporting_download_stats(request):
-    return report.export_stats_to_csv()
+    try:
+        type = request.POST['stats_download']
+        return report.export_stats_to_csv(type)
+    except(KeyError):
+        return reporting(request)

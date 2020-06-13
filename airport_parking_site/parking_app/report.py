@@ -26,18 +26,18 @@ def get_db_stats():
     return {'general_stats': general_stats, 'payment_stats': payment_stats}
 
 
-def export_stats_to_csv():
+def export_stats_to_csv(type):
     file_path = os.path.join(settings.MEDIA_ROOT, 'parking_stats.csv')
-    create_stats_csv(file_path)
+    create_stats_csv(file_path, type)
     with open(file_path, 'rb') as fh:
         response = HttpResponse(fh.read(), content_type="text/plain")
         response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
         return response
 
          
-def create_stats_csv(file_path):
+def create_stats_csv(file_path, type):
     stats = get_db_stats()
     with open(file_path, 'w') as f:
         f.write('Statystyki parkingu\n')
-        for row in stats['general_stats']:
+        for row in stats[type]:
             f.write(row[0] + ',' + str(row[1]) + '\n')

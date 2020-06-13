@@ -33,15 +33,11 @@ table {
   </br>
     <form action="{% url 'reporting_download_stats' %}" method="post">
       {% csrf_token %}    
-      <input type="submit" value="Pobierz statystyki">
+      <button name="stats_download" value="general_stats">Pobierz statystyki parkingu</button>
     </form>
   </div>
   <div><h1>Statystyki płatności</h1></div>
   <table>
-    <!-- <tr>
-      <th></th>
-      <th>Liczba</th>
-    </tr> -->
   {% for row in payment_stats %}
     <tr>
     {% for col in row %}      
@@ -50,5 +46,10 @@ table {
     </tr>
   {% endfor %}
   </table>
+</br>
+<form action="{% url 'reporting_download_stats' %}" method="post">
+  {% csrf_token %}    
+  <button name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>
+</form>
   </body>
 </html>
