@@ -1,0 +1,41 @@
+body {
+    background-color: wheat;
+}
+  
+div {
+    background-color: white;
+    padding: 1%;
+    margin-bottom: 40px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+table {
+    border-spacing: 0px;
+}
+
+column_left {
+    float: left;
+    padding: 1%;
+    width: 38%;
+}
+
+column_right {
+    float: left;
+    padding: 1%;
+    width: 58%;
+}
+
+.column {
+    float: left;
+    width: 31%;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

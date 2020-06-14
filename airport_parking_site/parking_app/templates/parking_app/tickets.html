@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel = "stylesheet" type = "text/css" href = "{% static 'parking_app/styles.css' %}">
+  <head>
+    <meta charset="utf-8">
+    <title>Airport Parking Tickets</title>
+  </head>
+  <body>
+      <div class="row">
+        <div class="column">
+            <h1>Pobranie</h1>
+            <form action="{% url 'tickets' %}" method="post">
+              {% csrf_token %}    
+              <label for="tables">Wybierz tabelę:</label>
+              <select name="view_table" id="tables">
+                {% for table in tables %}
+                <option value="{{ table }}">{{ table }}</option>
+                {% endfor %}
+              </select>
+            </form>
+        </div>
+        <div class="column">
+            <h1>Wyświetlenie</h1>
+        </div>
+        <div class="column">
+            <h1>Opłacenie</h1>
+        </div>
+      </div>
+  </body>
+</html> 
