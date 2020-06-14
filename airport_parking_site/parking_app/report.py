@@ -3,6 +3,7 @@ import os
 from django.conf import settings
 from django.http import HttpResponse
 from django.apps import apps
+import numpy as np
 import csv
 
 def get_repoting_data(table):
@@ -20,18 +21,19 @@ def get_repoting_data(table):
     data_dict = {'attributes': attributes, 'data': data, 'table': table}
     return {'stats': get_db_stats(), 'tables': models_names, 'data': data_dict}   
 
-def get_db_stats():
+def get_general_stats():
     general_stats = []
     general_stats.append(("Rezerwacje", models.Rezerwacja.objects.count()))
     general_stats.append(("Bilety", models.Bilet.objects.count()))
     general_stats.append(("Klienci", models.Klient.objects.count()))
     general_stats.append(("Pojazdy", models.Pojazd.objects.count()))
+    return general_stats
 
+def get_payment_stats():
     payment_stats = []
     payments = models.Oplata.objects.values_list('kwota_ostateczna', flat=True)
     discounts = models.Oplata.objects.filter(znizka__isnull = False).count()
     penalties = models.Oplata.objects.filter(kara__isnull = False).count()
-
     sum = 0
     for p in payments:
         sum += p       
@@ -39,8 +41,19 @@ def get_db_stats():
     payment_stats.append(("Łączny zysk", round(sum, 2)))
     payment_stats.append(("Liczba przyznanych zniżek", discounts))
     payment_stats.append(("Liczba nałożonych kar", penalties))
+    return payment_stats
 
-    return {'general_stats': general_stats, 'payment_stats': payment_stats}
+def get_parking_zone_stats():
+    tickets = models.Bilet.objects.values_list('strefa', flat=True)
+    values, count = np.unique(np.array(tickets), return_counts=True)
+    zone_stats = []
+    for i in range(values.size):
+        zone_stats.append((models.Strefa.objects.values_list('nazwa', flat=True).get(id=values[i]), count[i]))
+    return zone_stats
+
+def get_db_stats():
+    return {'general_stats': get_general_stats(), 'payment_stats': get_payment_stats(),
+            'zone_stats': get_parking_zone_stats()}
 
 
 def export_stats_to_csv(type):

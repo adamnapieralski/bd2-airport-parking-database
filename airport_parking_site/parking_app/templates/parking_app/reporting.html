@@ -2,9 +2,9 @@
 {% block title %}Raport z bazy danych{% endblock %}
 {% block content %}
 
-<h1>Statystyki</h1>
 
 <div class="container">
+  <h1>Statystyki</h1>
   <div class="row">
     <div class="col-sm">
       <h2>Statystyki ogólne</h2>
@@ -42,6 +42,45 @@
       <button class="btn btn-primary btn-sm" name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>          
     </form>
     </div>
+  </div>
+</br>
+  <div class="row">
+    <div class="col-sm">
+      <h2>Statystyki stref parkingowych</h2>
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Liczba biletów</th>
+        </tr>
+      {% for row in stats.zone_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+      <form action="{% url 'reporting_download_stats' %}" method="post">
+        {% csrf_token %}    
+        <button class="btn btn-primary btn-sm" name="stats_download" value="zone_stats">Pobierz statystyki ogólne</button>
+      </form>
+    </div>
+    <!-- <div class="col-sm">
+      <h2>Statystyki płatności</h2>
+      <table class="table table-striped">
+      {% for row in stats.zone_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+    <form action="{% url 'reporting_download_stats' %}" method="post">
+      {% csrf_token %}    
+      <button class="btn btn-primary btn-sm" name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>          
+    </form>
+    </div> -->
   </div>
 </div>
  
