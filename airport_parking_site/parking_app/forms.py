@@ -7,8 +7,8 @@ class TicketShortForm(forms.ModelForm):
         model = Bilet
         fields = ['strefa']
     
-    def __init__(self):
-        super(TicketShortForm, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(TicketShortForm, self).__init__(*args, **kwargs)
         self.fields['strefa'].queryset = models.Strefa.objects.filter(parking__rodzaj_parkingu="krotkoterminowy")
 
 
@@ -18,6 +18,6 @@ class TicketLongForm(forms.ModelForm):
         model = BiletDlugoterminowy
         fields = ['rezerwacjaa']
     
-    def __init__(self):
-        super(TicketLongForm, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(TicketLongForm, self).__init__(*args, **kwargs)
         self.fields['strefa']=forms.ModelChoiceField(queryset=models.Strefa.objects.filter(parking__rodzaj_parkingu="dlugoterminowy"))
