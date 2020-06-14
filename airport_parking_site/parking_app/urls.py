@@ -19,5 +19,8 @@ from . import views
 urlpatterns = [
     path('', views.home, name='parking_app-home'),
     path('home_ad/', views.home_admin, name='parking_app-home-admin'),
-    path('home_cl/', views.home_client, name='parking_app-home-client')
+    path('home_cl/', views.home_client, name='parking_app-home-client'),
+    path('ticket/', views.ticket, name='parking_app-ticket'),
+    path('resv/', views.reservation, name='parking_app-resv'),
+    path('report/', views.report, name='parking_app-report')
 ]
