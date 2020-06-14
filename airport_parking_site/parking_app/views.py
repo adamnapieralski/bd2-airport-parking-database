@@ -1,35 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from django.views import generic
 from django.forms import inlineformset_factory
-
 from .forms import PostForm
 from . import models
 from .tickets import check_reservation
 from django.shortcuts import redirect
+
+
 # Create your views here.
 
 def index(request):
     return HttpResponse("Index")
 
 def tickets(request):
-    return render(request, 'parking_app/reservation.html', tickets.get_data());
-
-#from myapp.forms import ContactForm
-from django.views.generic.edit import FormView
-
-# class ContactView(FormView):
-#     template_name = 'parking_app/reservation.html'
-#     form_class = ContactForm
-#     success_url = '/thanks/'
-
-#     def form_valid(self, form):
-#         # This method is called when valid form data has been POSTed.
-#         # It should return an HttpResponse.
-#         form.send_email()
-#         return super().form_valid(form)
-    
+    return render(request, 'parking_app/reservation.html', tickets.get_data());    
     
 def post_new(request):
     form = PostForm()
@@ -46,7 +31,7 @@ def client_data(request):
     return render(request, 'parking_app/client_panel.html', {'form': form})    
 
 
-""", klient_id""",""""klient_id"""
+
 def make_reservation(request, klient_id):
     klient = models.Klient.objects.get(pk=klient_id)
     ReservationInlineFormSet = inlineformset_factory(klient, models.Rezerwacja, fields=('data_rozpoczecia','data_zakonczenia'))
@@ -66,11 +51,12 @@ def make_reservation(request, klient_id):
 
 def post_results(request):
     return render(request, 'parking_app/reservation_results.html', tickets.check_reservation());
-
     
 
-def reporting(request):    
-    return render(request, 'parking_app/reporting.html', report.get_db_stats()) 
 
-def reporting_download_stats(request):
-    return report.export_stats_to_csv()
+#Łukasza
+#def reporting(request):    
+#   return render(request, 'parking_app/reporting.html', report.get_db_stats()) 
+
+#def reporting_download_stats(request):
+#   return report.export_stats_to_csv()
