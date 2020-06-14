@@ -3,11 +3,6 @@ from django.http import HttpResponse
 
 from . import report
 
-# Create your views here.
-
-def index(request):
-    return HttpResponse("Index")
-
 def tickets(request):
     return HttpResponse("Tickets")
 
@@ -32,3 +27,14 @@ def reporting_download_data(request):
         return report.download_table(table)
     except(KeyError):
         return reporting(request)
+
+def home(request):
+    return render(request, 'parking_app/home.html')
+
+
+def home_client(request):
+    return render(request, 'parking_app/home_cl.html')
+
+
+def home_admin(request):
+    return render(request, 'parking_app/home_ad.html')
