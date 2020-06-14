@@ -11,3 +11,11 @@ def get_data(table):
         models_names.append(model._meta.db_table.replace('parking_app_', ''))
 
     return {'tables': models_names}
+
+def get_strefy_names(table):
+    strefy_names = []
+    strefy = models.Strefa.objects.all()
+    for strefa in strefy:
+        strefy_names.append(strefa.nazwa)
+    
+    return {'strefy_names': strefy_names}

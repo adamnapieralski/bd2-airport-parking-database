@@ -12,10 +12,10 @@
             <h1>Pobranie</h1>
             <form action="{% url 'tickets' %}" method="post">
               {% csrf_token %}    
-              <label for="tables">Wybierz tabelę:</label>
-              <select name="view_table" id="tables">
-                {% for table in tables %}
-                <option value="{{ table }}">{{ table }}</option>
+              <label for="strefy_names">Wybierz strefę:</label>
+              <select name="view_names" id="strefy_names">
+                {% for name in strefy_names %}
+                <option value="{{ name }}">{{ name }}</option>
                 {% endfor %}
               </select>
             </form>

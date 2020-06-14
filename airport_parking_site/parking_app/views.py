@@ -13,5 +13,5 @@ def tickets(request):
         table = request.POST['view_table']
     except(KeyError):
         pass
-    return render(request, 'parking_app/tickets.html', ticketing.get_data(table)) 
+    return render(request, 'parking_app/tickets.html', ticketing.get_strefy_names(table)) 
     # return render(request, 'parking_app/tickets.html')
