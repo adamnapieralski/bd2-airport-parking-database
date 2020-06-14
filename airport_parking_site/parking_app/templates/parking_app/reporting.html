@@ -66,7 +66,11 @@
     <label for="tables">Wybierz tabelę:</label>
     <select name="view_table" id="tables">
       {% for table in tables %}
+      {% if table == data.table %}
+      <option value="{{ table }}" selected>{{ table }}</option>
+      {% else %}
       <option value="{{ table }}">{{ table }}</option>
+      {% endif %}
       {% endfor %}
     </select>
     <input type="submit" value="Wyświetl dane">

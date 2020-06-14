@@ -17,7 +17,7 @@ def get_repoting_data(table):
     model = apps.get_model('parking_app', table)    
     attributes = [f.name for f in model._meta.concrete_fields]           
     data = model.objects.all().values_list(*attributes)
-    data_dict = {'attributes': attributes, 'data': data}
+    data_dict = {'attributes': attributes, 'data': data, 'table': table}
     return {'stats': get_db_stats(), 'tables': models_names, 'data': data_dict}   
 
 def get_db_stats():
