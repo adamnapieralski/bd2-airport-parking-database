@@ -12,11 +12,12 @@ class TicketShortForm(forms.ModelForm):
         self.fields['strefa'].queryset = models.Strefa.objects.filter(parking__rodzaj_parkingu="krotkoterminowy")
 
 
-class TicketLongTerm(forms.ModelForm):
+class TicketLongForm(forms.ModelForm):
+    rezerwacja_id = forms.IntegerField()
     class Meta:
         model = BiletDlugoterminowy
-        fields = ['bilet', 'rezerwacjaa']
+        fields = ['rezerwacjaa']
     
     def __init__(self):
-        super(TicketLongTerm, self).__init__()
-        self.fields['strefa'].queryset = models.Strefa.objects.filter(parking__rodzaj_parkingu="dlugoterminowy")
+        super(TicketLongForm, self).__init__()
+        self.fields['strefa']=forms.ModelChoiceField(queryset=models.Strefa.objects.filter(parking__rodzaj_parkingu="dlugoterminowy"))

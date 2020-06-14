@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Bilety | Krótkoterminowe | Pobranie</title>
+        <title>Bilety | Długoterminowe | Pobranie</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-8">
                     {% block content %}
-                    <h2>Pobierz bilet krótkoterminowy</h2>
+                    <h2>Pobierz bilet długoterminowy</h2>
                     <form method="POST">{% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit">Pobierz</button>

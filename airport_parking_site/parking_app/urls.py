@@ -18,5 +18,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('tickets', views.tickets, name='tickets'),
-    path('tickets/new/short', views.ticket_new_short, name='ticket_new_short'),
+    path('tickets/new/shortterm', views.ticket_new_short, name='ticket_new_short'),
+    path('tickets/new/longterm', views.ticket_new_long, name='ticket_new_long'),
+
 ]

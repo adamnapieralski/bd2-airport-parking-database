@@ -105,7 +105,7 @@ class Rezerwacja(models.Model):
     )
 
     def __str__(self):
-        return self.nr_rezerwacji
+        return str(self.nr_rezerwacji)
       
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
