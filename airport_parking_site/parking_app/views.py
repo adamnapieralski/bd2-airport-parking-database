@@ -12,7 +12,6 @@ def index(request):
 
 def tickets(request):
     return render(request, 'parking_app/tickets.html', ticketing.get_data()) 
-    # return render(request, 'parking_app/tickets.html')
 
 def ticket_new_short(request):
     if request.method == "POST":
@@ -30,23 +29,25 @@ def ticket_new_short(request):
     else:
         form = TicketShortForm()
 
-    # form = TicketShortForm()
     return render(request, 'parking_app/ticket_new_short.html', {'form': form})
 
 def ticket_new_long(request):
-    form = TicketLongForm()
+    if request.method == "POST":
+        form = TicketLongForm(request.POST)
+        if form.is_valid():
+            ticket = form.save(commit=False)
+            ticket = models.Rezerwacja.objects.filter(id=form.cleaned_data['rezerwacja_id']).first().bilet_dlugoterminowy
+            ticket.bilet.czas_wjazdu = timezone.now()
+            ticket.bilet.czas_wyjazdu = timezone.now()
+            ticket.save()
+            print(ticket.bilet.czas_wjazdu)
+            return redirect('ticket_detail', id=ticket.bilet.id)
+    else:
+        form = TicketLongForm()
+
     return render(request, 'parking_app/ticket_new_long.html', {'form': form})
 
 def ticket_detail(request, id):
     bilet = models.Bilet.objects.get(id=id)
     
     return render(request, 'parking_app/ticket_details.html', {'bilet': bilet})
-    # return HttpResponse("Details")
-
-
-# def tickets_add_ticket(request):
-#     try:
-#         strefa = request.POST['strefa']
-#         return ticketing.add_ticket(strefa)
-#     except(KeyError):
-#         return tickets(request)
