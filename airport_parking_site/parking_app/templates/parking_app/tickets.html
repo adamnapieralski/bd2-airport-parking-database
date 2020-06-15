@@ -10,20 +10,17 @@
       <div class="row">
         <div class="column">
             <h1>Pobranie</h1>
-            <form action="{% url 'tickets' %}" method="post">
-              {% csrf_token %}    
-              <label for="strefy_names">Wybierz strefę:</label>
-              <select name="view_names" id="strefy_names">
-                {% for name in strefy_names %}
-                <option value="{{ name }}">{{ name }}</option>
-                {% endfor %}
-              </select>
-              <input type="submit" value="Pobierz bilet">
-            </form>
+            <button onclick="window.location='/tickets/new/shortterm';">Bilet krótkoterminowy</button>
+            <button onclick="window.location='/tickets/new/longterm';">Bilet długoterminowy</button>
         </div>
-
         <div class="column">
             <h1>Wyświetlenie</h1>
+            <form action="{% url 'tickets_view_selected' %}" method="post">
+              {% csrf_token %}    
+              <label for="nrBiletu">Podaj numer biletu:</label>
+              <input name="nrBiletu" type="number" value="1">
+              <input type="submit" value="Wyświetl">
+            </form>
         </div>
         <div class="column">
             <h1>Opłacenie</h1>

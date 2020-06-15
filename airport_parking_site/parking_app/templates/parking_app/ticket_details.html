@@ -13,6 +13,7 @@
                 <div class="col-md-8">
                     {% block content %}
                     <h2>Podgląd biletu</h2>
+                    {% if bilet is not None %}
                     <table>
                         <tr>
                           <th>Numer biletu</th>
@@ -30,7 +31,7 @@
                             <td>Strefa</td>
                             <td>{{ bilet.strefa }}</td>
                         </tr>
-                    {% if bilet_dlugoterminowy is not None %}
+                        {% if bilet_dlugoterminowy is not None %}
                         <tr>
                             <td>ID rezerwacji</td>
                             <td>{{ bilet_dlugoterminowy.rezerwacjaa }}</td>
@@ -39,8 +40,11 @@
                             <td>Miejsce parkingowe</td>
                             <td>{{ bilet_dlugoterminowy.rezerwacjaa.miejsce_parkingowe }}</td>
                         </tr>
-                    {% endif %}
+                        {% endif %}
                     </table>
+                    {% else %}
+                    <h3>Bilet nie istnieje</h3>
+                    {% endif %}
                     {% endblock %}
                 </div>
             </div>
