@@ -12,8 +12,35 @@
             <div class="row">
                 <div class="col-md-8">
                     {% block content %}
-                    <h2>Bilet - informacje</h2>
-                    {{ bilet }}
+                    <h2>Podgląd biletu</h2>
+                    <table>
+                        <tr>
+                          <th>Numer biletu</th>
+                          <th>{{ bilet.nr_biletu }}</th>
+                        </tr>
+                        <tr>
+                          <td>Czas wjazdu</td>
+                          <td>{{ bilet.czas_wjazdu }}</td>
+                        </tr>
+                        <tr>
+                          <td>Czas wyjazdu</td>
+                          <td>{{ bilet.czas_wyjazdu }}</td>
+                        </tr>
+                        <tr>
+                            <td>Strefa</td>
+                            <td>{{ bilet.strefa }}</td>
+                        </tr>
+                    {% if bilet_dlugoterminowy is not None %}
+                        <tr>
+                            <td>ID rezerwacji</td>
+                            <td>{{ bilet_dlugoterminowy.rezerwacjaa }}</td>
+                        </tr>
+                        <tr>
+                            <td>Miejsce parkingowe</td>
+                            <td>{{ bilet_dlugoterminowy.rezerwacjaa.miejsce_parkingowe }}</td>
+                        </tr>
+                    {% endif %}
+                    </table>
                     {% endblock %}
                 </div>
             </div>

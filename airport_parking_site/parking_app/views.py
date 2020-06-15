@@ -49,5 +49,8 @@ def ticket_new_long(request):
 
 def ticket_detail(request, id):
     bilet = models.Bilet.objects.get(id=id)
+
+    bilet_dlugoterminowy = models.BiletDlugoterminowy.objects.filter(bilet=bilet).first()
     
-    return render(request, 'parking_app/ticket_details.html', {'bilet': bilet})
+    return render(request, 'parking_app/ticket_details.html',
+                {'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy})
