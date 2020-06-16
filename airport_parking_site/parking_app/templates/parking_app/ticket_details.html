@@ -1,61 +1,55 @@
+{% extends "parking_app/base.html" %}
+{% block title %}Bilety | Podgląd{% endblock %}
+
 {% load static %}
-<html>
-    <head>
-        <title>Bilety | Podgląd</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'parking_app/styles.css' %}">
-    </head>
-    <body>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
-                    {% if bilet is not None %}
-                    <h2>Podgląd biletu (nr {{ bilet.nr_biletu }})</h2>
-                    <table>
-                        <tr>
-                          <th>Numer biletu</th>
-                          <th>{{ bilet.nr_biletu }}</th>
-                        </tr>
-                        <tr>
-                          <td>Czas wjazdu</td>
-                          <td>{{ bilet.czas_wjazdu }}</td>
-                        </tr>
-                        <tr>
-                          <td>Czas wyjazdu</td>
-                          <td>{{ bilet.czas_wyjazdu }}</td>
-                        </tr>
-                        <tr>
-                            <td>Strefa</td>
-                            <td>{{ bilet.strefa }}</td>
-                        </tr>
-                        <tr>
-                            <td>Wykupiony czas</td>
-                            <td>{{ bilet.wykupiony_czas }}h</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>do {{ datetime_payed_to }}</td>
-                        </tr>
-                        {% if bilet_dlugoterminowy is not None %}
-                        <tr>
-                            <td>ID rezerwacji</td>
-                            <td>{{ bilet_dlugoterminowy.rezerwacjaa }}</td>
-                        </tr>
-                        <tr>
-                            <td>Miejsce parkingowe</td>
-                            <td>{{ bilet_dlugoterminowy.rezerwacjaa.miejsce_parkingowe }}</td>
-                        </tr>
-                        {% endif %}
-                    </table>
-                    {% else %}
-                    <h2>Bilet nie istnieje</h2>
-                    {% endif %}
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content container">
+    <div class="text-center">
+        {% if bilet is not None %}
+        <h2>Podgląd biletu (nr {{ bilet.nr_biletu }})</h2>
+        <table class="table table-striped table-bordered w-50">
+            <tr>
+                <th>Numer biletu</th>
+                <th>{{ bilet.nr_biletu }}</th>
+            </tr>
+            <tr>
+                <td>Czas wjazdu</td>
+                <td>{{ bilet.czas_wjazdu }}</td>
+            </tr>
+            <tr>
+                <td>Czas wyjazdu</td>
+                <td>{{ bilet.czas_wyjazdu }}</td>
+            </tr>
+            <tr>
+                <td>Strefa</td>
+                <td>{{ bilet.strefa }}</td>
+            </tr>
+            <tr>
+                <td>Wykupiony czas</td>
+                <td>{{ bilet.wykupiony_czas }}h</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>do {{ datetime_payed_to }}</td>
+            </tr>
+            {% if bilet_dlugoterminowy is not None %}
+            <tr>
+                <td>ID rezerwacji</td>
+                <td>{{ bilet_dlugoterminowy.rezerwacjaa }}</td>
+            </tr>
+            <tr>
+                <td>Miejsce parkingowe</td>
+                <td>{{ bilet_dlugoterminowy.rezerwacjaa.miejsce_parkingowe }}</td>
+            </tr>
+            {% endif %}
+        </table>
+        {% else %}
+        <h2>Bilet nie istnieje</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,36 +1,33 @@
-<!DOCTYPE html>
-{% load static %}
-
-<link rel = "stylesheet" type = "text/css" href = "{% static 'parking_app/styles.css' %}">
-  <head>
-    <meta charset="utf-8">
-    <title>Airport Parking Tickets</title>
-  </head>
-  <body>
-      <div class="row">
-        <div class="column">
-            <h1>Pobranie</h1>
-            <button onclick="window.location='/tickets/new/shortterm';">Bilet krótkoterminowy</button>
-            <button onclick="window.location='/tickets/new/longterm';">Bilet długoterminowy</button>
-        </div>
-        <div class="column">
-            <h1>Podgląd</h1>
-            <form action="{% url 'tickets_view_selected' %}" method="post">
-              {% csrf_token %}    
-              <label for="nrBiletu">Podaj numer biletu:</label>
-              <input name="nrBiletu" type="number" value="" min=1 required>
-              <input type="submit" value="Wyświetl">
-            </form>
-        </div>
-        <div class="column">
-            <h1>Opłacenie</h1>
-            <form action="{% url 'tickets_pay_selected' %}" method="post">
-              {% csrf_token %}    
-              <label for="nrBiletu">Podaj numer biletu:</label>
-              <input name="nrBiletu" type="number" value="" min=1 required>
-              <input type="submit" value="Opłać">
-            </form>
-        </div>
+{% extends "parking_app/base.html" %}
+{% block title %}Bilety{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1 class="text-center">Pobranie</h1>
+      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/shortterm/';">Bilet krótkoterminowy</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/longterm/';">Bilet długoterminowy</button>
+    </div>
+    <div class="col-sm">
+      <h1 class="text-center">Podgląd</h1>
+      <div class="form-group text-center">
+        <form action="{% url 'tickets_view_selected' %}" method="post">
+          {% csrf_token %}    
+          <input name="nrBiletu" type="number" class="form-control" placeholder="Podaj numer biletu..." value="" min=1 required>
+          <input type="submit" class="btn btn-primary center-block m-2" value="Wyświetl">
+        </form>
       </div>
-  </body>
-</html> 
+    </div>
+    <div class="col-sm">
+      <h1 class="text-center">Opłacenie</h1>
+      <div class="form-group text-center">
+        <form action="{% url 'tickets_pay_selected' %}" method="post">
+          {% csrf_token %}    
+          <input name="nrBiletu" type="number" class="form-control" placeholder="Podaj numer biletu..." value="" min=1 required>
+          <input type="submit" class="btn btn-primary center-block m-2" value="Opłać">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

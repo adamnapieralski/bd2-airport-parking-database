@@ -12,9 +12,6 @@ import math
 
 # Create your views here.
 
-def index(request):
-    return HttpResponse("Index")
-
 def tickets(request):
     return render(request, 'parking_app/tickets.html', {}) 
 
@@ -121,3 +118,6 @@ def tickets_pay_id(request, id):
 def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']
     return HttpResponseRedirect(reverse('tickets_pay_id', args=(ticket_id,)))
+
+def home(request):
+    return render(request, 'parking_app/home.html')
