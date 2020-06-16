@@ -22,6 +22,7 @@ from users import views as user_views
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('parking_app.urls')),
     path('admin/', admin.site.urls),
     path('app/', include('parking_app.urls')),
     path('register/', user_views.register, name="register"),
