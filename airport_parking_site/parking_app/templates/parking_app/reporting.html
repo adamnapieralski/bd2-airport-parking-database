@@ -1,5 +1,11 @@
 {% extends "parking_app/base.html" %}
 {% block title %}Raport z bazy danych{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -93,7 +99,7 @@
       <option value="{{ table }}">{{ table }}</option>
       {% endfor %}
     </select>
-    <input type="submit" value="Pobierz dane">
+    <input type="submit" class="btn btn-primary btn-sm" value="Pobierz dane">
   </form>
 </div>
 
@@ -111,7 +117,7 @@
       {% endif %}
       {% endfor %}
     </select>
-    <input type="submit" value="Wyświetl dane">
+    <input type="submit" class="btn btn-primary btn-sm" value="Wyświetl dane">
   </form>
 </br>
 <table class="table table-striped">
