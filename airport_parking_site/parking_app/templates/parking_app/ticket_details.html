@@ -12,8 +12,8 @@
             <div class="row">
                 <div class="col-md-8">
                     {% block content %}
-                    <h2>Podgląd biletu</h2>
                     {% if bilet is not None %}
+                    <h2>Podgląd biletu (nr {{ bilet.nr_biletu }})</h2>
                     <table>
                         <tr>
                           <th>Numer biletu</th>
@@ -31,6 +31,10 @@
                             <td>Strefa</td>
                             <td>{{ bilet.strefa }}</td>
                         </tr>
+                        <tr>
+                            <td>Wykupiony czas</td>
+                            <td>{{ bilet.wykupiony_czas }}h</td>
+                        </tr>
                         {% if bilet_dlugoterminowy is not None %}
                         <tr>
                             <td>ID rezerwacji</td>
@@ -43,7 +47,7 @@
                         {% endif %}
                     </table>
                     {% else %}
-                    <h3>Bilet nie istnieje</h3>
+                    <h2>Bilet nie istnieje</h2>
                     {% endif %}
                     {% endblock %}
                 </div>

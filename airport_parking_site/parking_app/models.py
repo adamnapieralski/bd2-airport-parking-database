@@ -36,7 +36,7 @@ class Cennik(models.Model):
     )
 
     def __str__(self):
-        return self.oplata
+        return "Czas: {} Opłata: {}".format(self.czas, self.oplata)
 
 class RodzajParkingu(models.Model):
     rodzaj = models.CharField(primary_key=True, max_length=20)

@@ -1,6 +1,7 @@
 from django import forms
-from .models import Bilet, BiletDlugoterminowy
+from .models import Bilet, BiletDlugoterminowy, Oplata
 from . import models
+from django.utils.translation import gettext_lazy as _
 
 class TicketShortForm(forms.ModelForm):
     class Meta:
@@ -39,3 +40,19 @@ class TicketLongForm(forms.ModelForm):
             raise forms.ValidationError("Ta rezerwacja obowiązuje na innej strefie.")
 
         return strefa
+
+class TicketPaymentForm(forms.ModelForm):
+    class Meta:
+        model = Oplata
+        fields = ['metoda_platnosci', 'kwota_podstawowa']
+        labels = {
+            'metoda_platnosci': _('Metoda płatności'),
+            'kwota_podstawowa': _('Kwota'),
+        }
+
+    def clean_kwota_podstawowa(self):
+        kwota = self.cleaned_data.get('kwota_podstawowa')
+        if kwota < 0 or not (100*kwota).is_integer():
+            print(kwota)
+            raise forms.ValidationError("Niepoprawna kwota.")
+        return kwota

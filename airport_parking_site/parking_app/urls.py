@@ -20,7 +20,9 @@ urlpatterns = [
     path('tickets', views.tickets, name='tickets'),
     path('tickets/new/shortterm', views.tickets_new_shortterm, name='tickets_new_shortterm'),
     path('tickets/new/longterm', views.tickets_new_longterm, name='tickets_new_longterm'),
-    path('tickets/view/<int:id>/', views.tickets_view_id, name='tickets_view_id'),
+    path('tickets/view/<int:id>', views.tickets_view_id, name='tickets_view_id'),
     path('tickets/view/selected', views.tickets_view_selected, name='tickets_view_selected'),
+    path('tickets/pay/<int:id>', views.tickets_pay_id, name='tickets_pay_id'),
+    path('tickets/pay/selected', views.tickets_pay_selected, name='tickets_pay_selected'),
 
 ]
