@@ -13,19 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from django.contrib import admin
-from django.contrib.auth import views as auth_views
-from django.urls import path, include
-from users import views as user_views
-
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', include('parking_app.urls')),
-    path('admin/', admin.site.urls),
-    path('app/', include('parking_app.urls')),
-    path('register/', user_views.register, name="register"),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout")
+    path('', views.home, name='parking_app-home'),    
+    path('ticket/', views.ticket, name='parking_app-ticket'),
+    path('resv/', views.reservation, name='parking_app-resv'),
+    path('report/', views.reporting, name='parking_app-report'),
+    path('report_download_stats', views.reporting_download_stats, name='parking_app-reporting_download_stats'),
+    path('report_download_data', views.reporting_download_data, name='parking_app-reporting_download_data'),
 ]
