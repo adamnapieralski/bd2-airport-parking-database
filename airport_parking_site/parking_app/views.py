@@ -24,23 +24,22 @@ def client_data(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('make_reservation', pk=form.pk)
+            client=form.save()
+            return redirect('make_reservation', id=client.id)
     else:
         form = PostForm()
     return render(request, 'parking_app/client_panel.html', {'form': form})    
 
 
 
-def make_reservation(request, klient_id):
-    klient = models.Klient.objects.get(pk=klient_id)
-    ReservationInlineFormSet = inlineformset_factory(klient, models.Rezerwacja, fields=('data_rozpoczecia','data_zakonczenia'))
+def make_reservation(request, id):
+    klient = models.Klient.objects.get(id=id) 
+    ReservationInlineFormSet = inlineformset_factory(klient, models.Rezerwacja,fk_name=id, fields=('data_rozpoczecia','data_zakonczenia'))
     if request.method == "POST":
         formset = ReservationInlineFormSet(request.POST, request.FILES, instance=klient)
         if formset.is_valid():
             if check_reservation():
                 formset.save()
-                # Do something. Should generally end with a redirect. For example:
                 return HttpResponseRedirect('parking_app/response_reserved')
             else:    
                 return HttpResponseRedirect('parking_app/response_no_free_places') 
