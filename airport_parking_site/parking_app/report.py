@@ -51,9 +51,18 @@ def get_parking_zone_stats():
         zone_stats.append((models.Strefa.objects.values_list('nazwa', flat=True).get(id=values[i]), count[i]))
     return zone_stats
 
+def get_payment_method_stats():
+    payments = models.Oplata.objects.values_list('metoda_platnosci', flat=True)
+    values, count = np.unique(np.array(payments), return_counts=True)
+    payment_method_stats = []
+    for i in range(values.size):
+        payment_method_stats.append((values[i], count[i]))
+    return payment_method_stats
+
+
 def get_db_stats():
     return {'general_stats': get_general_stats(), 'payment_stats': get_payment_stats(),
-            'zone_stats': get_parking_zone_stats()}
+            'zone_stats': get_parking_zone_stats(), 'payment_method_stats': get_payment_method_stats()}
 
 
 def export_stats_to_csv(type):

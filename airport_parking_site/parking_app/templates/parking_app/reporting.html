@@ -26,25 +26,6 @@
       </form>
     </div>
     <div class="col-sm">
-      <h2>Statystyki płatności</h2>
-      <table class="table table-striped">
-      {% for row in stats.payment_stats %}
-        <tr>
-        {% for col in row %}      
-          <td>{{ col }}</td>
-        {% endfor %}    
-        </tr>
-      {% endfor %}
-      </table>        
-    <form action="{% url 'parking_app-reporting_download_stats' %}" method="post">
-      {% csrf_token %}    
-      <button class="btn btn-primary btn-sm" name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>          
-    </form>
-    </div>
-  </div>
-</br>
-  <div class="row">
-    <div class="col-sm">
       <h2>Statystyki stref parkingowych</h2>
       <table class="table table-striped">
         <tr>
@@ -64,10 +45,13 @@
         <button class="btn btn-primary btn-sm" name="stats_download" value="zone_stats">Pobierz statystyki stref</button>
       </form>
     </div>
-    <!-- <div class="col-sm">
+  </div>
+</br>
+  <div class="row">
+    <div class="col-sm">
       <h2>Statystyki płatności</h2>
       <table class="table table-striped">
-      {% for row in stats.zone_stats %}
+      {% for row in stats.payment_stats %}
         <tr>
         {% for col in row %}      
           <td>{{ col }}</td>
@@ -79,7 +63,23 @@
       {% csrf_token %}    
       <button class="btn btn-primary btn-sm" name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>          
     </form>
-    </div> -->
+    </div>
+    <div class="col-sm">
+      <h2>Statystyki metody płatności</h2>
+      <table class="table table-striped">
+      {% for row in stats.payment_method_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+    <form action="{% url 'parking_app-reporting_download_stats' %}" method="post">
+      {% csrf_token %}    
+      <button class="btn btn-primary btn-sm" name="stats_download" value="payment_method_stats">Pobierz statystyki metod płatności</button>          
+    </form>
+    </div>
   </div>
 </div>
  
