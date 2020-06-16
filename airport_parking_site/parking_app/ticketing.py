@@ -1,17 +1,3 @@
-from . import models
-import os
-from django.conf import settings
-from django.http import HttpResponse
-from django.apps import apps
-
-def get_data():
-    strefy_names = []
-    strefy = models.Strefa.objects.all()
-    for strefa in strefy:
-        strefy_names.append(strefa.nazwa)
-
-    return {'strefy_names': strefy_names}
-
 def calculate_paid_time(cennik, kwota):
     paid_time = 0
     paid_time_value = 0

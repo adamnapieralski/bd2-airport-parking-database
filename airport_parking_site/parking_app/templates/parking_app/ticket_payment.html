@@ -30,13 +30,25 @@
                     <h3>Bilet nie istnieje</h3>
                     {% endif %}
                     <div>
-                        {{ czas_do_oplaty }}
+                        Czas do opłaty (stan na {{ current_time }}): {{ time_to_pay }} zł
                     </div>
-                    {% for rec in cennik %}
-                    <div>
-                        {{ rec }}
-                    </div>
-                    {% endfor %}
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Czas</th>
+                            <th>Opłata</th>
+                          </tr>
+                        {% for rec in cennik %}
+                        <tr>
+                            {% if rec.czas < 0 %}
+                            <td>Każda następna godzina</td>
+                            {% else %}
+                            <td>Do {{ rec.czas }}h</td>
+                            {% endif %}
+                            <td>{{ rec.oplata }} zł</td>
+                        </tr>
+                        {% endfor %}
+                      </table>
                     {% endblock %}
                 </div>
             </div>

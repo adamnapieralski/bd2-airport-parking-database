@@ -6,7 +6,7 @@ from django.utils import timezone
 from . import models
 from django.urls import reverse
 
-from datetime import datetime
+import datetime
 import math
 
 
@@ -16,7 +16,7 @@ def index(request):
     return HttpResponse("Index")
 
 def tickets(request):
-    return render(request, 'parking_app/tickets.html', ticketing.get_data()) 
+    return render(request, 'parking_app/tickets.html', {}) 
 
 def tickets_new_shortterm(request):
     if request.method == "POST":
@@ -66,9 +66,17 @@ def tickets_view_id(request, id):
     bilet = models.Bilet.objects.filter(id=id).first()
 
     bilet_dlugoterminowy = models.BiletDlugoterminowy.objects.filter(bilet=bilet).first()
+
+    datetime_payed_to = bilet.czas_wjazdu
+
+    if bilet_dlugoterminowy is not None:
+        datetime_payed_to = bilet_dlugoterminowy.rezerwacjaa.data_rozpoczecia
+        
+    datetime_payed_to += datetime.timedelta(seconds=bilet.wykupiony_czas*3600)
     
     return render(request, 'parking_app/ticket_details.html',
-                {'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy})
+                {'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy,
+                'datetime_payed_to': datetime_payed_to})
 
 def tickets_view_selected(request):
     ticket_id = request.POST['nrBiletu']
@@ -79,15 +87,16 @@ def tickets_pay_id(request, id):
     bilet_dlugoterminowy = models.BiletDlugoterminowy.objects.filter(bilet=bilet).first()
     cennik = models.Cennik.objects.filter(rodzaj_parkingu=bilet.strefa.parking.rodzaj_parkingu)
 
-    duration = timezone.now() - bilet.czas_wjazdu
-    czas_do_oplaty = math.ceil(duration.days * 24 + duration.seconds // 3600)
+    current_time = timezone.now()
+    duration = current_time - bilet.czas_wjazdu
+    time_to_pay = math.ceil(duration.days * 24 + duration.seconds // 3600)
 
     if bilet_dlugoterminowy is not None:
         rez = models.Rezerwacja.objects.filter(id=bilet_dlugoterminowy.rezerwacjaa.id).first()
         duration = rez.data_zakonczenia - rez.data_rozpoczecia
-        czas_do_oplaty = duration.days * 24 + duration.seconds // 3600
+        time_to_pay = duration.days * 24 + duration.seconds // 3600
 
-    czas_do_oplaty = max(0, czas_do_oplaty - bilet.wykupiony_czas)
+    time_to_pay = max(0, time_to_pay - bilet.wykupiony_czas)
 
     if request.method == "POST":
         form = TicketPaymentForm(request.POST)
@@ -103,11 +112,11 @@ def tickets_pay_id(request, id):
             return redirect('tickets_view_id', id=bilet.id)
 
     else:
-        form = TicketPaymentForm(initial={'kwota_podstawowa': ticketing.calculate_min_pay_price(cennik, czas_do_oplaty)})
+        form = TicketPaymentForm(initial={'kwota_podstawowa': ticketing.calculate_min_pay_price(cennik, time_to_pay)})
 
     return render(request, 'parking_app/ticket_payment.html',
     {'form': form, 'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy, 'cennik': cennik,
-    'czas_do_oplaty': czas_do_oplaty, })
+    'time_to_pay': time_to_pay, 'current_time': current_time})
 
 def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']

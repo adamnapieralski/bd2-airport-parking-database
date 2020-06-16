@@ -35,6 +35,10 @@
                             <td>Wykupiony czas</td>
                             <td>{{ bilet.wykupiony_czas }}h</td>
                         </tr>
+                        <tr>
+                            <td></td>
+                            <td>do {{ datetime_payed_to }}</td>
+                        </tr>
                         {% if bilet_dlugoterminowy is not None %}
                         <tr>
                             <td>ID rezerwacji</td>
