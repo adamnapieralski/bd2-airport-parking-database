@@ -10,7 +10,11 @@
 <div class="view">
     <div class="mask rgba-black-light align-items-center">
           <div class="col-md-12 mb-4 white-text text-center">
+              {% if user.is_authenticated %}
+              <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Witamy {{ user.username.title }}!</strong></h1>
+              {% else %}
             <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Witamy!</strong></h1>
+            {% endif %}
             <h2 class="text-uppercase mb-4 white-text"><strong>System obsługujący krótko i długoterminowe parkingi na lotnisku</strong></h2>
           </div>
     </div>

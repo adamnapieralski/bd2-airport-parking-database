@@ -1,16 +1,53 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from . import ticketing
-from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm
-from django.utils import timezone
-from . import models
 from django.urls import reverse
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm
+from . import models
+from . import ticketing
+from . import report
 
 import datetime
 import math
 
-
 # Create your views here.
+
+def home(request):
+    return render(request, 'parking_app/home.html')
+
+@login_required
+@user_passes_test(lambda u: not u.is_superuser)
+def reservation(request):
+    return render(request, 'parking_app/reservation.html')
+
+@login_required
+@user_passes_test(lambda user: user.is_superuser)
+def reporting(request):
+    table = None
+    try:
+        table = request.POST['view_table']
+    except(KeyError):
+        pass
+    return render(request, 'parking_app/reporting.html', report.get_repoting_data(table)) 
+
+@login_required
+@user_passes_test(lambda user: user.is_superuser)
+def reporting_download_stats(request):
+    try:
+        type = request.POST['stats_download']
+        return report.export_stats_to_csv(type)
+    except(KeyError):
+        return reporting(request)
+ 
+@login_required
+@user_passes_test(lambda user: user.is_superuser)
+def reporting_download_data(request):
+    try:
+        table = request.POST['tables']
+        return report.download_table(table)
+    except(KeyError):
+        return reporting(request)
 
 def tickets(request):
     return render(request, 'parking_app/tickets.html', {}) 
@@ -118,6 +155,3 @@ def tickets_pay_id(request, id):
 def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']
     return HttpResponseRedirect(reverse('tickets_pay_id', args=(ticket_id,)))
-
-def home(request):
-    return render(request, 'parking_app/home.html')
