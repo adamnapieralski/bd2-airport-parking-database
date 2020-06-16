@@ -1,5 +1,11 @@
 {% extends "parking_app/base.html" %}
 {% block title %}Bilety{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
   <div class="row">
