@@ -16,10 +16,3 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
-
-
-def login_redirect(request):
-    if request.user.is_authenticated and request.user.is_superuser:
-        return redirect('parking_app-home-admin')
-    else:
-        return redirect('parking_app-home-client')

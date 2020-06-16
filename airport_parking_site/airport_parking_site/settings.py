@@ -122,6 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'login_redirect'
+LOGIN_REDIRECT_URL = 'parking_app-home'
 
 LOGIN_URL = 'login'

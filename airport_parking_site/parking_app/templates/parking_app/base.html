@@ -23,15 +23,24 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
-                  <!-- <a class="nav-item nav-link" href="{% url 'parking_app-home' %}"></a> -->
+                  <a class="nav-item nav-link" href="{% url 'parking_app-home' %}">Start</a>
+                  <a class="nav-item nav-link" href="{% url 'parking_app-ticket' %}">Bilet</a>
+                  {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <a class="nav-item nav-link" href="{% url 'parking_app-report' %}">Raport</a>
+                        <a class="nav-item nav-link" href="{% url 'admin:index' %}">Ustawienia</a>
+                    {% else %}
+                        <a class="nav-item nav-link" href="{% url 'parking_app-resv' %}">Rezerwacja</a>
+                    {% endif %}
+                  {% endif %}
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
                     {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'logout'%}">Wyloguj</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Wyloguj</a>
                     {% else %}
-                      <a class="nav-item nav-link" href="{% url 'login'%}">Zaloguj</a>
-                      <a class="nav-item nav-link" href="{% url 'register'%}">Rejestracja</a>
+                      <a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj</a>
+                      <a class="nav-item nav-link" href="{% url 'register' %}">Rejestracja</a>
                     {% endif %}
                 </div>
               </div>

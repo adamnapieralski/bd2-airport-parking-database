@@ -17,11 +17,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='parking_app-home'),
-    path('tickets', views.tickets, name='tickets'),
-    path('reporting', views.reporting, name='reporting'),
-    path('reporting_download_stats', views.reporting_download_stats, name='reporting_download_stats'),
-    path('reporting_download_data', views.reporting_download_data, name='reporting_download_data'),
-    path('home_ad/', views.home_admin, name='parking_app-home-admin'),
-    path('home_cl/', views.home_client, name='parking_app-home-client')
+    path('', views.home, name='parking_app-home'),    
+    path('ticket/', views.ticket, name='parking_app-ticket'),
+    path('resv/', views.reservation, name='parking_app-resv'),
+    path('report/', views.reporting, name='parking_app-report'),
+    path('report_download_stats', views.reporting_download_stats, name='parking_app-reporting_download_stats'),
+    path('report_download_data', views.reporting_download_data, name='parking_app-reporting_download_data'),
 ]
