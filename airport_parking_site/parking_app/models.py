@@ -108,9 +108,9 @@ class Rezerwacja(models.Model):
         return str(self.nr_rezerwacji)
       
 class Bilet(models.Model):
-    nr_biletu = models.IntegerField(blank=True)
+    nr_biletu = models.IntegerField()
     czas_wjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '14:30'
-    czas_wyjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    czas_wyjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S', null=True)
     wykupiony_czas = models.IntegerField()
 
     strefa = models.ForeignKey(

@@ -23,11 +23,9 @@ def tickets_new_shortterm(request):
         form = TicketShortForm(request.POST)
         if form.is_valid():
             ticket = form.save(commit=False)
-            time = timezone.now()
-            ticket.czas_wjazdu = time
+            ticket.czas_wjazdu = timezone.now()
             ticket.wykupiony_czas = 0
             ticket.nr_biletu = 0
-            ticket.czas_wyjazdu = time
             ticket.save()
             ticket.nr_biletu = ticket.id
             ticket.save()
@@ -42,11 +40,22 @@ def tickets_new_longterm(request):
         form = TicketLongForm(request.POST)
         if form.is_valid():
             ticket = form.save(commit=False)
-            ticket = models.Rezerwacja.objects.filter(id=form.cleaned_data['rezerwacja_id']).first().bilet_dlugoterminowy
-            ticket.bilet.czas_wjazdu = timezone.now()
-            ticket.bilet.czas_wyjazdu = timezone.now()
+            bilet = models.Bilet.objects.create(
+                czas_wjazdu = timezone.now(),
+                wykupiony_czas = 0,
+                nr_biletu = 0,
+                strefa = form.cleaned_data['strefa']
+            )
+            bilet.nr_biletu = bilet.id
+            bilet.save()
+            ticket.bilet = bilet
+
+            rezerwacja = models.Rezerwacja.objects.filter(id=form.cleaned_data['rezerwacja_id']).first()
+            ticket.rezerwacjaa = rezerwacja
             ticket.save()
-            print(ticket.bilet.czas_wjazdu)
+            rezerwacja.bilet_dlugoterminowy = ticket
+            rezerwacja.save()
+
             return redirect('tickets_view_id', id=ticket.bilet.id)
     else:
         form = TicketLongForm()
