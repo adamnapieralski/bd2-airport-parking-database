@@ -36,7 +36,7 @@ class Cennik(models.Model):
     )
 
     def __str__(self):
-        return self.oplata
+        return "Czas: {} Opłata: {}".format(self.czas, self.oplata)
 
 class RodzajParkingu(models.Model):
     rodzaj = models.CharField(primary_key=True, max_length=20)
@@ -105,12 +105,12 @@ class Rezerwacja(models.Model):
     )
 
     def __str__(self):
-        return self.nr_rezerwacji
+        return str(self.nr_rezerwacji)
       
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
     czas_wjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '14:30'
-    czas_wyjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    czas_wyjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S', null=True)
     wykupiony_czas = models.IntegerField()
 
     strefa = models.ForeignKey(

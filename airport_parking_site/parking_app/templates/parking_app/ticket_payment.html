@@ -1,0 +1,61 @@
+{% extends "parking_app/base.html" %}
+{% block title %}Bilety | Podgląd{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content container">
+    <div class="row">
+        <div class="col text-center">
+            {% if bilet is not None %}
+            {% if bilet_dlugoterminowy is None %}
+            <h2>Opłata biletu krótkoterminowego <br> (nr {{ bilet.nr_biletu }})</h2>
+            <form method="POST">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary center-block mb-4">Opłać</button>
+            </form>
+            {% else %}
+            <h2>Opłata biletu długoterminowego <br> (nr {{ bilet.nr_biletu }})</h2>
+            <form method="POST">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary center-block mb-4">Opłać</button>
+            </form>
+            {% endif %}
+            {% else %}
+            <h3>Bilet nie istnieje</h3>
+            {% endif %}
+            <div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td>Czas do opłaty<br>(stan na {{ current_time }})</td>
+                        <td class="align-middle">{{ time_to_pay }}h</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col text-center">
+            <h3>Cennik</h3>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Czas</th>
+                    <th>Opłata</th>
+                    </tr>
+                {% for rec in cennik %}
+                <tr>
+                    {% if rec.czas < 0 %}
+                    <td>Każda następna godzina</td>
+                    {% else %}
+                    <td>Do {{ rec.czas }}h</td>
+                    {% endif %}
+                    <td>{{ rec.oplata }} zł</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -9,6 +9,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'parking_app/main.css' %}">
+
+        <link rel="icon" type="image/png" href="{% static 'parking_app/favicon.png' %}"/>
         
         <title>{% block title %}{% endblock %}</title>
         {% block extra_head %}{% endblock %}
@@ -23,8 +25,11 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
+                  <a class="navbar-brand" href="{% url 'parking_app-home' %}">
+                    <img src="{% static 'parking_app/favicon.png' %}" width="30" height="30" alt="">
+                  </a>
                   <a class="nav-item nav-link" href="{% url 'parking_app-home' %}">Start</a>
-                  <a class="nav-item nav-link" href="{% url 'parking_app-ticket' %}">Bilet</a>
+                  <a class="nav-item nav-link" href="{% url 'parking_app-tickets' %}">Bilet</a>
                   {% if user.is_authenticated %}
                     {% if user.is_superuser %}
                         <a class="nav-item nav-link" href="{% url 'parking_app-report' %}">Raport</a>

@@ -1,0 +1,39 @@
+{% extends "parking_app/base.html" %}
+{% block title %}Bilety{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1 class="text-center">Pobranie</h1>
+      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/shortterm/';">Bilet krótkoterminowy</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/longterm/';">Bilet długoterminowy</button>
+    </div>
+    <div class="col-sm">
+      <h1 class="text-center">Podgląd</h1>
+      <div class="form-group text-center">
+        <form action="{% url 'tickets_view_selected' %}" method="post">
+          {% csrf_token %}    
+          <input name="nrBiletu" type="number" class="form-control" placeholder="Podaj numer biletu..." value="" min=1 required>
+          <input type="submit" class="btn btn-primary center-block m-2" value="Wyświetl">
+        </form>
+      </div>
+    </div>
+    <div class="col-sm">
+      <h1 class="text-center">Opłacenie</h1>
+      <div class="form-group text-center">
+        <form action="{% url 'tickets_pay_selected' %}" method="post">
+          {% csrf_token %}    
+          <input name="nrBiletu" type="number" class="form-control" placeholder="Podaj numer biletu..." value="" min=1 required>
+          <input type="submit" class="btn btn-primary center-block m-2" value="Opłać">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
