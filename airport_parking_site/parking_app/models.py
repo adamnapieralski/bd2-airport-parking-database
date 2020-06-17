@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Strefa(models.Model):
     nazwa = models.CharField(max_length=100)
@@ -37,6 +39,7 @@ class Cennik(models.Model):
 
     def __str__(self):
         return "Czas: {} Opłata: {}".format(self.czas, self.oplata)
+
 
 class RodzajParkingu(models.Model):
     rodzaj = models.CharField(primary_key=True, max_length=20)
@@ -106,7 +109,8 @@ class Rezerwacja(models.Model):
 
     def __str__(self):
         return str(self.nr_rezerwacji)
-      
+
+
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
     czas_wjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '14:30'
@@ -119,10 +123,10 @@ class Bilet(models.Model):
     )
 
     def __str__(self):
-        return str(self.nr_biletu) #?
+        return str(self.nr_biletu)  # ?
 
 
-class Parking(models.Model):    
+class Parking(models.Model):
     nazwa = models.CharField(max_length=100)
     liczba_stref = models.IntegerField()
 
@@ -135,7 +139,9 @@ class Parking(models.Model):
     def __str__(self):
         return self.nazwa
 
+
 class Klient(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     imie = models.CharField(max_length=200)
     nazwisko = models.CharField(max_length=300)
     nr_tel = models.IntegerField()
@@ -160,18 +166,20 @@ class BiletDlugoterminowy(models.Model):
     def __str__(self):
         return str(self.bilet)
 
+
 class Oplata(models.Model):
-        
+
     bilet = models.ForeignKey(
         'Bilet',
         on_delete=models.CASCADE,
     )
-    
-    czas = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '2006-10-25' #zrobiłem tak jak na diagramie, choć chyba warto dodać czas
-    kwota_podstawowa = models.FloatField()   #dałem float jako Number(2)
-    kwota_ostateczna = models.FloatField() 
-    status=models.CharField(max_length=1)    #może BooleanField?
-        
+
+    # '2006-10-25' #zrobiłem tak jak na diagramie, choć chyba warto dodać czas
+    czas = models.DateTimeField('%Y-%m-%d %H:%M:%S')
+    kwota_podstawowa = models.FloatField()  # dałem float jako Number(2)
+    kwota_ostateczna = models.FloatField()
+    status = models.CharField(max_length=1)  # może BooleanField?
+
     metoda_platnosci = models.ForeignKey(
         'MetodaPlatnosci',
         on_delete=models.CASCADE,
@@ -182,14 +190,14 @@ class Oplata(models.Model):
         'Znizka',
         on_delete=models.CASCADE,
         null=True
-        )
+    )
 
     kara = models.ForeignKey(
         'Kara',
         on_delete=models.CASCADE,
         null=True
-    )    
-    
+    )
+
     def __str__(self):
         return 'oplata biletu ' + str(self.bilet)
 
@@ -199,21 +207,21 @@ class MetodaPlatnosci(models.Model):
 
     def __str__(self):
         return self.rodzaj
-  
+
 
 class Znizka(models.Model):
     nazwa = models.CharField(max_length=50)
     wartosc = models.FloatField()
     opis = models.TextField(max_length=500)
-      
+
     def __str__(self):
-        return self.nazwa    
-    
+        return self.nazwa
+
 
 class Kara(models.Model):
     nazwa = models.CharField(max_length=50)
     wartosc = models.FloatField()
     opis = models.TextField(max_length=500)
-    
+
     def __str__(self):
         return self.nazwa
