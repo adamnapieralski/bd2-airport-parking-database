@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'parking_app/main.css' %}">
 
         <link rel="icon" type="image/png" href="{% static 'parking_app/favicon.png' %}"/>
-        
+
         <title>{% block title %}{% endblock %}</title>
         {% block extra_head %}{% endblock %}
     </head>
@@ -28,7 +28,6 @@
                   <a class="navbar-brand" href="{% url 'parking_app-home' %}">
                     <img src="{% static 'parking_app/favicon.png' %}" width="30" height="30" alt="">
                   </a>
-                  <a class="nav-item nav-link" href="{% url 'parking_app-home' %}">Start</a>
                   <a class="nav-item nav-link" href="{% url 'parking_app-tickets' %}">Bilet</a>
                   {% if user.is_authenticated %}
                     {% if user.is_superuser %}
