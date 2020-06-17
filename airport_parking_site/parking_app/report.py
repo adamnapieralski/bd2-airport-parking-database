@@ -5,8 +5,16 @@ from django.http import HttpResponse
 from django.apps import apps
 import numpy as np
 import csv
+import datetime
 
-def get_repoting_data(table):
+def check_date(date_text):
+    try:
+        datetime.datetime.strptime(date_text, '%Y-%m-%d')
+        return True
+    except(ValueError, TypeError):
+        return False
+
+def get_repoting_data(table, date_from, date_to):
     models_names = []
     models_list = apps.get_app_config('parking_app').get_models()
     for model in models_list:
@@ -17,8 +25,16 @@ def get_repoting_data(table):
 
     model = apps.get_model('parking_app', table)    
     attributes = [f.name for f in model._meta.concrete_fields]           
-    data = model.objects.all().values_list(*attributes)
-    data_dict = {'attributes': attributes, 'data': data, 'table': table}
+    
+    if table == 'bilet' and check_date(date_from) and check_date(date_to):
+        data = model.objects.filter(czas_wjazdu__range=[date_from, date_to]).values_list(*attributes)
+    elif table == 'bilet' and check_date(date_from):
+        data = model.objects.filter(czas_wjazdu__gte=datetime.datetime.strptime(date_from, '%Y-%m-%d')).values_list(*attributes)
+    elif table == 'bilet' and check_date(date_to):
+        data = model.objects.filter(czas_wjazdu__lte=datetime.datetime.strptime(date_to, '%Y-%m-%d')).values_list(*attributes)
+    else:
+        data = model.objects.all().values_list(*attributes)
+    data_dict = {'attributes': attributes, 'data': data, 'table': table, 'date_from': date_from, 'date_to': date_to}
     return {'stats': get_db_stats(), 'tables': models_names, 'data': data_dict}   
 
 def get_general_stats():
