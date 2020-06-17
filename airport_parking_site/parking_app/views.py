@@ -101,12 +101,15 @@ def tickets_view_id(request, id):
 
     bilet_dlugoterminowy = models.BiletDlugoterminowy.objects.filter(bilet=bilet).first()
 
-    datetime_payed_to = bilet.czas_wjazdu
+    datetime_payed_to = None
+    
+    if bilet is not None:
+        datetime_payed_to = bilet.czas_wjazdu
 
-    if bilet_dlugoterminowy is not None:
-        datetime_payed_to = bilet_dlugoterminowy.rezerwacjaa.data_rozpoczecia
-        
-    datetime_payed_to += datetime.timedelta(seconds=bilet.wykupiony_czas*3600)
+        if bilet_dlugoterminowy is not None:
+            datetime_payed_to = bilet_dlugoterminowy.rezerwacjaa.data_rozpoczecia
+            
+        datetime_payed_to += datetime.timedelta(seconds=bilet.wykupiony_czas*3600)
     
     return render(request, 'parking_app/ticket_details.html',
                 {'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy,
