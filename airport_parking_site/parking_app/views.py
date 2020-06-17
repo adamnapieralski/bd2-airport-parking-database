@@ -102,7 +102,7 @@ def tickets_view_id(request, id):
     bilet_dlugoterminowy = models.BiletDlugoterminowy.objects.filter(bilet=bilet).first()
 
     datetime_payed_to = None
-    
+
     if bilet is not None:
         datetime_payed_to = bilet.czas_wjazdu
 
@@ -139,7 +139,10 @@ def tickets_pay_id(request, id):
         form = TicketPaymentForm(request.POST)
         if form.is_valid():
             oplata = form.save(commit=False)
-            bilet.wykupiony_czas += ticketing.calculate_paid_time(cennik, oplata.kwota_podstawowa)
+            if bilet_dlugoterminowy is not None and time_to_pay < ticketing.calculate_paid_time(cennik, oplata.kwota_podstawowa):
+                bilet.wykupiony_czas += time_to_pay
+            else:
+                bilet.wykupiony_czas += ticketing.calculate_paid_time(cennik, oplata.kwota_podstawowa)
             bilet.save()
             oplata.bilet = bilet
             oplata.czas = timezone.now()

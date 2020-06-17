@@ -2,6 +2,9 @@ from django import forms
 from .models import Bilet, BiletDlugoterminowy, Oplata
 from . import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+
+import datetime
 
 class TicketShortForm(forms.ModelForm):
     class Meta:
@@ -29,6 +32,15 @@ class TicketLongForm(forms.ModelForm):
         if not models.Rezerwacja.objects.filter(id=rezerwacja_id).exists():
             raise forms.ValidationError("Rezerwacja o podanym ID nie istnieje.")
 
+        current_time = timezone.now()
+        rezerwacja = models.Rezerwacja.objects.get(id=rezerwacja_id)
+
+        if rezerwacja.data_rozpoczecia > current_time or rezerwacja.data_zakonczenia < current_time:
+            raise forms.ValidationError("Podana rezerwacja w tym momencie nie obowiązuje.")
+
+        if rezerwacja.bilet_dlugoterminowy is not None:
+            raise forms.ValidationError("Bilet dla tej rezerwacji został już pobrany.")
+
         return rezerwacja_id
 
     def clean_strefa(self):
@@ -36,7 +48,6 @@ class TicketLongForm(forms.ModelForm):
         strefa = self.cleaned_data.get('strefa')
 
         if not models.Rezerwacja.objects.filter(id=rezerwacja_id, miejsce_parkingowe__strefa=strefa).exists():
-            print(models.Rezerwacja.objects.filter(id=rezerwacja_id).values('miejsce_parkingowe__strefa'), strefa)
             raise forms.ValidationError("Ta rezerwacja obowiązuje na innej strefie.")
 
         return strefa
