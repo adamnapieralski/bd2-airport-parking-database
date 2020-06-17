@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Reservation</title>
+    <title>Dane pojazdu</title>
   </head>
   <body>
     
 <form action="mailto:twój_adres_poczty@domena" method="post" enctype="text/plain"><div>
-<!-- Podstawowe pole tekstowe -->
+
 
 <label>Wybierz datę i godzinę: <input type="datetime-local" name="data" /></label>
 <br />
@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-8">
                     {% block content %}
-			    <h2>Wybierz datę rezerwacji miejsca parkingowego</h2>
+			    <h2>Wpisz dane pojazdu</h2>
     				<form method="POST" class="post-form">{% csrf_token %}
        				 {{ form.as_p }}
         			<button type="submit" class="save btn btn-default">Zatwierdz</button>

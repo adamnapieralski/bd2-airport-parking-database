@@ -18,10 +18,11 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('tickets', views.tickets, name='tickets'),
-    path('reporting', views.reporting, name='reporting'),
-    path('reporting_download_stats', views.reporting_download_stats, name='reporting_download_stats'),
-    path('tickets2', views.make_reservation, name='tickets2'),
-    path('client', views.client_data, name='client'),
+    #path('tickets', views.tickets, name='tickets'),
+   # path('reporting', views.reporting, name='reporting'),
+  #  path('reporting_download_stats', views.reporting_download_stats, name='reporting_download_stats'),
+    path('tickets/<int:id>/', views.make_reservation, name='make_reservation'),
+    path('client', views.client_data, name='client_data'),
+    path('car/<int:id>/', views.car_data, name='car_data'),
     
 ]
