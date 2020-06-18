@@ -13,16 +13,16 @@
         <h2>Rezerwacja pomyślna </h2>
         <table class="table table-striped table-bordered w-50">
             <tr>
-                <th>Numer rezerwacji rezerwacji</th>
+                <th>Numer rezerwacji </th>
                 <th>{{ rezerwacja.nr_rezerwacji }}</th>
             </tr>
     	    <tr>
                 <td>Czas wjazdu</td>
-                <td>{{ rezerwacja.czas_wjazdu }}</td>
+                <td>{{ rezerwacja.data_rozpoczecia }}</td>
             </tr>
             <tr>
                 <td>Czas wyjazdu</td>
-                <td>{{ rezerwacja.czas_wyjazdu }}</td>
+                <td>{{ rezerwacja.data_zakonczenia }}</td>
             </tr>
             <tr>
 		<td>Numer miejsca parkingowego</td>
@@ -30,7 +30,7 @@
             </tr>
 	    <tr>
                 <td>Miejsce parkingowe</td>
-                <td>{{ miejsce.Strefa.nazwa }}</td>
+                <td>{{ miejsce.strefa.nazwa }}</td>
             </tr>
 	     <tr>
                 <td>Numer rejestracyjny pojazdu</td>

@@ -193,6 +193,8 @@ def client_data(request):
     return render(request, 'parking_app/client_panel.html', {'form': form})  
 
 
+#user,klient,id
+
 def car_data(request,id):
     klient = models.Klient.objects.get(id=id) 
     form = CarForm(request.POST)
@@ -201,28 +203,31 @@ def car_data(request,id):
             car=form.save(commit=False)
             car.klient=klient
             car=form.save()
-            return redirect('make_reservation', id= car.id)
+            request.session['numer_rejestracyjny'] = car.nr_rejestracyjny
+            return redirect('make_reservation')
     else:
         form = CarForm()
     return render(request, 'parking_app/car_data.html', {'form': form}) 
 
-def make_reservation(request, id):
-    pojazd = models.Pojazd.objects.get(id=id)
+def make_reservation(request):
+    pojazd = models.Pojazd.objects.get(nr_rejestracyjny=request.session.get('numer_rejestracyjny'))
     typ_pojazdu=pojazd.typ_pojazdu
     klient =pojazd.klient      
     form=ReservationForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
-            wolne_miejsce= check_reservation(form.data_rozpoczecia,form.data_zakonczenia,typ_pojazdu)
-            if wolne_miejsce!=None:
-                rezerwacja=form.save(commit=False)
+            rezerwacja=form.save(commit=False)
+            #wolne_miejsce= check_reservation(rezerwacja.data_rozpoczecia,rezerwacja.data_zakonczenia,typ_pojazdu)
+            if True: #wolne_miejsce!=None:
+                
                 rezerwacja.klient=klient  
+                rezerwacja.miejsce_parkingowe=models.MiejsceParkingowe.objects.all().first()
                 rezerwacja.nr_rezerwacji=0
                 rezerwacja.save()
                 rezerwacja.nr_rezerwacji=rezerwacja.id
                 rezerwacja.save()
-                return redirect( 'parking_app/response_reserved.html', {'rezerwacja': rezerwacja, 'pojazd': pojazd,
-                'miejsce': wolne_miejsce})
+                return render(request,'parking_app/response_reserved.html', {'rezerwacja': rezerwacja, 'pojazd': pojazd,'miejsce':models.MiejsceParkingowe.objects.all().first()})
+            #'miejsce': wolne_miejsce
                 #return HttpResponseRedirect('parking_app/response_reserved')
             else:    
                 #return HttpResponseRedirect('parking_app/response_no_free_places') 
@@ -233,7 +238,7 @@ def make_reservation(request, id):
         form=ReservationForm(request.POST)
     return render(request, 'parking_app/reservation.html', {'form': form})
 
-
+#reservation
 def see_reservations(request,id):
     aktualny_klient=models.Klient.objects.filter(id=id)
     rezerwacje=models.Rezerwacja.objects.filter(klient=aktualny_klient)
