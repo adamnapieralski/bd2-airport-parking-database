@@ -12,11 +12,11 @@
 {% block content %}
 <div class="content container">
     <div class="row">
-        <div class="col text-center">
+        <div class="col text-center w-50">
             {% if bilet is not None %}
             {% if bilet_dlugoterminowy is None %}
             <h2>Opłata biletu krótkoterminowego <br> (nr {{ bilet.nr_biletu }})</h2>
-            <div class="w-50 mx-auto my-4"></div>
+            <div class="w-50 mx-auto my-4">
                 <form method="POST" >{% csrf_token %}
                     {{ form|crispy }}
                     <button type="submit" class="btn btn-primary center-block mb-4">Opłać</button>

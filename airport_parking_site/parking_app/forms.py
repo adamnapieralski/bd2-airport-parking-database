@@ -18,6 +18,13 @@ class TicketShortForm(forms.ModelForm):
         self.fields['strefa'].queryset = models.Strefa.objects.filter(
             parking__rodzaj_parkingu="krotkoterminowy")
 
+    def clean_strefa(self):
+        strefa = self.cleaned_data.get('strefa')
+        if strefa.liczba_wolnych_miejsc <= 0:
+            raise forms.ValidationError("Brak wolnych miejsc na tej strefie.")
+
+        return strefa
+
 
 class TicketLongForm(forms.ModelForm):
     rezerwacja_id = forms.IntegerField(validators=[MinValueValidator(1)])
@@ -54,6 +61,9 @@ class TicketLongForm(forms.ModelForm):
 
         if not models.Rezerwacja.objects.filter(id=rezerwacja_id, miejsce_parkingowe__strefa=strefa).exists():
             raise forms.ValidationError("Ta rezerwacja obowiązuje na innej strefie.")
+
+        if strefa.liczba_wolnych_miejsc <= 0:
+            raise forms.ValidationError("Brak wolnych miejsc na tej strefie.")
 
         return strefa
 
