@@ -18,7 +18,7 @@ class TicketShortForm(forms.ModelForm):
 
 
 class TicketLongForm(forms.ModelForm):
-    rezerwacja_id = forms.IntegerField()
+    rezerwacja_id = forms.IntegerField(validators=[MinValueValidator(1)])
     class Meta:
         model = models.BiletDlugoterminowy
         fields = []
@@ -62,7 +62,7 @@ class TicketExitForm(forms.Form):
         nr_biletu = self.cleaned_data.get('nr_biletu')
 
         bilet = models.Bilet.objects.filter(id=nr_biletu).first()
-        
+
         if bilet is None:
             raise forms.ValidationError("Podany bilet nie istnieje.")
 
