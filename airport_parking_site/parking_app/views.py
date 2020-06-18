@@ -190,37 +190,6 @@ def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']
     return HttpResponseRedirect(reverse('tickets_pay_id', args=(ticket_id,)))
 
-# @login_required
-# @user_passes_test(lambda user: not user.is_superuser)
-# def make_reservation(request):
-#     pojazd = models.Pojazd.objects.get(nr_rejestracyjny=request.session.get('numer_rejestracyjny'))
-#     typ_pojazdu=pojazd.typ_pojazdu
-#     klient =pojazd.klient      
-#     if request.method == "POST":
-#         form=ReservationForm(request.POST)
-#         if form.is_valid():
-#             rezerwacja=form.save(commit=False)
-#             #wolne_miejsce= check_reservation(rezerwacja.data_rozpoczecia,rezerwacja.data_zakonczenia,typ_pojazdu)
-#             if True: #wolne_miejsce!=None:
-                
-#                 rezerwacja.klient=klient  
-#                 rezerwacja.miejsce_parkingowe=models.MiejsceParkingowe.objects.all().first()
-#                 rezerwacja.nr_rezerwacji=0
-#                 rezerwacja.save()
-#                 rezerwacja.nr_rezerwacji=rezerwacja.id
-#                 rezerwacja.save()
-#                 return render(request,'parking_app/response_reserved.html', {'rezerwacja': rezerwacja, 'pojazd': pojazd,'miejsce':models.MiejsceParkingowe.objects.all().first()})
-#             #'miejsce': wolne_miejsce
-#                 #return HttpResponseRedirect('parking_app/response_reserved')
-#             else:    
-#                 #return HttpResponseRedirect('parking_app/response_no_free_places') 
-#                 raise form.ValidationError("Nie ma wolnych miejsc w tym terminie")
-#         else:
-#             raise form.ValidationError("Błędne daty")
-#     else:
-#         form=ReservationForm(request.POST)
-#     return render(request, 'parking_app/create_reservation.html', {'form': form})
-
 @login_required
 @user_passes_test(lambda user: not user.is_superuser)
 def reservations_panel(request):
@@ -240,10 +209,14 @@ def new_reservation(request):
             )
             print(overlapping_rezerwacje.values('miejsce_parkingowe'))
             zajete_miejsca = models.MiejsceParkingowe.objects.filter(id__in=overlapping_rezerwacje.values('miejsce_parkingowe'))
-            # zajete_miejsca = overlapping_rezerwacje.miejsce_parkingowe
             wolne_miejsca = models.MiejsceParkingowe.objects.exclude(id__in=zajete_miejsca.values('id'))
+
+            # PROBLEM - brak pojazdu jako klucza obcego w rezerwacji
             # wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=rezerwacja.pojazd.typ_pojazdu)
+
+            # ominiecie tego (tymczasowe lub nie)
             wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=form.cleaned_data.get('pojazd').typ_pojazdu)
+
             wolne_miejsce = wolne_miejsca.first()
             rezerwacja.miejsce_parkingowe = wolne_miejsce
             rezerwacja.nr_rezerwacji = 0
