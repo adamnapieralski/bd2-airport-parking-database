@@ -1,0 +1,20 @@
+{% extends "parking_app/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend class="border-bottom mb-4">Rejestracja</legend>
+                {{ form.as_p }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outine-info" type="submit">Zarejestruj sie</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Masz juz konto? <a class="ml-2" href="{% url 'login' %}">Zaloguj sie</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

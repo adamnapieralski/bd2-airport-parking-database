@@ -107,10 +107,6 @@ class Rezerwacja(models.Model):
     def __str__(self):
         return str(self.nr_rezerwacji)
       
-        
-      #znalezc pierwsze wolne
-      #po rezerwacjach, czy wolne miejsce
-      
 class Bilet(models.Model):
     nr_biletu = models.IntegerField()
     czas_wjazdu = models.DateTimeField('%Y-%m-%d %H:%M:%S')  # '14:30'
