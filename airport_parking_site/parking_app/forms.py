@@ -117,3 +117,13 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = models.Pojazd
         fields = ('nr_rejestracyjny','typ_pojazdu')
+
+class ReservationCarForm(forms.ModelForm):
+    class Meta:
+        model = models.Rezerwacja
+        fields = []
+
+    def __init__(self, user, *args, **kwargs):
+        super(ReservationCarForm, self).__init__(*args, **kwargs)
+        klient = models.Klient.objects.get(user=user)
+        self.fields['pojazd']=forms.ModelChoiceField(queryset=models.Pojazd.objects.filter(klient=klient))

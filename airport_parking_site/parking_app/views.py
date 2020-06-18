@@ -20,6 +20,7 @@ def home(request):
 @login_required
 @user_passes_test(lambda u: not u.is_superuser)
 def reservation(request):
+    
     return render(request, 'parking_app/reservation.html')
 
 @login_required
@@ -213,8 +214,8 @@ def make_reservation(request):
     pojazd = models.Pojazd.objects.get(nr_rejestracyjny=request.session.get('numer_rejestracyjny'))
     typ_pojazdu=pojazd.typ_pojazdu
     klient =pojazd.klient      
-    form=ReservationForm(request.POST)
     if request.method == "POST":
+        form=ReservationForm(request.POST)
         if form.is_valid():
             rezerwacja=form.save(commit=False)
             #wolne_miejsce= check_reservation(rezerwacja.data_rozpoczecia,rezerwacja.data_zakonczenia,typ_pojazdu)
@@ -235,7 +236,9 @@ def make_reservation(request):
         else:
             raise form.ValidationError("Błędne daty")
     else:
-        form=ReservationForm(request.POST)
+        form=ReservationForm()
+
+    print(form)
     return render(request, 'parking_app/reservation.html', {'form': form})
 
 #reservation
