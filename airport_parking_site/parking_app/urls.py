@@ -27,6 +27,7 @@ urlpatterns = [
     path('tickets/pay/<int:id>/', views.tickets_pay_id, name='tickets_pay_id'),
     path('tickets/pay/selected/', views.tickets_pay_selected, name='tickets_pay_selected'),
     path('resv/', views.reservation, name='parking_app-resv'),
+    path('resv/my_reservations', views.my_reservations, name='parking_app-reservations'),
     path('report/', views.reporting, name='parking_app-report'),
     path('report_download_stats', views.reporting_download_stats, name='parking_app-reporting_download_stats'),
     path('report_download_data', views.reporting_download_data, name='parking_app-reporting_download_data'),
