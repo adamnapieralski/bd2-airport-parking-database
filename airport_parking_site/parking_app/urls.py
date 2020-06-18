@@ -26,4 +26,5 @@ urlpatterns = [
     path('car/<int:id>/', views.car_data, name='car_data'),
     path('profile/<int:id>/myreservations', views.see_reservations, name='see_reservations'), 
     path('test_myreservations', views.test_myreservations, name='test_myreservations'),
+    path('', views.home, name='parking_app-home'),
 ]

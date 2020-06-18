@@ -3,30 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Reservation</title>
-  </head>
-  <body>
-    
-<form action="mailto:twój_adres_poczty@domena" method="post" enctype="text/plain"><div>
-<!-- Podstawowe pole tekstowe -->
+{% extends "parking_app/base.html" %}
+{% block title %}Bilety | Podgląd{% endblock %}
 
-<label>Wybierz datę i godzinę: <input type="datetime-local" name="data" /></label>
-<br />
-</form>
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
 
-  <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
-			    <h2>Wybierz datę rezerwacji miejsca parkingowego</h2>
-    				<form method="POST" class="post-form">{% csrf_token %}
-       				 {{ form.as_p }}
-        			<button type="submit" class="save btn btn-default">Zatwierdz</button>
-   				 </form>
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
+{% block content %}
+<div class="content container">
+    <div class="text-center">
+  	<h2>Wybierz datę rezerwacji miejsca parkingowego</h2> 				       
+        <tr>
+    	<form method="POST" class="post-form">{% csrf_token %}
+       	{{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Zatwierdz</button>			 
+        </form>
+        </tr>
+    </div>
+</div>
+{% endblock content %}
 
 
-  </body>
-</html>
+
+
+ 

@@ -1,0 +1,14 @@
+﻿{% extends "parking_app/base.html" %}
+
+{% block content %}
+  <h1>Lista rezerwacji</h1>
+{% for obj in rezerwacje %}
+    <form method="POST">
+        {% csrf_token %}
+ 	<li>
+        <p>{{ forloop.counter }}: {{ obj.nr_rezerwacji }}<input type="submit" name="delete_items" value="{{ obj.pk }}"></p>
+	</li>
+    </form>
+{% endfor %}
+       
+{% endblock %}

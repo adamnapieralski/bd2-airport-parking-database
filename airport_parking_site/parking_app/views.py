@@ -45,16 +45,12 @@ def car_data(request,id):
         form = CarForm()
     return render(request, 'parking_app/car_data.html', {'form': form}) 
 
-
-
 def make_reservation(request, id):
     pojazd = models.Pojazd.objects.get(id=id)
     typ_pojazdu=pojazd.typ_pojazdu
     klient =pojazd.Klient      
     form=ReservationForm(request.POST)
-    #ReservationInlineFormSet = inlineformset_factory(klient, models.Rezerwacja,fk_name=id, fields=('data_rozpoczecia','data_zakonczenia'))
     if request.method == "POST":
-        #formset = ReservationInlineFormSet(request.POST, request.FILES, instance=klient)
         if form.is_valid():
             wolne_miejsce= check_reservation(form.data_rozpoczecia,form.data_zakonczenia,typ_pojazdu)
             if wolne_miejsce!=None:
@@ -68,17 +64,19 @@ def make_reservation(request, id):
                 'miejsce': wolne_miejsce})
                 #return HttpResponseRedirect('parking_app/response_reserved')
             else:    
-                return HttpResponseRedirect('parking_app/response_no_free_places') 
+                #return HttpResponseRedirect('parking_app/response_no_free_places') 
+                raise form.ValidationError("Nie ma wolnych miejsc w tym terminie")
+        else:
+            raise form.ValidationError("Błędne daty")
     else:
         form=ReservationForm(request.POST)
-        #forms = ReservationInlineFormSet(instance=klient)
     return render(request, 'parking_app/tickets.html', {'form': form})
 
 
 def see_reservations(request,id):
     aktualny_klient=models.Klient.objects.filter(id=id)
     rezerwacje=models.Rezerwacja.objects.filter(klient=aktualny_klient)
-    return redirect( 'parking_app/my_reservations.html', {'rezerwacje': rezerwacje})
+    return render(request, 'parking_app/my_reservations.html', {'rezerwacje': rezerwacje})
     
 def test_myreservations(request):
     k_id=135
