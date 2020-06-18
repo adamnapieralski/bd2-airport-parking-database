@@ -31,14 +31,9 @@ urlpatterns = [
     path('resv/', views.reservations_panel, name='parking_app-resv'),
     path('resv/my/', views.my_reservations, name='my_reservations'),
     path('resv/new/', views.new_reservation, name='new_reservation'),
-    # path('resv/reservation/', views.make_reservation, name='make_reservation'),
-    path('vehicle/new/', views.new_vehicle, name='new_vehicle'),
-    # path('client', views.client_data, name='client_data'),
-
-    # path('resv/car', views.car_data, name='car_data'),
-    # path('profile/<int:id>/myreservations', views.see_reservations, name='see_reservations'), 
-    # path('test_myreservations', views.test_myreservations, name='test_myreservations'),
     
+    path('vehicle/new/', views.new_vehicle, name='new_vehicle'),
+
     path('report/', views.reporting, name='parking_app-report'),
     path('report_download_stats', views.reporting_download_stats, name='parking_app-reporting_download_stats'),
     path('report_download_data', views.reporting_download_data, name='parking_app-reporting_download_data'),
