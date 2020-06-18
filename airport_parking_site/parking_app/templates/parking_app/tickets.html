@@ -6,17 +6,33 @@
 <link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <h1 class="text-center">Pobranie</h1>
-      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/shortterm/';">Bilet krótkoterminowy</button>
-      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/longterm/';">Bilet długoterminowy</button>
+  <div class="row mb-4">
+    <div class="col-sm text-center">
+        <h1>Pobranie</h1>
+        <div class="w-50 mx-auto">
+          <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/shortterm/';">Bilet krótkoterminowy</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/tickets/new/longterm/';">Bilet długoterminowy</button>
+        </div>
     </div>
     <div class="col-sm">
+      <h1 class="text-center">Wyjazd</h1>
+        <div class="form-group text-center w-75 mx-auto">
+          <form method="POST">{% csrf_token %}
+            {{ form_exit|crispy }}
+            <button type="submit" class="btn btn-primary center-block">Wyjedź</button>
+        </form>
+        </div>
+    </div>
+  </div>
+  <hr class="my-4">
+  <div class="row">
+    <div class="col-sm">
       <h1 class="text-center">Podgląd</h1>
-      <div class="form-group text-center">
+      <div class="form-group text-center w-75 mx-auto">
         <form action="{% url 'tickets_view_selected' %}" method="post">
           {% csrf_token %}    
           <input name="nrBiletu" type="number" class="form-control" placeholder="Podaj numer biletu..." value="" min=1 required>
@@ -26,7 +42,7 @@
     </div>
     <div class="col-sm">
       <h1 class="text-center">Opłacenie</h1>
-      <div class="form-group text-center">
+      <div class="form-group text-center w-75 mx-auto">
         <form action="{% url 'tickets_pay_selected' %}" method="post">
           {% csrf_token %}    
           <input name="nrBiletu" type="number" class="form-control" placeholder="Podaj numer biletu..." value="" min=1 required>

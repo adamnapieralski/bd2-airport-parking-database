@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm
+from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm
 from . import models
 from . import ticketing
 from . import report
@@ -50,7 +50,18 @@ def reporting_download_data(request):
         return reporting(request)
 
 def tickets(request):
-    return render(request, 'parking_app/tickets.html', {}) 
+    if request.method == "POST":
+        form_exit = TicketExitForm(request.POST)
+        if form_exit.is_valid():
+            bilet = models.Bilet.objects.get(id=form_exit.cleaned_data.get('nr_biletu'))
+            bilet.czas_wyjazdu = timezone.now()
+            bilet.save()
+
+            return redirect('tickets_view_id', id=bilet.id)
+    else:
+        form_exit = TicketExitForm()
+
+    return render(request, 'parking_app/tickets.html', {'form_exit': form_exit}) 
 
 def tickets_new_shortterm(request):
     if request.method == "POST":
@@ -126,7 +137,7 @@ def tickets_pay_id(request, id):
 
     current_time = timezone.now()
     duration = current_time - bilet.czas_wjazdu
-    time_to_pay = math.ceil(duration.days * 24 + duration.seconds // 3600)
+    time_to_pay = duration.days * 24 + math.ceil(duration.seconds / 3600)
 
     if bilet_dlugoterminowy is not None:
         rez = models.Rezerwacja.objects.filter(id=bilet_dlugoterminowy.rezerwacjaa.id).first()
