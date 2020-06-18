@@ -201,6 +201,7 @@ def post_new(request):
     form = ClientForm()
     return render(request, 'parking_app/reservation.html', {'form': form}) 
 
+#to delete
 def client_data(request):
     if request.method == "POST":
         form = ClientForm(request.POST)
@@ -213,9 +214,11 @@ def client_data(request):
 
 
 #user,klient,id
-
-def car_data(request,id):
-    klient = models.Klient.objects.get(id=id) 
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
+def car_data(request):
+    user_id = request.user.id
+    klient = models.Klient.objects.get(id=user_id) 
     form = CarForm(request.POST)
     if request.method == "POST":    
         if form.is_valid():
@@ -228,6 +231,8 @@ def car_data(request,id):
         form = CarForm()
     return render(request, 'parking_app/car_data.html', {'form': form}) 
 
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
 def make_reservation(request):
     pojazd = models.Pojazd.objects.get(nr_rejestracyjny=request.session.get('numer_rejestracyjny'))
     typ_pojazdu=pojazd.typ_pojazdu
@@ -255,14 +260,16 @@ def make_reservation(request):
             raise form.ValidationError("Błędne daty")
     else:
         form=ReservationForm(request.POST)
-    return render(request, 'parking_app/reservation.html', {'form': form})
+    return render(request, 'parking_app/create_reservation.html', {'form': form})
 
 #reservation
+# to delete ???
 def see_reservations(request,id):
     aktualny_klient=models.Klient.objects.filter(id=id)
     rezerwacje=models.Rezerwacja.objects.filter(klient=aktualny_klient)
     return render(request, 'parking_app/my_reservations.html', {'rezerwacje': rezerwacje})
     
+# to delete ???
 def test_myreservations(request):
     k_id=135
     return redirect('see_reservations', id= k_id)
@@ -276,4 +283,4 @@ def my_reservations(request):
     except(KeyError):
         pass
     return render(request, 'parking_app/my_reservations.html', {'reservations': reservations.get_reservations(request.user.id)})
->>>>>>> reservations_list
+
