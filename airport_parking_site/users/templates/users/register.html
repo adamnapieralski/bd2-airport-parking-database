@@ -5,7 +5,8 @@
             {% csrf_token %}
             <fieldset>
                 <legend class="border-bottom mb-4">Rejestracja</legend>
-                {{ form.as_p }}
+                {{ client_form.as_p }}
+                {{ user_form.as_p }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outine-info" type="submit">Zarejestruj sie</button>

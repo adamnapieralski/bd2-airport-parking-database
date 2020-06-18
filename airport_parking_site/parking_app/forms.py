@@ -7,29 +7,33 @@ from . import models
 
 import datetime
 
+
 class TicketShortForm(forms.ModelForm):
     class Meta:
         model = models.Bilet
         fields = ['strefa']
-    
+
     def __init__(self, *args, **kwargs):
         super(TicketShortForm, self).__init__(*args, **kwargs)
-        self.fields['strefa'].queryset = models.Strefa.objects.filter(parking__rodzaj_parkingu="krotkoterminowy")
+        self.fields['strefa'].queryset = models.Strefa.objects.filter(
+            parking__rodzaj_parkingu="krotkoterminowy")
 
 
 class TicketLongForm(forms.ModelForm):
     rezerwacja_id = forms.IntegerField(validators=[MinValueValidator(1)])
+
     class Meta:
         model = models.BiletDlugoterminowy
         fields = []
-    
+
     def __init__(self, *args, **kwargs):
         super(TicketLongForm, self).__init__(*args, **kwargs)
-        self.fields['strefa']=forms.ModelChoiceField(queryset=models.Strefa.objects.filter(parking__rodzaj_parkingu="dlugoterminowy"))
+        self.fields['strefa'] = forms.ModelChoiceField(
+            queryset=models.Strefa.objects.filter(parking__rodzaj_parkingu="dlugoterminowy"))
 
     def clean_rezerwacja_id(self):
         rezerwacja_id = self.cleaned_data.get('rezerwacja_id')
-        
+
         if not models.Rezerwacja.objects.filter(id=rezerwacja_id).exists():
             raise forms.ValidationError("Rezerwacja o podanym ID nie istnieje.")
 
@@ -53,11 +57,13 @@ class TicketLongForm(forms.ModelForm):
 
         return strefa
 
+
 class TicketExitForm(forms.Form):
-    nr_biletu = forms.IntegerField(label='', 
-                                    widget=forms.TextInput(attrs={'placeholder': 'Podaj numer biletu...'}),
-                                    validators=[MinValueValidator(1)])
-    
+    nr_biletu = forms.IntegerField(label='',
+                                   widget=forms.TextInput(
+                                       attrs={'placeholder': 'Podaj numer biletu...'}),
+                                   validators=[MinValueValidator(1)])
+
     def clean_nr_biletu(self):
         nr_biletu = self.cleaned_data.get('nr_biletu')
 
@@ -80,7 +86,7 @@ class TicketExitForm(forms.Form):
                 raise forms.ValidationError("Minął termin rezerwacji.")
             if curr_time > bilet_dlugoterminowy.rezerwacjaa.data_rozpoczecia + wykupiony_czas_d:
                 raise forms.ValidationError("Bilet nieopłacony.")
-        
+
         if curr_time > bilet.czas_wjazdu + wykupiony_czas_d:
             raise forms.ValidationError("Bilet nieopłacony.")
 

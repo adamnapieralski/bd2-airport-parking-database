@@ -14,14 +14,17 @@ import math
 
 # Create your views here.
 
+
 def home(request):
     return render(request, 'parking_app/home.html')
 
+
 @login_required
-@user_passes_test(lambda u: not u.is_superuser)
+@user_passes_test(lambda user: not user.is_superuser)
 def reservation(request):
     
     return render(request, 'parking_app/reservation.html')
+
 
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
@@ -35,7 +38,8 @@ def reporting(request):
         to_date = request.POST['ticket_to']
     except(KeyError):
         pass
-    return render(request, 'parking_app/reporting.html', report.get_repoting_data(table, from_date, to_date)) 
+    return render(request, 'parking_app/reporting.html', report.get_repoting_data(table, from_date, to_date))
+
 
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
@@ -45,7 +49,8 @@ def reporting_download_stats(request):
         return report.export_stats_to_csv(type)
     except(KeyError):
         return reporting(request)
- 
+
+
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
 def reporting_download_data(request):
@@ -54,6 +59,7 @@ def reporting_download_data(request):
         return report.download_table(table)
     except(KeyError):
         return reporting(request)
+
 
 def tickets(request):
     if request.method == "POST":
@@ -67,7 +73,8 @@ def tickets(request):
     else:
         form_exit = TicketExitForm()
 
-    return render(request, 'parking_app/tickets.html', {'form_exit': form_exit}) 
+    return render(request, 'parking_app/tickets.html', {'form_exit': form_exit})
+
 
 def tickets_new_shortterm(request):
     if request.method == "POST":
@@ -86,22 +93,24 @@ def tickets_new_shortterm(request):
 
     return render(request, 'parking_app/ticket_new_short.html', {'form': form})
 
+
 def tickets_new_longterm(request):
     if request.method == "POST":
         form = TicketLongForm(request.POST)
         if form.is_valid():
             ticket = form.save(commit=False)
             bilet = models.Bilet.objects.create(
-                czas_wjazdu = timezone.now(),
-                wykupiony_czas = 0,
-                nr_biletu = 0,
-                strefa = form.cleaned_data['strefa']
+                czas_wjazdu=timezone.now(),
+                wykupiony_czas=0,
+                nr_biletu=0,
+                strefa=form.cleaned_data['strefa']
             )
             bilet.nr_biletu = bilet.id
             bilet.save()
             ticket.bilet = bilet
 
-            rezerwacja = models.Rezerwacja.objects.filter(id=form.cleaned_data['rezerwacja_id']).first()
+            rezerwacja = models.Rezerwacja.objects.filter(
+                id=form.cleaned_data['rezerwacja_id']).first()
             ticket.rezerwacjaa = rezerwacja
             ticket.save()
             rezerwacja.bilet_dlugoterminowy = ticket
@@ -112,6 +121,7 @@ def tickets_new_longterm(request):
         form = TicketLongForm()
 
     return render(request, 'parking_app/ticket_new_long.html', {'form': form})
+
 
 def tickets_view_id(request, id):
     bilet = models.Bilet.objects.filter(id=id).first()
@@ -125,16 +135,18 @@ def tickets_view_id(request, id):
 
         if bilet_dlugoterminowy is not None:
             datetime_payed_to = bilet_dlugoterminowy.rezerwacjaa.data_rozpoczecia
-            
+
         datetime_payed_to += datetime.timedelta(seconds=bilet.wykupiony_czas*3600)
-    
+
     return render(request, 'parking_app/ticket_details.html',
-                {'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy,
-                'datetime_payed_to': datetime_payed_to})
+                  {'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy,
+                   'datetime_payed_to': datetime_payed_to})
+
 
 def tickets_view_selected(request):
     ticket_id = request.POST['nrBiletu']
     return HttpResponseRedirect(reverse('tickets_view_id', args=(ticket_id,)))
+
 
 def tickets_pay_id(request, id):
     bilet = models.Bilet.objects.filter(id=id).first()
@@ -159,7 +171,8 @@ def tickets_pay_id(request, id):
             if bilet_dlugoterminowy is not None and time_to_pay < ticketing.calculate_paid_time(cennik, oplata.kwota_podstawowa):
                 bilet.wykupiony_czas += time_to_pay
             else:
-                bilet.wykupiony_czas += ticketing.calculate_paid_time(cennik, oplata.kwota_podstawowa)
+                bilet.wykupiony_czas += ticketing.calculate_paid_time(
+                    cennik, oplata.kwota_podstawowa)
             bilet.save()
             oplata.bilet = bilet
             oplata.czas = timezone.now()
@@ -169,11 +182,13 @@ def tickets_pay_id(request, id):
             return redirect('tickets_view_id', id=bilet.id)
 
     else:
-        form = TicketPaymentForm(initial={'kwota_podstawowa': ticketing.calculate_min_pay_price(cennik, time_to_pay)})
+        form = TicketPaymentForm(
+            initial={'kwota_podstawowa': ticketing.calculate_min_pay_price(cennik, time_to_pay)})
 
     return render(request, 'parking_app/ticket_payment.html',
-    {'form': form, 'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy, 'cennik': cennik,
-    'time_to_pay': time_to_pay, 'current_time': current_time})
+                  {'form': form, 'bilet': bilet, 'bilet_dlugoterminowy': bilet_dlugoterminowy, 'cennik': cennik,
+                   'time_to_pay': time_to_pay, 'current_time': current_time})
+
 
 def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']
