@@ -5,7 +5,7 @@ from .forms import ClientForm
 from .forms import CarForm
 from .forms import ReservationForm
 from . import models
-from .tickets import check_reservation
+from .reservation import check_reservation
 from django.shortcuts import redirect
 
 
@@ -14,12 +14,11 @@ from django.shortcuts import redirect
 def index(request):
     return HttpResponse("Index")
 
-def tickets(request):
-    return render(request, 'parking_app/reservation.html', tickets.get_data());    
+   
     
 def post_new(request):
     form = ClientForm()
-    return render(request, 'parking_app/tickets.html', {'form': form}) 
+    return render(request, 'parking_app/reservation.html', {'form': form}) 
 
 def client_data(request):
     if request.method == "POST":
@@ -38,7 +37,7 @@ def car_data(request,id):
     if request.method == "POST":    
         if form.is_valid():
             car=form.save(commit=False)
-            car.foreignkeytoKlient=id
+            car.klient=klient
             car=form.save()
             return redirect('make_reservation', id= car.id)
     else:
@@ -48,14 +47,14 @@ def car_data(request,id):
 def make_reservation(request, id):
     pojazd = models.Pojazd.objects.get(id=id)
     typ_pojazdu=pojazd.typ_pojazdu
-    klient =pojazd.Klient      
+    klient =pojazd.klient      
     form=ReservationForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             wolne_miejsce= check_reservation(form.data_rozpoczecia,form.data_zakonczenia,typ_pojazdu)
             if wolne_miejsce!=None:
                 rezerwacja=form.save(commit=False)
-                rezerwacja.foreignkeytoKlient=klient.id  
+                rezerwacja.klient=klient  
                 rezerwacja.nr_rezerwacji=0
                 rezerwacja.save()
                 rezerwacja.nr_rezerwacji=rezerwacja.id
@@ -70,7 +69,7 @@ def make_reservation(request, id):
             raise form.ValidationError("Błędne daty")
     else:
         form=ReservationForm(request.POST)
-    return render(request, 'parking_app/tickets.html', {'form': form})
+    return render(request, 'parking_app/reservation.html', {'form': form})
 
 
 def see_reservations(request,id):
