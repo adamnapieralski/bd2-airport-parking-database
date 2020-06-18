@@ -28,11 +28,14 @@ urlpatterns = [
     path('tickets/pay/<int:id>/', views.tickets_pay_id, name='tickets_pay_id'),
     path('tickets/pay/selected/', views.tickets_pay_selected, name='tickets_pay_selected'),
 
-    path('resv/', views.reservation, name='parking_app-resv'),
-    path('resv/my_reservations', views.my_reservations, name='parking_app-reservations'),
-    path('resv/reservation/', views.make_reservation, name='make_reservation'),
+    path('resv/', views.reservations_panel, name='parking_app-resv'),
+    path('resv/my/', views.my_reservations, name='my_reservations'),
+    path('resv/new/', views.new_reservation, name='new_reservation'),
+    # path('resv/reservation/', views.make_reservation, name='make_reservation'),
+    path('vehicle/new/', views.new_vehicle, name='new_vehicle'),
     # path('client', views.client_data, name='client_data'),
-    path('resv/car', views.car_data, name='car_data'),
+
+    # path('resv/car', views.car_data, name='car_data'),
     # path('profile/<int:id>/myreservations', views.see_reservations, name='see_reservations'), 
     # path('test_myreservations', views.test_myreservations, name='test_myreservations'),
     

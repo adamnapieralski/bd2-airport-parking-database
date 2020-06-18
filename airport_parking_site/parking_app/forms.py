@@ -109,27 +109,19 @@ class TicketPaymentForm(forms.ModelForm):
             raise forms.ValidationError("Niepoprawna kwota.")
         return kwota
 
-class ClientForm(forms.ModelForm):
-    class Meta:
-        model = models.Klient
-        fields = ('imie','nazwisko','nr_tel')
-        
-class ReservationForm(forms.ModelForm):
-    class Meta:
-        model = models.Rezerwacja
-        fields = ('data_rozpoczecia','data_zakonczenia')
-        
-class CarForm(forms.ModelForm):
+class VehicleForm(forms.ModelForm):
     class Meta:
         model = models.Pojazd
         fields = ('nr_rejestracyjny','typ_pojazdu')
 
-class ReservationCarForm(forms.ModelForm):
+class ReservationVehicleForm(forms.ModelForm):
     class Meta:
         model = models.Rezerwacja
         fields = ['data_rozpoczecia','data_zakonczenia']
 
     def __init__(self, user, *args, **kwargs):
-        super(ReservationCarForm, self).__init__(*args, **kwargs)
+        super(ReservationVehicleForm, self).__init__(*args, **kwargs)
         klient = models.Klient.objects.get(user=user)
         self.fields['pojazd']=forms.ModelChoiceField(queryset=models.Pojazd.objects.filter(klient=klient))
+        self.fields['data_rozpoczecia'].label = "Data rozpoczęcia (RRRR-MM-DD)"
+        self.fields['data_zakonczenia'].label = "Data zakończenia (RRRR-MM-DD)"

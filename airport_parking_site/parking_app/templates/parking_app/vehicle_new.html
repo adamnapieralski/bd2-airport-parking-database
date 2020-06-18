@@ -1,5 +1,5 @@
-﻿{% extends "parking_app/base.html" %}
-{% block title %}Bilety | Podgląd{% endblock %}
+{% extends "parking_app/base.html" %}
+{% block title %}Pojazd | Dodanie{% endblock %}
 
 {% load static %}
 {% block extra_head %}
@@ -7,17 +7,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="content container">
     <div class="text-center">
-	
-  	<h2>Wpisz dane pojazdu</h2>  				       
-        <tr>
-        <form method="POST" class="post-form">{% csrf_token %}
-      				 {{ form.as_p }}
-      			<button type="submit" class="save btn btn-default">Zatwierdz</button>
+  	<h2>Dodaj rezerwację</h2> 				       
+    	<form method="POST" class="post-form">{% csrf_token %}
+           {{ form|crispy }}
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Zatwierdź</button>			 
         </form>
-        </tr>
     </div>
 </div>
 {% endblock content %}

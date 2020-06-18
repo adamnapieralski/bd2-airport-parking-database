@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 # from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm, ClientForm, CarForm, ReservationForm, ReservationCarForm
+from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm, VehicleForm, ReservationVehicleForm
 from . import models
 from . import ticketing
 from . import report
@@ -19,25 +19,8 @@ import math
 
 # Create your views here.
 
-
 def home(request):
     return render(request, 'parking_app/home.html')
-
-
-@login_required
-@user_passes_test(lambda user: not user.is_superuser)
-def reservation(request):
-    if request.method == "POST":
-        form = ReservationCarForm(request.user, request.POST)
-        if form.is_valid():
-
-
-            return redirect('tickets_view_id', id=bilet.id)
-    else:
-        form = ReservationCarForm(request.user)
-
-    return render(request, 'parking_app/reservation.html', {'form': form})
-
 
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
@@ -207,89 +190,88 @@ def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']
     return HttpResponseRedirect(reverse('tickets_pay_id', args=(ticket_id,)))
 
-def post_new(request):
-    form = ClientForm()
-    return render(request, 'parking_app/reservation.html', {'form': form}) 
-
-#to delete
-def client_data(request):
-    if request.method == "POST":
-        form = ClientForm(request.POST)
-        if form.is_valid():
-            client=form.save()
-            return redirect('car_data', id=client.id)
-    else:
-        form = ClientForm()
-    return render(request, 'parking_app/client_panel.html', {'form': form})  
-
-
-#user,klient,id
-@login_required
-@user_passes_test(lambda user: not user.is_superuser)
-def car_data(request):
-    user_id = request.user.id
-    klient = models.Klient.objects.get(id=user_id) 
-    form = CarForm(request.POST)
-    if request.method == "POST":    
-        if form.is_valid():
-            car=form.save(commit=False)
-            car.klient=klient
-            car=form.save()
-            request.session['numer_rejestracyjny'] = car.nr_rejestracyjny
-            return redirect('make_reservation')
-    else:
-        form = CarForm()
-    return render(request, 'parking_app/car_data.html', {'form': form}) 
+# @login_required
+# @user_passes_test(lambda user: not user.is_superuser)
+# def make_reservation(request):
+#     pojazd = models.Pojazd.objects.get(nr_rejestracyjny=request.session.get('numer_rejestracyjny'))
+#     typ_pojazdu=pojazd.typ_pojazdu
+#     klient =pojazd.klient      
+#     if request.method == "POST":
+#         form=ReservationForm(request.POST)
+#         if form.is_valid():
+#             rezerwacja=form.save(commit=False)
+#             #wolne_miejsce= check_reservation(rezerwacja.data_rozpoczecia,rezerwacja.data_zakonczenia,typ_pojazdu)
+#             if True: #wolne_miejsce!=None:
+                
+#                 rezerwacja.klient=klient  
+#                 rezerwacja.miejsce_parkingowe=models.MiejsceParkingowe.objects.all().first()
+#                 rezerwacja.nr_rezerwacji=0
+#                 rezerwacja.save()
+#                 rezerwacja.nr_rezerwacji=rezerwacja.id
+#                 rezerwacja.save()
+#                 return render(request,'parking_app/response_reserved.html', {'rezerwacja': rezerwacja, 'pojazd': pojazd,'miejsce':models.MiejsceParkingowe.objects.all().first()})
+#             #'miejsce': wolne_miejsce
+#                 #return HttpResponseRedirect('parking_app/response_reserved')
+#             else:    
+#                 #return HttpResponseRedirect('parking_app/response_no_free_places') 
+#                 raise form.ValidationError("Nie ma wolnych miejsc w tym terminie")
+#         else:
+#             raise form.ValidationError("Błędne daty")
+#     else:
+#         form=ReservationForm(request.POST)
+#     return render(request, 'parking_app/create_reservation.html', {'form': form})
 
 @login_required
 @user_passes_test(lambda user: not user.is_superuser)
-def make_reservation(request):
-    pojazd = models.Pojazd.objects.get(nr_rejestracyjny=request.session.get('numer_rejestracyjny'))
-    typ_pojazdu=pojazd.typ_pojazdu
-    klient =pojazd.klient      
+def reservations_panel(request):
+    return render(request, 'parking_app/reservations_panel.html')
+
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
+def new_reservation(request):
     if request.method == "POST":
-        form=ReservationForm(request.POST)
+        form = ReservationVehicleForm(request.user, request.POST)
         if form.is_valid():
             rezerwacja=form.save(commit=False)
-            #wolne_miejsce= check_reservation(rezerwacja.data_rozpoczecia,rezerwacja.data_zakonczenia,typ_pojazdu)
-            if True: #wolne_miejsce!=None:
-                
-                rezerwacja.klient=klient  
-                rezerwacja.miejsce_parkingowe=models.MiejsceParkingowe.objects.all().first()
-                rezerwacja.nr_rezerwacji=0
-                rezerwacja.save()
-                rezerwacja.nr_rezerwacji=rezerwacja.id
-                rezerwacja.save()
-                return render(request,'parking_app/response_reserved.html', {'rezerwacja': rezerwacja, 'pojazd': pojazd,'miejsce':models.MiejsceParkingowe.objects.all().first()})
-            #'miejsce': wolne_miejsce
-                #return HttpResponseRedirect('parking_app/response_reserved')
-            else:    
-                #return HttpResponseRedirect('parking_app/response_no_free_places') 
-                raise form.ValidationError("Nie ma wolnych miejsc w tym terminie")
-        else:
-            raise form.ValidationError("Błędne daty")
+            rezerwacja.klient = models.Klient.objects.get(user=request.user)
+            overlapping_rezerwacje = models.Rezerwacja.objects.filter(
+                data_rozpoczecia__lte=rezerwacja.data_zakonczenia,
+                data_zakonczenia__gte=rezerwacja.data_rozpoczecia
+            )
+            print(overlapping_rezerwacje.values('miejsce_parkingowe'))
+            zajete_miejsca = models.MiejsceParkingowe.objects.filter(id__in=overlapping_rezerwacje.values('miejsce_parkingowe'))
+            # zajete_miejsca = overlapping_rezerwacje.miejsce_parkingowe
+            wolne_miejsca = models.MiejsceParkingowe.objects.exclude(id__in=zajete_miejsca.values('id'))
+            # wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=rezerwacja.pojazd.typ_pojazdu)
+            wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=form.cleaned_data.get('pojazd').typ_pojazdu)
+            wolne_miejsce = wolne_miejsca.first()
+            rezerwacja.miejsce_parkingowe = wolne_miejsce
+            rezerwacja.nr_rezerwacji = 0
+            rezerwacja.save()
+            rezerwacja.nr_rezerwacji = rezerwacja.id
+            rezerwacja.save()
+
+            return redirect('my_reservations')
     else:
-<<<<<<< HEAD
-        form=ReservationForm()
+        form = ReservationVehicleForm(request.user)
 
-    print(form)
-    return render(request, 'parking_app/reservation.html', {'form': form})
-=======
-        form=ReservationForm(request.POST)
-    return render(request, 'parking_app/create_reservation.html', {'form': form})
->>>>>>> reservation_integration
+    return render(request, 'parking_app/reservation_new.html', {'form': form})
 
-#reservation
-# to delete ???
-def see_reservations(request,id):
-    aktualny_klient=models.Klient.objects.filter(id=id)
-    rezerwacje=models.Rezerwacja.objects.filter(klient=aktualny_klient)
-    return render(request, 'parking_app/my_reservations.html', {'rezerwacje': rezerwacje})
-    
-# to delete ???
-def test_myreservations(request):
-    k_id=135
-    return redirect('see_reservations', id= k_id)
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
+def new_vehicle(request):
+    if request.method == "POST":
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            vehicle = form.save(commit=False)
+            vehicle.klient = models.Klient.objects.get(user=request.user)
+            vehicle = form.save()
+
+            return redirect('new_reservation')
+    else:
+        form = VehicleForm()
+
+    return render(request, 'parking_app/vehicle_new.html', {'form': form})
 
 @login_required
 @user_passes_test(lambda user: not user.is_superuser)
@@ -299,5 +281,5 @@ def my_reservations(request):
         reservations.cancel_reservation(id)
     except(KeyError):
         pass
-    return render(request, 'parking_app/my_reservations.html', {'reservations': reservations.get_reservations(request.user.id)})
+    return render(request, 'parking_app/my_reservations.html', {'reservations': reservations.get_reservations(request.user)})
 

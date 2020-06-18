@@ -1,8 +1,8 @@
 from . import models
 import datetime
 
-def get_reservations(user_id):
-    me = models.Klient.objects.filter(id=user_id)[0]
+def get_reservations(user):
+    me = models.Klient.objects.get(user=user)
     attributes = [f.name for f in models.Rezerwacja._meta.concrete_fields]     
     data = models.Rezerwacja.objects.filter(klient = me).values_list(*attributes)    
 
