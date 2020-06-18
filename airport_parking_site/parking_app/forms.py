@@ -127,7 +127,7 @@ class CarForm(forms.ModelForm):
 class ReservationCarForm(forms.ModelForm):
     class Meta:
         model = models.Rezerwacja
-        fields = []
+        fields = ['data_rozpoczecia','data_zakonczenia']
 
     def __init__(self, user, *args, **kwargs):
         super(ReservationCarForm, self).__init__(*args, **kwargs)

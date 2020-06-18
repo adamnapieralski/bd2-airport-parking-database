@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
+# from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm, ClientForm, CarForm, ReservationForm
+from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm, ClientForm, CarForm, ReservationForm, ReservationCarForm
 from . import models
 from . import ticketing
 from . import report
@@ -22,8 +23,16 @@ def home(request):
 @login_required
 @user_passes_test(lambda user: not user.is_superuser)
 def reservation(request):
-    
-    return render(request, 'parking_app/reservation.html')
+    if request.method == "POST":
+        form = ReservationCarForm(request.user, request.POST)
+        if form.is_valid():
+
+
+            return redirect('tickets_view_id', id=bilet.id)
+    else:
+        form = ReservationCarForm(request.user)
+
+    return render(request, 'parking_app/reservation.html', {'form': form})
 
 
 @login_required

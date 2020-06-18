@@ -14,8 +14,9 @@
     <div class="text-center">
   	<h2>Wybierz datę rezerwacji miejsca parkingowego</h2> 				       
     	<form method="POST" class="post-form">{% csrf_token %}
-       	{{ form|crispy }}
-        <button type="submit" class="save btn btn-default">Zatwierdz</button>			 
+           {{ form|crispy }}
+        <button type="submit" name="add_pojazd" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location='/tickets/new/shortterm/';">Dodaj pojazd</button>
+        <button type="submit" name="add_rezerwacja" class="btn btn-primary btn-lg btn-block">Zatwierdź</button>			 
         </form>
     </div>
 </div>
