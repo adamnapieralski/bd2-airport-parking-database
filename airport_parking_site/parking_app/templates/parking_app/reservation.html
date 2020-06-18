@@ -12,12 +12,15 @@
 {% block content %}
 <div class="content container">
     <div class="text-center">
-  	<h2>Wybierz datę rezerwacji miejsca parkingowego</h2> 				       
+  	<!-- <h2>Wybierz datę rezerwacji miejsca parkingowego</h2> 				       
     	<form method="POST" class="post-form">{% csrf_token %}
            {{ form|crispy }}
         <button type="submit" name="add_pojazd" class="btn btn-outline-primary btn-lg btn-block" onclick="window.location='/tickets/new/shortterm/';">Dodaj pojazd</button>
         <button type="submit" name="add_rezerwacja" class="btn btn-primary btn-lg btn-block">Zatwierdź</button>			 
-        </form>
+        </form> -->
+      <h2>Panel rezerwacji</h2> 				       
+      <a href="{% url 'parking_app-reservations' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Moje rezerwacje</a>
+      <a href="{% url 'car_data' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Nowa rezerwacja</a>    
     </div>
 </div>
 {% endblock content %}

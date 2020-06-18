@@ -34,6 +34,8 @@ def get_repoting_data(table, date_from, date_to):
         data = model.objects.filter(czas_wjazdu__lte=datetime.datetime.strptime(date_to, '%Y-%m-%d')).values_list(*attributes)
     else:
         data = model.objects.all().values_list(*attributes)
+
+    attributes = [attr.replace('_', ' ') for attr in attributes]
     data_dict = {'attributes': attributes, 'data': data, 'table': table, 'date_from': date_from, 'date_to': date_to}
     return {'stats': get_db_stats(), 'tables': models_names, 'data': data_dict}   
 

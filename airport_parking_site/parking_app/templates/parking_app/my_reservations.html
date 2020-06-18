@@ -1,14 +1,36 @@
-﻿{% extends "parking_app/base.html" %}
+{% extends "parking_app/base.html" %}
+{% block title %}Moje rezerwacje{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
 
 {% block content %}
-  <h1>Lista rezerwacji</h1>
-{% for obj in rezerwacje %}
-    <form method="POST">
-        {% csrf_token %}
- 	<li>
-        <p>{{ forloop.counter }}: {{ obj.nr_rezerwacji }}<input type="submit" name="delete_items" value="{{ obj.pk }}"></p>
-	</li>
-    </form>
-{% endfor %}
-       
-{% endblock %}
+    <h2>Moje rezerwacje</h2>
+    <table class="table table-striped">
+        <tr>
+            {% for attr in reservations.header %}
+            <th>{{ attr }}</th>
+            {% endfor %}    
+            <th>Operacja</th>
+          </tr>
+          {% for row in reservations.data %}
+          <tr>
+          {% for col in row %}      
+            <td>{{ col }}</td>
+          {% endfor %}    
+          <td>
+            {% if row.0 in reservations.can_cancel %}
+            <form action="{% url 'parking_app-reservations' %}" method="post">
+                {% csrf_token %}    
+                <button class="btn btn-primary btn-sm" name="cancel" value="{{ row.0 }}">Anuluj</button>          
+              </form>
+              {% else %}
+              <button type="button" class="btn btn-secondary btn-sm" disabled>Anuluj</button>         
+            {% endif %}
+          </td>
+          </tr>
+          {% endfor %}
+    </table>
+{% endblock content %}
