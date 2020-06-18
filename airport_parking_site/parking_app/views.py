@@ -25,11 +25,15 @@ def reservation(request):
 @user_passes_test(lambda user: user.is_superuser)
 def reporting(request):
     table = None
+    from_date = None
+    to_date = None
     try:
         table = request.POST['view_table']
+        from_date = request.POST['ticket_from']
+        to_date = request.POST['ticket_to']
     except(KeyError):
         pass
-    return render(request, 'parking_app/reporting.html', report.get_repoting_data(table)) 
+    return render(request, 'parking_app/reporting.html', report.get_repoting_data(table, from_date, to_date)) 
 
 @login_required
 @user_passes_test(lambda user: user.is_superuser)

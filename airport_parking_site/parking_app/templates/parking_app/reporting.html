@@ -94,7 +94,7 @@
   <form action="{% url 'parking_app-reporting_download_data' %}" method="post">
     {% csrf_token %}    
     <label for="tables">Wybierz tabelę:</label>
-    <select name="tables" id="tables">
+    <select name="tables" id="tables" class="custom-select mr-sm-2" style="width: 250px">
       {% for table in tables %}
       <option value="{{ table }}">{{ table }}</option>
       {% endfor %}
@@ -108,7 +108,7 @@
   <form action="{% url 'parking_app-report' %}" method="post">
     {% csrf_token %}    
     <label for="tables">Wybierz tabelę:</label>
-    <select name="view_table" id="tables">
+    <select name="view_table" id="tables"  class="custom-select mr-sm-2" style="width: 250px">
       {% for table in tables %}
       {% if table == data.table %}
       <option value="{{ table }}" selected>{{ table }}</option>
@@ -117,6 +117,12 @@
       {% endif %}
       {% endfor %}
     </select>
+    {% if data.table == 'bilet' %}
+    <label for="ticket_from">Od:</label>
+    <input type="date" id="ticket_from" name="ticket_from", value="{{ data.date_from }}"> 
+    <label for="ticket_to">Do:</label>
+    <input type="date" id="ticket_to" name="ticket_to", value="{{ data.date_to }}">
+    {% endif %}
     <input type="submit" class="btn btn-primary btn-sm" value="Wyświetl dane">
   </form>
 </br>
