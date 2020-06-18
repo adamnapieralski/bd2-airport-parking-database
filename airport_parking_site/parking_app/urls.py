@@ -24,5 +24,6 @@ urlpatterns = [
     path('tickets/<int:id>/', views.make_reservation, name='make_reservation'),
     path('client', views.client_data, name='client_data'),
     path('car/<int:id>/', views.car_data, name='car_data'),
-    
+    path('profile/<int:id>/myreservations', views.see_reservations, name='see_reservations'), 
+    path('test_myreservations', views.test_myreservations, name='test_myreservations'),
 ]
