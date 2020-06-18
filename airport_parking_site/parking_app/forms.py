@@ -1,14 +1,15 @@
 from django import forms
-from .models import Bilet, BiletDlugoterminowy, Oplata
-from . import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.core.validators import MinValueValidator
+
+from . import models
 
 import datetime
 
 class TicketShortForm(forms.ModelForm):
     class Meta:
-        model = Bilet
+        model = models.Bilet
         fields = ['strefa']
     
     def __init__(self, *args, **kwargs):
@@ -17,9 +18,9 @@ class TicketShortForm(forms.ModelForm):
 
 
 class TicketLongForm(forms.ModelForm):
-    rezerwacja_id = forms.IntegerField()
+    rezerwacja_id = forms.IntegerField(validators=[MinValueValidator(1)])
     class Meta:
-        model = BiletDlugoterminowy
+        model = models.BiletDlugoterminowy
         fields = []
     
     def __init__(self, *args, **kwargs):
@@ -52,9 +53,43 @@ class TicketLongForm(forms.ModelForm):
 
         return strefa
 
+class TicketExitForm(forms.Form):
+    nr_biletu = forms.IntegerField(label='', 
+                                    widget=forms.TextInput(attrs={'placeholder': 'Podaj numer biletu...'}),
+                                    validators=[MinValueValidator(1)])
+    
+    def clean_nr_biletu(self):
+        nr_biletu = self.cleaned_data.get('nr_biletu')
+
+        bilet = models.Bilet.objects.filter(id=nr_biletu).first()
+
+        if bilet is None:
+            raise forms.ValidationError("Podany bilet nie istnieje.")
+
+        bilet_dlugoterminowy = models.BiletDlugoterminowy.objects.filter(bilet=bilet).first()
+
+        curr_time = timezone.now()
+
+        wykupiony_czas_d = datetime.timedelta(seconds=bilet.wykupiony_czas*3600)
+
+        if bilet.czas_wjazdu > curr_time:
+            raise forms.ValidationError("Niepoprawny bilet.")
+
+        if bilet_dlugoterminowy is not None:
+            if curr_time > bilet_dlugoterminowy.rezerwacjaa.data_zakonczenia:
+                raise forms.ValidationError("Minął termin rezerwacji.")
+            if curr_time > bilet_dlugoterminowy.rezerwacjaa.data_rozpoczecia + wykupiony_czas_d:
+                raise forms.ValidationError("Bilet nieopłacony.")
+        
+        if curr_time > bilet.czas_wjazdu + wykupiony_czas_d:
+            raise forms.ValidationError("Bilet nieopłacony.")
+
+        return nr_biletu
+
+
 class TicketPaymentForm(forms.ModelForm):
     class Meta:
-        model = Oplata
+        model = models.Oplata
         fields = ['metoda_platnosci', 'kwota_podstawowa']
         labels = {
             'metoda_platnosci': _('Metoda płatności'),

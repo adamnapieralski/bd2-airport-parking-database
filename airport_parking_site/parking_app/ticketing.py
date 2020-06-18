@@ -26,5 +26,6 @@ def calculate_min_pay_price(cennik, czas_do_oplaty):
         price = c.oplata
         if czas_do_oplaty <= c.czas:
             break
+    print("Czas do opłaty: ", czas_do_oplaty, "\tCena: ", price)
     return price
         
