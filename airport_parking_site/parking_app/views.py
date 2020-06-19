@@ -7,6 +7,7 @@ from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExi
 from . import models
 from . import ticketing
 from . import report
+from . import reservations
 
 import datetime
 import math
@@ -191,3 +192,13 @@ def tickets_pay_id(request, id):
 def tickets_pay_selected(request):
     ticket_id = request.POST['nrBiletu']
     return HttpResponseRedirect(reverse('tickets_pay_id', args=(ticket_id,)))
+
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
+def my_reservations(request):
+    try:
+        id = request.POST['cancel']
+        reservations.cancel_reservation(id)
+    except(KeyError):
+        pass
+    return render(request, 'parking_app/my_reservations.html', {'reservations': reservations.get_reservations(request.user.id)})
