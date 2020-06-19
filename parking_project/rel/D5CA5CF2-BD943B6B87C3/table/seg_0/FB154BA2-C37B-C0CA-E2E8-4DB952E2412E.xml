@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FB154BA2-C37B-C0CA-E2E8-4DB952E2412E" name="Pojazd">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>98CCA9C7-8D3A-ABAB-1EB7-10E7D294B78F</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="nr_rejestracyjny" id="C325EFC1-A1E3-83B8-4ABC-F1462B485145">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>4309037B-5BA1-E84B-2C37-F9DE201844B3</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="typ_pojazdu_typ" id="309A7CD2-07A1-E378-10E9-7BF52794A899">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>3BB1B7E1-A396-CE7F-B86E-AC8F963285F2</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E1B19F57-8CE0-1C89-C835-FB1D4B41A021" referredColumn="6E308A6A-4C16-AB6A-37DC-C20CB844119A"/>
+</associations>
+</Column>
+<Column name="klient_id" id="CD6B32D0-3E0F-7C3C-C475-4DA2CA3575BA">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>EFEA3342-1256-73BA-7C13-A647EA330EBA</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ECE7EA8D-D89F-9DDA-D224-7400055659E2" referredColumn="CD4D2704-B268-2479-955B-1E1FB793443B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C139E40A-F17A-C232-E4DE-D06C67CA28EB" name="Pojazd_PK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>C127E972-7503-6150-BF83-D570716FB7C7</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C325EFC1-A1E3-83B8-4ABC-F1462B485145"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DCE1352D-8F01-ED27-E191-C4B056864714" name="Pojazd_Typ_pojazdu_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>E6AF7839-32BF-240C-6465-4B929B1D19F9</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="309A7CD2-07A1-E378-10E9-7BF52794A899"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BCFCAF90-F0D6-6EAB-4CD4-E8341A8AE1AA" name="Pojazd_Klient_FK">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 20:05:29 UTC</createdTime>
+<generatorID>3D59ADE9-51E3-C588-7A58-5981B16E6578</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CD6B32D0-3E0F-7C3C-C475-4DA2CA3575BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

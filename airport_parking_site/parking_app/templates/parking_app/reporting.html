@@ -1,0 +1,144 @@
+{% extends "parking_app/base.html" %}
+{% block title %}Raport z bazy danych{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Statystyki</h1>
+  <div class="row">
+    <div class="col-sm">
+      <h2>Statystyki ogólne</h2>
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Liczba</th>
+        </tr>
+      {% for row in stats.general_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+      <form action="{% url 'parking_app-reporting_download_stats' %}" method="post">
+        {% csrf_token %}    
+        <button class="btn btn-primary btn-sm" name="stats_download" value="general_stats">Pobierz statystyki ogólne</button>
+      </form>
+    </div>
+    <div class="col-sm">
+      <h2>Statystyki stref parkingowych</h2>
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Liczba biletów</th>
+        </tr>
+      {% for row in stats.zone_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+      <form action="{% url 'parking_app-reporting_download_stats' %}" method="post">
+        {% csrf_token %}    
+        <button class="btn btn-primary btn-sm" name="stats_download" value="zone_stats">Pobierz statystyki stref</button>
+      </form>
+    </div>
+  </div>
+</br>
+  <div class="row">
+    <div class="col-sm">
+      <h2>Statystyki płatności</h2>
+      <table class="table table-striped">
+      {% for row in stats.payment_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+    <form action="{% url 'parking_app-reporting_download_stats' %}" method="post">
+      {% csrf_token %}    
+      <button class="btn btn-primary btn-sm" name="stats_download" value="payment_stats">Pobierz statystyki płatności</button>          
+    </form>
+    </div>
+    <div class="col-sm">
+      <h2>Statystyki metody płatności</h2>
+      <table class="table table-striped">
+      {% for row in stats.payment_method_stats %}
+        <tr>
+        {% for col in row %}      
+          <td>{{ col }}</td>
+        {% endfor %}    
+        </tr>
+      {% endfor %}
+      </table>        
+    <form action="{% url 'parking_app-reporting_download_stats' %}" method="post">
+      {% csrf_token %}    
+      <button class="btn btn-primary btn-sm" name="stats_download" value="payment_method_stats">Pobierz statystyki metod płatności</button>          
+    </form>
+    </div>
+  </div>
+</div>
+ 
+<div class="container" style="margin-top: 20px;">
+  <h1>Pobierz dane</h1>
+  <form action="{% url 'parking_app-reporting_download_data' %}" method="post">
+    {% csrf_token %}    
+    <label for="tables">Wybierz tabelę:</label>
+    <select name="tables" id="tables" class="custom-select mr-sm-2" style="width: 250px">
+      {% for table in tables %}
+      <option value="{{ table }}">{{ table }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" class="btn btn-primary btn-sm" value="Pobierz dane">
+  </form>
+</div>
+
+<div class="container" style="margin-top: 20px;">
+  <h1>Podgląd danych</h1>
+  <form action="{% url 'parking_app-report' %}" method="post">
+    {% csrf_token %}    
+    <label for="tables">Wybierz tabelę:</label>
+    <select name="view_table" id="tables"  class="custom-select mr-sm-2" style="width: 250px">
+      {% for table in tables %}
+      {% if table == data.table %}
+      <option value="{{ table }}" selected>{{ table }}</option>
+      {% else %}
+      <option value="{{ table }}">{{ table }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+    {% if data.table == 'bilet' %}
+    <label for="ticket_from">Od:</label>
+    <input type="date" id="ticket_from" name="ticket_from", value="{{ data.date_from }}"> 
+    <label for="ticket_to">Do:</label>
+    <input type="date" id="ticket_to" name="ticket_to", value="{{ data.date_to }}">
+    {% endif %}
+    <input type="submit" class="btn btn-primary btn-sm" value="Wyświetl dane">
+  </form>
+</br>
+<table class="table table-striped">
+  <tr>
+    {% for attr in data.attributes %}
+    <th>{{ attr }}</th>
+    {% endfor %}    
+  </tr>
+  {% for row in data.data %}
+  <tr>
+  {% for col in row %}      
+    <td>{{ col }}</td>
+  {% endfor %}    
+  </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock content %}

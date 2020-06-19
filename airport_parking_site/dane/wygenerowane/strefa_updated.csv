@@ -1,0 +1,10 @@
+,nazwa,pojemnosc,liczba_wolnych_miejsc,id_parkingu,typ_pojazdu,id_cennika
+0,S1,800,406,0,osobowy,1
+1,S2,50,45,0,motocykl,1
+2,S3,20,16,0,autokar,1
+3,S4,500,500,1,osobowy,1
+4,S5,1000,1000,2,osobowy,1
+5,S6,400,306,3,osobowy,5
+6,S7,20,18,3,motocykl,5
+7,S8,10,9,3,autokar,5
+8,S9,600,600,4,osobowy,5

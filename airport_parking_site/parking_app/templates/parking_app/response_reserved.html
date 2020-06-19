@@ -1,0 +1,48 @@
+﻿{% extends "parking_app/base.html" %}
+{% block title %}Bilety | Podgląd{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content container">
+    <div class="text-center">
+        <h2>Rezerwacja pomyślna </h2>
+        <table class="table table-striped table-bordered w-50">
+            <tr>
+                <th>Numer rezerwacji </th>
+                <th>{{ rezerwacja.nr_rezerwacji }}</th>
+            </tr>
+    	    <tr>
+                <td>Czas wjazdu</td>
+                <td>{{ rezerwacja.data_rozpoczecia }}</td>
+            </tr>
+            <tr>
+                <td>Czas wyjazdu</td>
+                <td>{{ rezerwacja.data_zakonczenia }}</td>
+            </tr>
+            <tr>
+		<td>Numer miejsca parkingowego</td>
+                <td>{{ miejsce.nr_miejsca }}</td>
+            </tr>
+	    <tr>
+                <td>Miejsce parkingowe</td>
+                <td>{{ miejsce.strefa.nazwa }}</td>
+            </tr>
+	     <tr>
+                <td>Numer rejestracyjny pojazdu</td>
+                <td>{{ pojazd.nr_rejestracyjny }}</td>
+            </tr>
+	    <tr>
+                <td>Typ pojazdu</td>
+                <td>{{ pojazd.typ_pojazdu }}</td>
+            </tr>
+
+        
+        </table>
+    </div>
+</div>
+{% endblock content %}

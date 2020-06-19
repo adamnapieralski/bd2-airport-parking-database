@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F923C228-C77D-F510-4930-BCF0E2EB5FBC" name="Opłata">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-02 18:26:18 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_oplaty" id="C9648C2F-251E-DD56-C652-E314F6A53825">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:04:36 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_biletu" id="61DB6905-668F-DC6B-844D-08B9107BEFC7">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:02:57 UTC</createdTime>
+<generatorID>D96728A7-EAAC-2644-D0FB-F4D3615CFB03</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>96D9CC7C-65EC-68D4-3889-A9D94B3827C5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="czas" id="1117D75E-34D5-D4E6-2C57-3943DE635186">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:04:08 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="kwota_podstawowa" id="AB49F049-F4AD-32E6-7F16-AB87FE693561">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:04:58 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="kwota_ostateczna" id="1A5BC4CB-7E7B-D644-65E0-00726CF75A99">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:06:53 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="status" id="62807720-80EB-5E61-E809-9B344F9A1669">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:07:06 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rodzaj" id="38B8879B-46E7-DF4B-8972-0DE339E1C901">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:55:24 UTC</createdTime>
+<generatorID>A661814E-3E79-0710-C8DE-E98F5616AA40</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>D8926DC1-BDAB-088A-9D85-7BB6A49DF18D</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_znizki" id="11ED1D79-4C21-8B56-C212-88E31E5FF722">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:57:05 UTC</createdTime>
+<generatorID>7820708D-A568-C6C6-1BFE-504AF4FDA8C3</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>3412EC0E-6233-E596-5B4F-C6F51D0AA3C1</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_kary" id="C368BFA2-1ABE-414A-DDA7-B2761545987F">
+<createdBy>lkost</createdBy>
+<createdTime>2020-04-16 19:57:43 UTC</createdTime>
+<generatorID>4E33E248-AFE1-F16B-B713-1C4FFDFF1BDC</generatorID>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<referedAttribute>AAB148E4-C4B8-615C-E92C-FD352CF3AB40</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A1A0B2AB-F41A-1AED-95D4-737CBE17320B" name="Opłata PK">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-03 06:04:48 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<engineerTo>
+<item key="83A7F319-EE89-AFA5-9C38-85356AD0A639" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C9648C2F-251E-DD56-C652-E314F6A53825</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

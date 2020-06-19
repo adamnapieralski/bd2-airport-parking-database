@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="36AEB898-B504-990D-4DF7-6367CEA35591">
+<createdBy>napiad</createdBy>
+<createdTime>2020-04-02 18:13:46 UTC</createdTime>
+<ownerDesignName>parking_project</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

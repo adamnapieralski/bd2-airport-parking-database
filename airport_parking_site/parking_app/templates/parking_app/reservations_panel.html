@@ -1,0 +1,25 @@
+{% extends "parking_app/base.html" %}
+{% block title %}Rezerwacje | Panel{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content container">
+    <div class="text-center">
+      <h2>Panel rezerwacji</h2> 				       
+      <a href="{% url 'my_reservations' %}" class="btn btn-primary btn-lg mx-2" role="button" aria-pressed="true">Moje rezerwacje</a>
+      <a href="{% url 'new_reservation' %}" class="btn btn-primary btn-lg mx-2" role="button" aria-pressed="true">Nowa rezerwacja</a>    
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+ 
