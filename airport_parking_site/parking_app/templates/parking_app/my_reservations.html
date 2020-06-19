@@ -1,6 +1,11 @@
 {% extends "parking_app/base.html" %}
 {% block title %}Moje rezerwacje{% endblock %}
 
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
 {% block content %}
     <h2>Moje rezerwacje</h2>
     <table class="table table-striped">
@@ -17,7 +22,7 @@
           {% endfor %}    
           <td>
             {% if row.0 in reservations.can_cancel %}
-            <form action="{% url 'parking_app-reservations' %}" method="post">
+            <form action="{% url 'my_reservations' %}" method="post">
                 {% csrf_token %}    
                 <button class="btn btn-primary btn-sm" name="cancel" value="{{ row.0 }}">Anuluj</button>          
               </form>

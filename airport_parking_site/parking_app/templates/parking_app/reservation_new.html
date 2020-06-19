@@ -1,0 +1,23 @@
+{% extends "parking_app/base.html" %}
+{% block title %}Rezerwacja | Utworzenie{% endblock %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/tickets.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'parking_app/buttons.css' %}">
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content container">
+    <div class="text-center w-50 mx-auto">
+  	<h2>Dodaj rezerwację</h2> 				       
+    	<form method="POST" class="post-form">{% csrf_token %}
+           {{ form|crispy }}
+        <a href="{% url 'new_vehicle' %}" class="btn btn-outline-primary btn-lg btn-block mb-5" role="button" aria-pressed="true">Dodaj pojazd</a>    
+        <button type="submit" name="add_rezerwacja" class="btn btn-primary btn-lg btn-block">Zatwierdź</button>			 
+        </form>
+    </div>
+</div>
+{% endblock content %}

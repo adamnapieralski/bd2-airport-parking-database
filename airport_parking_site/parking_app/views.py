@@ -2,28 +2,25 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
+# from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm
+from .forms import TicketShortForm, TicketLongForm, TicketPaymentForm, TicketExitForm, VehicleForm, ReservationVehicleForm
 from . import models
 from . import ticketing
 from . import report
+
+from .reservation import check_reservation
+
 from . import reservations
+
 
 import datetime
 import math
 
 # Create your views here.
 
-
 def home(request):
     return render(request, 'parking_app/home.html')
-
-
-@login_required
-@user_passes_test(lambda user: not user.is_superuser)
-def reservation(request):
-    return render(request, 'parking_app/reservation.html')
-
 
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
@@ -203,10 +200,67 @@ def tickets_pay_selected(request):
 
 @login_required
 @user_passes_test(lambda user: not user.is_superuser)
+def reservations_panel(request):
+    return render(request, 'parking_app/reservations_panel.html')
+
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
+def new_reservation(request):
+    if request.method == "POST":
+        form = ReservationVehicleForm(request.user, request.POST)
+        if form.is_valid():
+            rezerwacja=form.save(commit=False)
+            rezerwacja.klient = models.Klient.objects.get(user=request.user)
+            overlapping_rezerwacje = models.Rezerwacja.objects.filter(
+                data_rozpoczecia__lte=rezerwacja.data_zakonczenia,
+                data_zakonczenia__gte=rezerwacja.data_rozpoczecia
+            )
+            print(overlapping_rezerwacje.values('miejsce_parkingowe'))
+            zajete_miejsca = models.MiejsceParkingowe.objects.filter(id__in=overlapping_rezerwacje.values('miejsce_parkingowe'))
+            wolne_miejsca = models.MiejsceParkingowe.objects.exclude(id__in=zajete_miejsca.values('id'))
+
+            # PROBLEM - brak pojazdu jako klucza obcego w rezerwacji
+            # wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=rezerwacja.pojazd.typ_pojazdu)
+
+            # ominiecie tego (tymczasowe lub nie)
+            wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=form.cleaned_data.get('pojazd').typ_pojazdu)
+            wolne_miejsca = wolne_miejsca.filter(strefa__parking__rodzaj_parkingu="dlugoterminowy")
+            wolne_miejsce = wolne_miejsca.first()
+            rezerwacja.miejsce_parkingowe = wolne_miejsce
+            rezerwacja.nr_rezerwacji = 0
+            rezerwacja.save()
+            rezerwacja.nr_rezerwacji = rezerwacja.id
+            rezerwacja.save()
+
+            return redirect('my_reservations')
+    else:
+        form = ReservationVehicleForm(request.user)
+
+    return render(request, 'parking_app/reservation_new.html', {'form': form})
+
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
+def new_vehicle(request):
+    if request.method == "POST":
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            vehicle = form.save(commit=False)
+            vehicle.klient = models.Klient.objects.get(user=request.user)
+            vehicle = form.save()
+
+            return redirect('new_reservation')
+    else:
+        form = VehicleForm()
+
+    return render(request, 'parking_app/vehicle_new.html', {'form': form})
+
+@login_required
+@user_passes_test(lambda user: not user.is_superuser)
 def my_reservations(request):
     try:
         id = request.POST['cancel']
         reservations.cancel_reservation(id)
     except(KeyError):
         pass
-    return render(request, 'parking_app/my_reservations.html', {'reservations': reservations.get_reservations(request.user.id)})
+    return render(request, 'parking_app/my_reservations.html', {'reservations': reservations.get_reservations(request.user)})
+

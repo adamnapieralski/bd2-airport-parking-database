@@ -86,7 +86,7 @@ class Pojazd(models.Model):
 
 
 class Rezerwacja(models.Model):
-    nr_rezerwacji = models.IntegerField()
+    nr_rezerwacji = models.IntegerField(null=True)
     data_rozpoczecia = models.DateTimeField('%Y-%m-%d')  # '2006-10-25'
     data_zakonczenia = models.DateTimeField('%Y-%m-%d')
 
