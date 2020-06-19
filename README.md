@@ -5,7 +5,13 @@
 Project of the database of airport parking and web application for it's management and reporting. Made on Databases 2 course on FEIT of Warsaw University of Technology.
 
 ## Preview
-(images to be inserted)
+![Start page](doc/images/app.png "Start page")
+![Tickets](doc/images/tickets.png "Tickets")
+
+| | | 
+:-------------------------:|:-------------------------:
+![](doc/images/my_reservations.png "My reservations")  |  ![](doc/images/add_reservation.png "Add reservation")
+![Reporting_1](doc/images/reporting_1.png "Reporting - stats") | ![Reporting2](doc/images/reporting_2.png "Reporting - detailed preview")
 
 ## Installation
 ### Prerequisites
