@@ -10,7 +10,7 @@ Project of the database of airport parking and web application for it's manageme
 ## Installation
 ### Prerequisites
 - python >= 3.6
-- django >= v3.0
+- Django >= v3.0
 - django-crispy-forms ([installation](https://django-crispy-forms.readthedocs.io/en/latest/install.html#installing-django-crispy-forms))
 
 ### Clone
@@ -38,7 +38,9 @@ If more precise information about all executed tests is needed, set verbosity pa
 ```
 python manage.py test -v 2
 ```
-
+## Built With
+- [Django](https://www.djangoproject.com/) - high-level Python Web framework that encourages rapid development and clean, pragmatic design
+- [SQLite](https://www.sqlite.org/index.html) - a small, fast, self-contained, high-reliability, full-featured, SQL database engine
 
 ## Authors
 - **Łukasz Kostrzewa** - [kost13](https://github.com/kost13)
