@@ -216,7 +216,7 @@ def new_reservation(request):
 
             # ominiecie tego (tymczasowe lub nie)
             wolne_miejsca = wolne_miejsca.filter(strefa__typ_pojazdu=form.cleaned_data.get('pojazd').typ_pojazdu)
-
+            wolne_miejsca = wolne_miejsca.filter(strefa__parking__rodzaj_parkingu="dlugoterminowy")
             wolne_miejsce = wolne_miejsca.first()
             rezerwacja.miejsce_parkingowe = wolne_miejsce
             rezerwacja.nr_rezerwacji = 0
