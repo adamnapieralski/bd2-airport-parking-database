@@ -67,6 +67,9 @@ def tickets(request):
             bilet = models.Bilet.objects.get(id=form_exit.cleaned_data.get('nr_biletu'))
             bilet.czas_wyjazdu = timezone.now()
             bilet.save()
+            strefa = bilet.strefa
+            strefa.liczba_wolnych_miejsc += 1
+            strefa.save()
 
             return redirect('tickets_view_id', id=bilet.id)
     else:
@@ -86,6 +89,9 @@ def tickets_new_shortterm(request):
             ticket.save()
             ticket.nr_biletu = ticket.id
             ticket.save()
+            strefa = ticket.strefa
+            strefa.liczba_wolnych_miejsc -= 1
+            strefa.save()
             return redirect('tickets_view_id', id=ticket.id)
     else:
         form = TicketShortForm()
@@ -106,8 +112,10 @@ def tickets_new_longterm(request):
             )
             bilet.nr_biletu = bilet.id
             bilet.save()
+            strefa = bilet.strefa
+            strefa.liczba_wolnych_miejsc -= 1
+            strefa.save()
             ticket.bilet = bilet
-
             rezerwacja = models.Rezerwacja.objects.filter(
                 id=form.cleaned_data['rezerwacja_id']).first()
             ticket.rezerwacjaa = rezerwacja
